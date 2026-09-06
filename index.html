@@ -135,6 +135,26 @@
   footer .brand{justify-content:center;margin-bottom:12px}
   footer a{margin:0 10px;border-bottom:1px dashed var(--pencil2)}
 
+
+  /* telegram */
+  .tg{background:var(--paper2);border-top:1.5px solid var(--pencil);border-bottom:1.5px solid var(--pencil)}
+  .tg-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:760px){.tg-grid{grid-template-columns:1fr}}
+  .tg-card{padding:30px;display:flex;flex-direction:column;gap:12px;transition:.3s}
+  .tg-card:hover{transform:translateY(-5px) rotate(.4deg);box-shadow:4px 6px 0 rgba(43,42,39,.12)}
+  .tg-card .ico{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--graphite);display:flex;align-items:center;justify-content:center;background:#fff}
+  .tg-card .ico svg{width:30px;height:30px;fill:var(--graphite)}
+  .tg-card h3{font-size:1.25rem}
+  .tg-card .handle{font-family:Consolas,Menlo,monospace;direction:ltr;text-align:right;color:var(--pencil);font-size:.95rem}
+  .tg-card p{color:var(--pencil);font-size:.95rem;flex:1}
+  .tg-card .btn{align-self:flex-start}
+  .tg-steps{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;color:var(--pencil);font-size:.88rem}
+  .tg-steps li::before{content:"✎ ";color:var(--pencil2)}
+  .fab{position:fixed;left:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;background:var(--graphite);color:var(--paper);border:1.5px solid var(--graphite);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;box-shadow:4px 5px 0 rgba(43,42,39,.25);font-weight:600;font-size:.9rem;transition:.25s}
+  .fab svg{width:22px;height:22px;fill:var(--paper)}
+  .fab:hover{transform:translateY(-3px) rotate(-1deg);background:var(--pencil)}
+  @media(max-width:600px){.fab span{display:none}.fab{padding:12px}}
+
   .fade{opacity:0;transform:translateY(18px);transition:.7s ease}
   .fade.in{opacity:1;transform:none}
 </style>
@@ -149,6 +169,7 @@
       <li><a href="#project">نیکا نت</a></li>
       <li><a href="#install">نصب</a></li>
       <li><a href="#roadmap">مسیر</a></li>
+      <li><a href="#telegram">تلگرام</a></li>
       <li><a href="https://github.com/azadipanell" target="_blank">GitHub ↗</a></li>
     </ul>
   </div>
@@ -163,6 +184,7 @@
       <div class="btns">
         <a class="btn dark" href="https://github.com/azadipanell/Nika-Net" target="_blank">★ مشاهده Nika Net در GitHub</a>
         <a class="btn line" href="#install">شروع سریع</a>
+        <a class="btn line" href="https://t.me/NikaNettbot" target="_blank">✈ لانچر ربات</a>
       </div>
     </div>
     <img class="logo" src="assets/shahyad-logo.jpg" alt="SHAHYAD">
@@ -210,6 +232,7 @@
       <div class="btns">
         <a class="btn dark" href="https://github.com/azadipanell/Nika-Net" target="_blank">سورس‌کد</a>
         <a class="btn line" href="https://github.com/azadipanell/Nika-Net/blob/main/DEPLOY.fa.md" target="_blank">راهنمای دیپلوی فارسی</a>
+        <a class="btn line" href="https://t.me/NikaNettbot" target="_blank">✈ @NikaNettbot</a>
       </div>
     </div>
     <div class="frame fade"><img src="assets/preview.jpg" alt="Nika Net preview"></div>
@@ -246,6 +269,31 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
   </div>
 </section>
 
+<section id="telegram" class="tg">
+  <div class="wrap">
+    <h2 class="fade">در تلگرام<small>TELEGRAM</small></h2>
+    <p class="sub fade">پنل را از داخل تلگرام اجرا کنید و از آخرین خبرها و نسخه‌ها باخبر شوید.</p>
+    <div class="tg-grid">
+      <div class="tg-card sketch fade">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.47 1.47.22 1.7-.8l3.08-14.4c.28-1.27-.46-1.77-1.29-1.46L1.9 11.3c-1.23.48-1.21 1.17-.21 1.48l4.62 1.44L17.03 7.5c.5-.33.96-.15.58.18z"/></svg></div>
+        <h3>ربات لانچر Nika Net</h3>
+        <div class="handle">@NikaNettbot</div>
+        <p>لانچر رسمی پنل نیکا نت. با استارت کردن ربات، پنل خود را مستقیم از تلگرام باز و مدیریت کنید؛ بدون نیاز به حفظ آدرس و مسیرهای تصادفی.</p>
+        <ul class="tg-steps"><li>ربات را باز کنید</li><li>روی Start بزنید</li><li>پنل اجرا می‌شود</li></ul>
+        <a class="btn dark" href="https://t.me/NikaNettbot" target="_blank">✈ اجرای ربات</a>
+      </div>
+      <div class="tg-card sketch fade">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 2H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h4l4 4 4-4h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm-9 12H6v-2h5zm7-4H6V8h12zm0-4H6V4h12z"/></svg></div>
+        <h3>کانال شهیاد · ASR</h3>
+        <div class="handle">@shahyad_asr</div>
+        <p>اطلاع‌رسانی نسخه‌های جدید، آموزش‌ها، تغییرات پنل و پروژه‌های بعدی استودیو شهیاد. برای دریافت به‌روزرسانی‌ها عضو شوید.</p>
+        <ul class="tg-steps"><li>اخبار و آپدیت‌ها</li><li>آموزش نصب</li><li>پشتیبانی جامعه</li></ul>
+        <a class="btn line" href="https://t.me/shahyad_asr" target="_blank">✈ عضویت در کانال</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="roadmap">
   <div class="wrap">
     <h2 class="fade">مسیر ما<small>ROADMAP</small></h2>
@@ -269,10 +317,12 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 <footer>
   <div class="wrap">
     <div class="brand"><img src="assets/shahyad-logo.jpg" alt=""> شهیاد</div>
-    <p><a href="https://github.com/azadipanell" target="_blank">GitHub</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">Nika Net</a> · <a href="https://github.com/azadipanell/Nika-Net/blob/main/LICENSE" target="_blank">MIT License</a></p>
+    <p><a href="https://github.com/azadipanell" target="_blank">GitHub</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">Nika Net</a> · <a href="https://github.com/azadipanell/Nika-Net/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://t.me/NikaNettbot" target="_blank">ربات @NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">کانال @shahyad_asr</a></p>
     <p style="margin-top:12px" class="serif">© 2025–2026 SHAHYAD · CONFIGURATION PANELS</p>
   </div>
 </footer>
+
+<a class="fab" href="https://t.me/NikaNettbot" target="_blank" title="اجرای پنل در تلگرام"><svg viewBox="0 0 24 24"><path d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.47 1.47.22 1.7-.8l3.08-14.4c.28-1.27-.46-1.77-1.29-1.46L1.9 11.3c-1.23.48-1.21 1.17-.21 1.48l4.62 1.44L17.03 7.5c.5-.33.96-.15.58.18z"/></svg><span>اجرای پنل در تلگرام</span></a>
 
 <script>
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
