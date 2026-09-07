@@ -25,10 +25,8 @@ jobs:
       - name: Prepare static bundle
         run: |
           mkdir -p /tmp/dist
-          rsync -a ./ /tmp/dist/ \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='README.md'
+          cp -a . /tmp/dist/
+          rm -rf /tmp/dist/.git /tmp/dist/.github /tmp/dist/README.md
           echo "Files to publish: $(find /tmp/dist -type f | wc -l)"
 
       - name: Deploy
