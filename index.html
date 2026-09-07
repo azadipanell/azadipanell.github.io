@@ -14,8 +14,12 @@
 <meta property="og:url" content="https://azadipanell.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f3efe6">
+<link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://azadipanell.github.io/","logo":"https://azadipanell.github.io/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
+<script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script>
 <style>
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
@@ -67,7 +71,7 @@
     nav ul{display:none;position:absolute;top:70px;right:0;left:0;background:var(--paper);flex-direction:column;gap:0;padding:14px 0;border-bottom:1.5px solid var(--pencil);box-shadow:0 10px 30px rgba(0,0,0,.08)}
     nav ul.show{display:flex}
     nav ul li{width:100%;text-align:center;padding:10px 0;border-bottom:1px dashed var(--pencil3)}
-    nav ul li:last-child{border:0}
+    nav ul li:last-child{border:0;justify-content:center;padding-top:16px}
     .burger{display:flex}
   }
 
@@ -90,7 +94,7 @@
   .btn svg{width:18px;height:18px;fill:currentColor}
 
   .logo-wrap{position:relative;width:100%;max-width:460px;aspect-ratio:1}
-  .logo-wrap img{position:absolute;inset:8%;width:84%;height:84%;mix-blend-mode:multiply;filter:contrast(1.05);animation:float 7s ease-in-out infinite}
+  .logo-wrap picture{position:absolute;inset:8%;width:84%;height:84%}.logo-wrap img{width:100%;height:100%;mix-blend-mode:multiply;filter:contrast(1.05);animation:float 7s ease-in-out infinite}
   .logo-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .ring{fill:none;stroke:var(--pencil2);stroke-width:.6}
   .ring.dash{stroke-dasharray:2 4;animation:spin 90s linear infinite;transform-origin:center}
@@ -110,7 +114,7 @@
   .orn svg{width:100%;height:28px;fill:none;stroke:var(--pencil2);stroke-width:1}
 
   /* ── sections / headings with pencil-drawn underline ── */
-  section{padding:70px 0}
+  section{padding:70px 0;position:relative}
   h2{font-size:2rem;text-align:center;margin-bottom:6px;font-weight:700;position:relative;display:table;margin-inline:auto}
   h2 small{display:block;font-weight:400;font-size:.42em;color:var(--pencil2);letter-spacing:.35em}
   h2 svg.ul{position:absolute;left:-6%;right:-6%;bottom:-6px;width:112%;height:12px;overflow:visible}
@@ -134,12 +138,13 @@
 
   /* ── mockup band ── */
   .mock{padding:20px 0 60px}
-  .mock .frame{max-width:960px;margin:0 auto;padding:12px;background:#fff;box-shadow:6px 8px 0 rgba(43,42,39,.15);transform:rotate(-.6deg);border:1px solid var(--pencil3)}
+  .mock .frame{max-width:960px;display:block;margin:0 auto;padding:12px;background:#fff;box-shadow:6px 8px 0 rgba(43,42,39,.15);transform:rotate(-.6deg);border:1px solid var(--pencil3)}
   .mock img{width:100%;display:block;mix-blend-mode:multiply}
   .mock figcaption{text-align:center;color:var(--pencil2);font-size:.85rem;margin-top:16px}
 
   /* ── project ── */
   .proj{background:var(--paper2);border-top:1.5px solid var(--pencil);border-bottom:1.5px solid var(--pencil)}
+  .proj .wrap{padding-top:50px;padding-bottom:50px}.proj{padding:0}
   .proj-inner{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
   @media(max-width:860px){.proj-inner{grid-template-columns:1fr}}
   .frame{padding:10px;background:#fff;box-shadow:6px 8px 0 rgba(43,42,39,.15);transform:rotate(-1.2deg)}
@@ -178,7 +183,7 @@
   .member img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;transition:.5s}
   .member:hover img{transform:scale(1.06)}
   .member h3{font-family:"Cormorant",serif;letter-spacing:.25em;font-size:1.5rem;font-weight:600}
-  .member .role{color:var(--pencil);font-size:.9rem;margin-bottom:8px}
+  .member .role{color:var(--pencil);font-size:.9rem;margin:2px 0 8px}
   .member p{color:var(--pencil2);font-size:.88rem}
   .x{text-align:center;font-family:"Cormorant",serif;font-size:3rem;color:var(--pencil3);align-self:center;display:none}
 
@@ -230,6 +235,92 @@
   .fab:hover{transform:translateY(-3px) rotate(-1deg);background:var(--pencil)}
   @media(max-width:600px){.fab span{display:none}.fab{padding:12px}}
 
+
+  /* ── preloader ── */
+  #pre{position:fixed;inset:0;z-index:200;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .6s,visibility .6s}
+  #pre.hide{opacity:0;visibility:hidden}
+  #pre .tower{width:min(240px,55vw);color:var(--graphite)}
+  #pre .en{font-size:.8rem;color:var(--pencil2)}
+  .tower .d{stroke-dasharray:600;stroke-dashoffset:600;animation:draw 2.2s ease forwards}
+  .tower .d:nth-child(2){animation-delay:.1s}.tower .d:nth-child(3){animation-delay:.3s}.tower .d:nth-child(4){animation-delay:.6s}.tower .d:nth-child(5){animation-delay:.7s}
+  .tower .d:nth-child(6){animation-delay:.9s}.tower .d:nth-child(7){animation-delay:1.1s}.tower .d:nth-child(8){animation-delay:1.3s}.tower .d:nth-child(9){animation-delay:1.5s}
+  .tower .d:nth-child(10){animation-delay:1.7s}.tower .d:nth-child(11){animation-delay:1.9s}.tower .d:nth-child(12){animation-delay:2s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  /* hero: sketch first, then real logo fades over it */
+  .logo-wrap .tower{position:absolute;inset:8%;width:84%;height:84%;color:var(--pencil);opacity:1;transition:opacity 1.2s ease 3.4s}
+  .logo-wrap img{opacity:0;transition:opacity 1.4s ease 3.2s}
+  body.ready .logo-wrap img{opacity:1}
+  body.ready .logo-wrap .tower{opacity:0}
+
+  /* ── vignette + foxing stains ── */
+  .vig{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(60,50,30,.16) 100%)}
+  .fox{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background:radial-gradient(circle at 8% 30%,rgba(120,90,40,.10) 0,transparent 6%),radial-gradient(circle at 92% 12%,rgba(120,90,40,.08) 0,transparent 5%),radial-gradient(circle at 75% 88%,rgba(120,90,40,.09) 0,transparent 7%),radial-gradient(circle at 30% 95%,rgba(120,90,40,.07) 0,transparent 4%)}
+
+  /* ── torn paper edges ── */
+  .proj,.tg{border-top:0;border-bottom:0;position:relative}
+  .torn{display:block;width:100%;height:22px;color:var(--paper2)}
+  .torn.top{margin-bottom:-1px;margin-top:-22px}.torn.bot{transform:scaleY(-1);margin-top:-1px;margin-bottom:-22px}
+  .torn path{fill:currentColor}
+  .torn path.l{fill:none;stroke:var(--pencil3);stroke-width:.6}
+
+  /* ── custom cursor (desktop) ── */
+  @media(hover:hover) and (pointer:fine){
+    body{cursor:none}a,button,summary,.tech span{cursor:none}
+    #cur{position:fixed;left:0;top:0;width:22px;height:22px;z-index:300;pointer-events:none;transform:translate(-3px,-19px) rotate(0deg);transition:transform .15s}
+    #cur svg{width:100%;height:100%}
+    body.hov #cur{transform:translate(-3px,-19px) rotate(-25deg) scale(1.15)}
+    #trail{position:fixed;inset:0;z-index:299;pointer-events:none}
+  }
+  #cur,#trail{display:none}
+  @media(hover:hover) and (pointer:fine){#cur,#trail{display:block}}
+
+  /* ── back to top + active nav ── */
+  #top{position:fixed;right:22px;bottom:22px;z-index:60;width:44px;height:44px;border:1.5px solid var(--graphite);border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.3s;box-shadow:3px 4px 0 rgba(43,42,39,.2)}
+  #top.show{opacity:1;visibility:visible}
+  #top:hover{transform:translateY(-3px)}
+  #top svg{width:18px;height:18px;fill:none;stroke:var(--graphite);stroke-width:1.5}
+  html[data-lang="en"] #top{right:auto;left:22px}
+  nav ul a.act::after{transform:scaleX(1)}
+
+  /* ── team hover tint + signature ── */
+  .member img{filter:grayscale(1)}
+  .member:hover img{filter:grayscale(.2) sepia(.25)}
+  .member .sig{font-family:"Cormorant",serif;font-style:italic;font-size:1.1rem;color:var(--pencil2);letter-spacing:.05em;text-transform:none;margin-top:6px;display:block}
+
+  /* ── parallax targets ── */
+  [data-px]{will-change:transform}
+
+  /* ── theme toggle ── */
+  .theme{border:1.5px solid var(--pencil);border-radius:50%;width:30px;height:30px;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--graphite)}
+  .theme svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5}
+  .theme:hover{background:var(--graphite);color:var(--paper)}
+
+  /* ── chalkboard dark mode ── */
+  html[data-theme="dark"]{
+    --paper:#23262a;--paper2:#1d1f23;--paper3:#2b2e33;
+    --graphite:#eceae2;--pencil:#cfcdc4;--pencil2:#9a9890;--pencil3:#5f625f;--line:#7c7f7a;
+  }
+  html[data-theme="dark"] body::before{background:radial-gradient(ellipse at 20% 20%,rgba(255,255,255,.05),transparent 45%),radial-gradient(ellipse at 80% 80%,rgba(255,255,255,.04),transparent 45%),var(--paper)}
+  html[data-theme="dark"] body::after{opacity:.35;filter:invert(1)}
+  html[data-theme="dark"] .vig{background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,.45) 100%)}
+  html[data-theme="dark"] .fox{opacity:.25;filter:invert(1)}
+  html[data-theme="dark"] .sketch{background:rgba(255,255,255,.03)}
+  html[data-theme="dark"] .frame,html[data-theme="dark"] .mock .frame{background:#2f3237;box-shadow:6px 8px 0 rgba(0,0,0,.4)}
+  html[data-theme="dark"] .frame img,html[data-theme="dark"] .mock img,html[data-theme="dark"] .member img,html[data-theme="dark"] .logo-wrap img,html[data-theme="dark"] .brand img{mix-blend-mode:screen;filter:invert(1) grayscale(1) contrast(1.05)}
+  html[data-theme="dark"] .frame:hover img{filter:invert(1) grayscale(1)}
+  html[data-theme="dark"] pre{background:#1a1c1f;color:var(--graphite);box-shadow:3px 4px 0 rgba(0,0,0,.4)}
+  html[data-theme="dark"] pre .cp,html[data-theme="dark"] .tg-card .ico{background:#2b2e33}
+  html[data-theme="dark"] .card:hover,html[data-theme="dark"] .tg-card:hover{box-shadow:4px 6px 0 rgba(0,0,0,.4)}
+  html[data-theme="dark"] .fab{box-shadow:4px 5px 0 rgba(0,0,0,.5)}
+  html[data-theme="dark"] .btn.dark{color:var(--paper)}
+  html[data-theme="dark"] nav{background:rgba(35,38,42,.92)}
+  html[data-theme="dark"] .stamp{opacity:.5;mix-blend-mode:screen}
+  html[data-theme="dark"] code{background:rgba(255,255,255,.08)}
+  html[data-theme="dark"] #pre{background:#23262a}
+  html[data-theme="dark"] ::selection{background:var(--graphite);color:var(--paper)}
+  html{transition:background .4s}
+
   .fade{opacity:0;transform:translateY(18px);transition:.7s ease}
   .fade.in{opacity:1;transform:none}
 
@@ -247,6 +338,21 @@
 </style>
 </head>
 <body>
+<div id="pre"><svg class="tower" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<circle class="d" cx="100" cy="100" r="92"/>
+<circle class="d" cx="100" cy="100" r="86" stroke-width=".7"/>
+<path class="d" d="M78 42h44v14H78z"/>
+<path class="d" d="M83 47v6M89 47v6M95 47v6M105 47v6M111 47v6M117 47v6"/>
+<path class="d" d="M78 56c-2 30-14 58-56 96h46c8-20 20-40 32-60 12 20 24 40 32 60h46c-42-38-54-66-56-96"/>
+<path class="d" d="M84 56c-2 26-12 52-44 90M116 56c2 26 12 52 44 90M90 56c0 24-8 48-32 86M110 56c0 24 8 48 32 86"/>
+<path class="d" d="M100 92c-9 15-17 32-24 60h48c-7-28-15-45-24-60z"/>
+<path class="d" d="M100 100c-6 12-11 26-16 48M100 100c6 12 11 26 16 48M92 118h16M88 130h24M84 142h32"/>
+<path class="d" d="M22 152h156"/>
+<path class="d" d="M60 166h80M70 172h60" stroke-width=".8"/>
+<path class="d" d="M96 172l4-3 4 3-4 3z" stroke-width=".8"/>
+</svg><span class="en">Sketching…</span></div>
+<div class="vig"></div><div class="fox"></div>
+<canvas id="trail"></canvas><div id="cur"><svg viewBox="0 0 24 24"><path d="M3 21l3-9 11-11 6 6-11 11z" fill="#f3efe6" stroke="#2b2a27" stroke-width="1.2"/><path d="M6 12l6 6M14 4l6 6" stroke="#2b2a27" stroke-width="1"/><path d="M3 21l1.5-4.5 3 3z" fill="#2b2a27"/></svg></div>
 <div id="bar"></div>
 
 <nav>
@@ -260,7 +366,7 @@
       <li><a href="#telegram"><span data-fa>تلگرام</span><span data-en>Telegram</span></a></li>
       <li><a href="#faq"><span data-fa>سؤالات</span><span data-en>FAQ</span></a></li>
       <li><a href="https://github.com/azadipanell" target="_blank">GitHub ↗</a></li>
-      <li><button class="lang" id="langBtn">EN</button></li>
+      <li style="display:flex;gap:8px;align-items:center"><button class="lang" id="langBtn">EN</button><button class="theme" id="themeBtn" aria-label="theme"><svg viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button></li>
     </ul>
     <button class="burger" id="burger" aria-label="menu"><i></i><i></i><i></i></button>
   </div>
@@ -280,15 +386,28 @@
       </div>
     </div>
     <div class="logo-wrap fade in">
-      <svg viewBox="0 0 200 200" aria-hidden="true">
+      <svg viewBox="0 0 200 200" aria-hidden="true" data-px=".03">
         <g id="rays"></g>
         <circle class="ring" cx="100" cy="100" r="96"/>
         <circle class="ring dash" cx="100" cy="100" r="92"/>
         <circle class="ring dash2" cx="100" cy="100" r="86"/>
         <g id="ticks"></g>
       </svg>
-      <img src="assets/shahyad-logo.jpg" alt="SHAHYAD">
-      <div class="stamp en"><b>SHAHYAD</b>est. 2025 · Tehran</div>
+      <svg class="tower" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+<circle class="d" cx="100" cy="100" r="92"/>
+<circle class="d" cx="100" cy="100" r="86" stroke-width=".7"/>
+<path class="d" d="M78 42h44v14H78z"/>
+<path class="d" d="M83 47v6M89 47v6M95 47v6M105 47v6M111 47v6M117 47v6"/>
+<path class="d" d="M78 56c-2 30-14 58-56 96h46c8-20 20-40 32-60 12 20 24 40 32 60h46c-42-38-54-66-56-96"/>
+<path class="d" d="M84 56c-2 26-12 52-44 90M116 56c2 26 12 52 44 90M90 56c0 24-8 48-32 86M110 56c0 24 8 48 32 86"/>
+<path class="d" d="M100 92c-9 15-17 32-24 60h48c-7-28-15-45-24-60z"/>
+<path class="d" d="M100 100c-6 12-11 26-16 48M100 100c6 12 11 26 16 48M92 118h16M88 130h24M84 142h32"/>
+<path class="d" d="M22 152h156"/>
+<path class="d" d="M60 166h80M70 172h60" stroke-width=".8"/>
+<path class="d" d="M96 172l4-3 4 3-4 3z" stroke-width=".8"/>
+</svg>
+      <picture><source srcset="assets/shahyad-logo.webp" type="image/webp"><img src="assets/shahyad-logo.jpg" alt="SHAHYAD"></picture>
+      <div class="stamp en" data-px=".06"><b>SHAHYAD</b>est. 2025 · Tehran</div>
     </div>
   </div>
 </header>
@@ -319,13 +438,13 @@
 <!-- MOCKUP -->
 <div class="mock wrap">
   <figure class="fade">
-    <div class="frame"><img src="assets/mockup.jpg" alt="Nika Net panel sketch" loading="lazy"></div>
+    <div class="frame" data-px="-.04"><picture><source srcset="assets/mockup.webp" type="image/webp"><img src="assets/mockup.jpg" alt="Nika Net panel sketch" loading="lazy"></picture></div>
     <figcaption class="en"><span data-fa>Fig. 1 — Nika Net panel · desktop & mobile</span><span data-en>Fig. 1 — Nika Net panel · desktop & mobile</span></figcaption>
   </figure>
 </div>
 
 <!-- PROJECT -->
-<section id="project" class="proj">
+<section id="project" class="proj"><svg class="torn top" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg>
   <div class="wrap proj-inner">
     <div class="fade">
       <div class="status"><i></i> <span data-fa>وضعیت: فعال</span><span data-en>Status: active</span></div>
@@ -356,12 +475,12 @@
         <a class="btn line" href="https://t.me/NikaNettbot" target="_blank">✈ @NikaNettbot</a>
       </div>
     </div>
-    <div class="frame fade"><img src="assets/preview.jpg" alt="Nika Net preview" loading="lazy"></div>
+    <div class="frame fade"><picture><source srcset="assets/preview.webp" type="image/webp"><img src="assets/preview.jpg" alt="Nika Net preview" loading="lazy"></picture></div>
   </div>
-</section>
+<svg class="torn bot" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg></section>
 
 <!-- INSTALL -->
-<section id="install">
+<section id="install" style="padding-top:90px">
   <div class="wrap">
     <h2 class="fade"><span data-fa>نصب سریع</span><span data-en>Quick start</span><small class="en">Three steps</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8c40-4 80-6 120-3 30 2 50 2 76-1"/></svg></h2>
     <p class="sub fade" data-fa>در سه قدم، پنل خودتان را روی حساب رایگان Cloudflare بالا بیاورید.</p>
@@ -393,17 +512,17 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 </section>
 
 <!-- TEAM -->
-<section id="team" class="proj">
+<section id="team" class="proj"><svg class="torn top" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg>
   <div class="wrap">
     <h2 class="fade"><span data-fa>تیم ASR</span><span data-en>Team ASR</span><small class="en">Two developers · one goal</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8c40-4 80-6 120-3 30 2 50 2 76-1"/></svg></h2>
     <p class="sub fade" data-fa>دو توسعه‌دهنده، یک هدف: ساخت نرم‌افزارهای قدرتمند، ساده و قابل اعتماد.</p>
     <p class="sub fade" data-en>Two developers, one goal: powerful, simple, reliable software.</p>
     <div class="team">
-      <div class="member sketch fade"><div class="ph"><img src="assets/asr1.jpg" alt="ASR1" loading="lazy"></div><h3>ASR1</h3><div class="role"><span data-fa>هم‌بنیان‌گذار · معماری و بک‌اند</span><span data-en>Co-founder · Architecture & backend</span></div><p data-fa>پروتکل‌ها، هسته‌ی Worker و لایه‌ی داده.</p><p data-en>Protocols, Worker core and the data layer.</p></div>
-      <div class="member sketch fade"><div class="ph"><img src="assets/asr2.jpg" alt="ASR2" loading="lazy"></div><h3>ASR2</h3><div class="role"><span data-fa>هم‌بنیان‌گذار · محصول و رابط کاربری</span><span data-en>Co-founder · Product & interface</span></div><p data-fa>طراحی پنل، تجربه‌ی کاربر و هویت بصری.</p><p data-en>Panel design, user experience and brand.</p></div>
+      <div class="member sketch fade"><div class="ph"><picture><source srcset="assets/asr1.webp" type="image/webp"><img src="assets/asr1.jpg" alt="ASR1" loading="lazy"></picture></div><h3>ASR1</h3><span class="sig">— asr one</span><div class="role"><span data-fa>هم‌بنیان‌گذار · معماری و بک‌اند</span><span data-en>Co-founder · Architecture & backend</span></div><p data-fa>پروتکل‌ها، هسته‌ی Worker و لایه‌ی داده.</p><p data-en>Protocols, Worker core and the data layer.</p></div>
+      <div class="member sketch fade"><div class="ph"><picture><source srcset="assets/asr2.webp" type="image/webp"><img src="assets/asr2.jpg" alt="ASR2" loading="lazy"></picture></div><h3>ASR2</h3><span class="sig">— asr two</span><div class="role"><span data-fa>هم‌بنیان‌گذار · محصول و رابط کاربری</span><span data-en>Co-founder · Product & interface</span></div><p data-fa>طراحی پنل، تجربه‌ی کاربر و هویت بصری.</p><p data-en>Panel design, user experience and brand.</p></div>
     </div>
   </div>
-</section>
+<svg class="torn bot" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg></section>
 
 <!-- TELEGRAM -->
 <section id="telegram">
@@ -437,7 +556,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 </section>
 
 <!-- ROADMAP -->
-<section id="roadmap" class="proj">
+<section id="roadmap" class="proj"><svg class="torn top" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg>
   <div class="wrap">
     <h2 class="fade"><span data-fa>مسیر ما</span><span data-en>Roadmap</span><small class="en">Done & ahead</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8c40-4 80-6 120-3 30 2 50 2 76-1"/></svg></h2>
     <ul class="road fade" style="margin-top:40px" data-fa>
@@ -459,7 +578,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       <li>Chain proxy & gRPC / XHTTP transports</li>
     </ul>
   </div>
-</section>
+<svg class="torn bot" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg></section>
 
 <!-- FAQ -->
 <section id="faq">
@@ -496,6 +615,8 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 
 <a class="fab" href="https://t.me/NikaNettbot" target="_blank" title="NikaNettbot"><svg viewBox="0 0 24 24"><path d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.47 1.47.22 1.7-.8l3.08-14.4c.28-1.27-.46-1.77-1.29-1.46L1.9 11.3c-1.23.48-1.21 1.17-.21 1.48l4.62 1.44L17.03 7.5c.5-.33.96-.15.58.18z"/></svg><span><span data-fa>اجرای پنل در تلگرام</span><span data-en>Launch panel in Telegram</span></span></a>
 
+<a id="top" href="#" aria-label="top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+
 <script>
   // rays & ticks around logo
   (function(){const r=document.getElementById('rays'),t=document.getElementById('ticks');let a='',b='';
@@ -531,6 +652,37 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
   function setLang(l){html.dataset.lang=l;html.lang=l;html.dir=l==='en'?'ltr':'rtl';lb.textContent=l==='en'?'FA':'EN';localStorage.setItem('lang',l)}
   setLang(localStorage.getItem('lang')||'fa');
   lb.onclick=()=>setLang(html.dataset.lang==='en'?'fa':'en');
+
+  // preloader
+  addEventListener('load',()=>{setTimeout(()=>{document.getElementById('pre').classList.add('hide');document.body.classList.add('ready')},1400)});
+  setTimeout(()=>{document.getElementById('pre').classList.add('hide');document.body.classList.add('ready')},4000);
+
+  // theme
+  const tb=document.getElementById('themeBtn');
+  tb.onclick=()=>{const d=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=d;localStorage.setItem('theme',d)};
+
+  // back to top + active nav
+  const topBtn=document.getElementById('top'),secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('nav ul a[href^="#"]')];
+  addEventListener('scroll',()=>{topBtn.classList.toggle('show',scrollY>600);
+    let cur='';secs.forEach(sc=>{if(scrollY>=sc.offsetTop-140)cur=sc.id});
+    links.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+cur))},{passive:true});
+  topBtn.onclick=e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})};
+
+  // parallax
+  const px=[...document.querySelectorAll('[data-px]')];
+  if(!matchMedia('(prefers-reduced-motion:reduce)').matches)addEventListener('scroll',()=>{px.forEach(el=>{const r=el.getBoundingClientRect(),c=r.top+r.height/2-innerHeight/2;el.style.transform=`translateY(${c*+el.dataset.px}px)`})},{passive:true});
+
+  // pencil cursor + fading trail
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+    const cur=document.getElementById('cur'),cv=document.getElementById('trail'),ctx=cv.getContext('2d');let pts=[];
+    const rs=()=>{cv.width=innerWidth;cv.height=innerHeight};rs();addEventListener('resize',rs);
+    addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';pts.push({x:e.clientX,y:e.clientY,t:performance.now()});
+      document.body.classList.toggle('hov',!!e.target.closest('a,button,summary,.tech span'))});
+    (function loop(){const now=performance.now();pts=pts.filter(p=>now-p.t<500);ctx.clearRect(0,0,cv.width,cv.height);
+      const col=getComputedStyle(document.documentElement).getPropertyValue('--pencil2').trim();
+      for(let i=1;i<pts.length;i++){const a=1-(now-pts[i].t)/500;ctx.strokeStyle=col;ctx.globalAlpha=a*.6;ctx.lineWidth=1.2;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(pts[i-1].x,pts[i-1].y);ctx.lineTo(pts[i].x,pts[i].y);ctx.stroke()}
+      ctx.globalAlpha=1;requestAnimationFrame(loop)})();
+  }
 </script>
 </body>
 </html>
