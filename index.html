@@ -421,8 +421,11 @@
   html[data-theme="dark"] #bar{background:var(--amber);box-shadow:0 0 10px var(--amber)}
 
   /* swap artwork to chalk versions */
+  .swap-day,.swap-night{transition:opacity .6s ease}
   html[data-theme="dark"] .swap-day{display:none!important}
   html:not([data-theme="dark"]) .swap-night{display:none!important}
+  html[data-theme="dark"] .frame img.swap-night,html[data-theme="dark"] .mock img.swap-night,html[data-theme="dark"] .how img.swap-night{border-radius:2px}
+  html[data-theme="dark"] .frame,html[data-theme="dark"] .mock .frame,html[data-theme="dark"] .how .fig{padding:8px;background:#0b0d10}
   html[data-theme="dark"] .logo-wrap picture,html[data-theme="dark"] .logo-wrap>img.swap-night{background:transparent}
   html[data-theme="dark"] .logo-wrap img{filter:drop-shadow(0 0 22px rgba(239,233,220,.22))}
   html[data-theme="dark"] .brand img{filter:invert(1) grayscale(1);border-color:var(--pencil3);background:#000}
