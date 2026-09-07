@@ -916,6 +916,9 @@
   .fb-wall .fb-card{width:auto;display:inline-block;margin:0 0 16px;break-inside:avoid;box-shadow:2px 3px 0 rgba(43,42,39,.1);opacity:0;transform:translateY(12px) rotate(var(--r,0deg));animation:fbin .5s ease forwards;animation-delay:var(--d,0s)}
   @keyframes fbin{to{opacity:1;transform:translateY(0) rotate(var(--r,0deg))}}
   .fb-wall .fb-card .q{-webkit-line-clamp:unset;display:block;font-size:1.12rem}
+  .fb-wall .fb-card.still{animation:none;opacity:1;transform:rotate(var(--r,0deg))}
+  .fb-track.few{animation:none;width:auto;justify-content:center;flex-wrap:wrap;padding:0 24px}
+  html[dir="rtl"] .fb-track.few{direction:rtl}
   .fb-wall .fb-card.new{box-shadow:0 0 0 2px var(--amber),6px 8px 0 rgba(138,106,52,.25)}
   .fb-like{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--pencil3);border-radius:99px;padding:1px 10px;background:transparent;color:var(--pencil);font:inherit;font-size:.78rem;cursor:pointer;transition:.25s;direction:ltr}
   .fb-like:hover{border-color:var(--amber);color:var(--amber)}
@@ -929,7 +932,39 @@
   .fb-more[hidden]{display:none}
   .fb-card .badge{position:absolute;top:-10px;right:14px;background:var(--amber);color:var(--amber-ink);font-size:.62rem;padding:1px 8px;border-radius:99px;letter-spacing:.05em}
   html[data-lang="en"] .fb-card .badge{right:auto;left:14px}
+  /* live ledger */
+  .fb-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(150px,1.2fr) minmax(0,1.4fr);gap:18px;align-items:end;margin:34px auto 6px;max-width:1100px;padding:18px 22px 16px;border-top:1.5px solid var(--pencil);border-bottom:1px solid var(--pencil3);position:relative}
+  .fb-ledger::before{content:"";position:absolute;top:3px;left:0;right:0;border-top:1px solid var(--pencil3)}
+  .fb-num{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;font-size:.78rem;color:var(--pencil2)}
+  .fb-num b{font-family:"Cormorant",serif;font-weight:600;font-size:2.3rem;line-height:1.1;color:var(--graphite);position:relative;display:inline-block;padding:0 .3em;font-variant-numeric:tabular-nums}
+  .fb-num b::after{content:"";position:absolute;inset:-4px -.15em;border:1.5px solid var(--pencil3);border-radius:50% 45% 50% 48%/48% 50% 46% 52%;transform:rotate(-3deg);pointer-events:none}
+  .fb-num.tick b::after{animation:fbring .5s ease}
+  @keyframes fbring{40%{transform:rotate(-3deg) scale(1.15);border-color:var(--amber)}}
+  .fb-spark svg{width:100%;height:38px;overflow:visible}
+  .fb-spark path{fill:none;stroke:var(--graphite);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.6s ease .2s}
+  .fb-spark path.fill{fill:rgba(138,106,52,.13);stroke:none;stroke-dasharray:none;stroke-dashoffset:0}
+  .fb-spark circle{fill:var(--amber)}
+  .fb-ledger.in .fb-spark path{stroke-dashoffset:0}
+  .fb-bars{display:flex;flex-direction:column;gap:5px;font-size:.72rem;color:var(--pencil)}
+  .fb-bars div{display:grid;grid-template-columns:4.2em 1fr 2em;gap:8px;align-items:center}
+  .fb-bars i{display:block;height:6px;border-radius:3px;background:var(--pencil3);position:relative;overflow:hidden}
+  .fb-bars i::after{content:"";position:absolute;inset:0;width:var(--w,0%);background:var(--amber);transition:width 1.2s cubic-bezier(.2,.8,.2,1) .3s;border-radius:3px}
+  .fb-bars em{font-style:normal;font-family:"Cormorant",serif;font-weight:600;text-align:end;font-size:.95rem;color:var(--graphite)}
+  .fb-bars span{white-space:nowrap}
+  html[data-lang="en"] .fb-bars div{direction:ltr}
+  @media(max-width:900px){.fb-ledger{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.fb-spark{grid-column:1/3}.fb-bars{grid-column:3/4}}
+  @media(max-width:560px){.fb-ledger{grid-template-columns:repeat(3,minmax(0,1fr));padding:14px 6px}.fb-num b{font-size:1.7rem}.fb-spark{grid-column:1/3}.fb-bars{grid-column:3/4;font-size:.66rem}.fb-bars div{grid-template-columns:3.4em 1fr 1.6em}}
+  .fb-ts{min-height:0;margin:6px 0 0;display:flex;justify-content:flex-end}
+  .fb-ts iframe{max-width:100%}
   /* dark */
+  html[data-theme="dark"] .fb-ledger{border-top-color:var(--pencil2)}
+  html[data-theme="dark"] .fb-num b{color:var(--amber);text-shadow:0 0 16px rgba(231,179,106,.35)}
+  html[data-theme="dark"] .fb-num b::after{border-color:rgba(231,179,106,.45)}
+  html[data-theme="dark"] .fb-spark path{stroke:var(--amber)}
+  html[data-theme="dark"] .fb-spark path.fill{fill:rgba(231,179,106,.12)}
+  html[data-theme="dark"] .fb-bars em{color:#e6e1d4}
+  html[data-theme="dark"] .fb-bars i{background:rgba(255,255,255,.12)}
+  html[data-theme="light"] .fb-num b::after{border-color:rgba(138,106,52,.55)}
   html[data-theme="dark"] .fb-strip{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border-color:var(--pencil3)}
   html[data-theme="dark"] .fb-card{background:#1a1d24;border-color:var(--pencil3);box-shadow:0 12px 30px rgba(0,0,0,.35)}
   html[data-theme="dark"] .fb-card .q{color:#e6e1d4}
@@ -1281,7 +1316,16 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     <p class="sub fade" data-fa>هر پیشنهاد یا انتقاد، یک یادداشت روی دیوار استودیو می‌شود. یادداشت‌های محبوب‌تر روی نوارِ بالا می‌چرخند و مستقیم وارد نقشهٔ راه می‌شوند.</p>
     <p class="sub fade" data-en>Every idea or critique becomes a note on the studio wall. The most-liked notes ride the ticker above and feed straight into the roadmap.</p>
 
-    <!-- featured ticker: two counter-rotating film strips -->
+    <!-- live ledger: real numbers straight from the box -->
+    <div class="fb-ledger fade" id="fbLedger" aria-live="polite">
+      <div class="fb-num"><b><span data-n="total">0</span></b><span data-fa>یادداشت روی دیوار</span><span data-en>notes on the wall</span></div>
+      <div class="fb-num"><b><span data-n="week">0</span></b><span data-fa>در هفت روز گذشته</span><span data-en>in the last 7 days</span></div>
+      <div class="fb-num"><b><span data-n="likes">0</span></b><span data-fa>لایک بازدیدکنندگان</span><span data-en>visitor likes</span></div>
+      <div class="fb-num fb-spark"><svg viewBox="0 0 140 36" preserveAspectRatio="none" id="fbSpark" aria-hidden="true"></svg><span data-fa>۱۴ روز اخیر</span><span data-en>last 14 days</span></div>
+      <div class="fb-bars" id="fbKinds" aria-label="breakdown by kind"></div>
+    </div>
+
+    <!-- featured ticker: film strip of pinned + most-liked notes -->
     <div class="fb-ticker fade" aria-label="featured feedback">
       <div class="fb-strip"><div class="fb-track" id="fbTrackA"></div></div>
       <div class="fb-stamp en"><b>Best of</b>the wall</div>
@@ -1300,9 +1344,10 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
         <div class="fb-field"><input id="fbName" type="text" maxlength="40" autocomplete="nickname" placeholder=" "><label for="fbName"><span data-fa>نام یا نام مستعار (اختیاری)</span><span data-en>Name or alias (optional)</span></label></div>
         <div class="fb-field"><textarea id="fbText" rows="5" maxlength="500" placeholder=" " required></textarea><label for="fbText"><span data-fa>حرفتان را همین‌جا بنویسید…</span><span data-en>Write your note here…</span></label><span class="fb-count"><b id="fbCount">0</b>/500</span></div>
         <div class="fb-hp" aria-hidden="true"><label>Website <input type="text" name="website" id="fbHp" tabindex="-1" autocomplete="off"></label></div>
+        <div class="fb-ts" id="fbTs"></div>
         <div class="fb-actions">
           <button class="btn dark" type="submit" id="fbSend"><span data-fa>ارسال یادداشت</span><span data-en>Pin the note</span> <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
-          <span class="fb-note" data-fa>بدون ثبت‌نام · فقط متن شما ذخیره می‌شود</span><span class="fb-note" data-en>No account · only your text is stored</span>
+          <span class="fb-note" data-fa>بدون ثبت‌نام · متن و نام مستعار ذخیره می‌شود، نه هویت شما</span><span class="fb-note" data-en>No account · we keep the note and alias, not your identity</span>
         </div>
         <div class="fb-msg" id="fbMsg" role="status" aria-live="polite"></div>
       </form>
@@ -1445,70 +1490,116 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
   // ── chapter rule draws itself ──
   (function(){const c=document.querySelector('.chapter');if(!c)return;new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){c.classList.add('in');o.disconnect()}}),{threshold:.6}).observe(c)})();
 
-  // ── feedback / suggestion box ──
+  // ── feedback / suggestion box (live: GitHub-Issues backed, Turnstile-protected) ──
   (function(){
     const API='api/feedback',form=document.getElementById('fbForm');if(!form)return;
     const wall=document.getElementById('fbWall'),track=document.getElementById('fbTrackA'),msg=document.getElementById('fbMsg'),
-          txt=document.getElementById('fbText'),cnt=document.getElementById('fbCount'),more=document.getElementById('fbMore'),total=document.getElementById('fbTotal');
+          txt=document.getElementById('fbText'),cnt=document.getElementById('fbCount'),more=document.getElementById('fbMore'),total=document.getElementById('fbTotal'),
+          ledger=document.getElementById('fbLedger'),tsBox=document.getElementById('fbTs');
     const t0=Date.now();
     const KIND={idea:['پیشنهاد','Idea'],critique:['انتقاد','Critique'],bug:['باگ','Bug'],praise:['تشکر','Praise']};
     const isEn=()=>html.dataset.lang==='en';
+    const fmt=n=>(+n||0).toLocaleString(isEn()?'en-US':'fa-IR');
     const liked=new Set(JSON.parse(localStorage.getItem('fb_liked')||'[]'));
+    // anonymous per-device id → one like per device per note (no account, no cookie banner needed)
+    let vid=localStorage.getItem('fb_vid');if(!vid){vid=Array.from(crypto.getRandomValues(new Uint8Array(12)),b=>b.toString(16).padStart(2,'0')).join('');localStorage.setItem('fb_vid',vid)}
     const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const ago=ts=>{const d=(Date.now()-ts)/6e4;const en=isEn();
-      if(d<60)return en?`${Math.max(1,d|0)} min ago`:`${Math.max(1,d|0)} دقیقه پیش`;
-      if(d<1440)return en?`${(d/60)|0} h ago`:`${(d/60)|0} ساعت پیش`;
+      if(d<60)return en?`${Math.max(1,d|0)} min ago`:`${fmt(Math.max(1,d|0))} دقیقه پیش`;
+      if(d<1440)return en?`${(d/60)|0} h ago`:`${fmt((d/60)|0)} ساعت پیش`;
       return new Date(ts).toLocaleDateString(en?'en-GB':'fa-IR',{month:'short',day:'numeric'})};
-    const rot=id=>{let h=0;for(const c of id)h=(h*31+c.charCodeAt(0))&0xffff;return ((h%9)-4)*.45};
+    const rot=id=>{let h=0;for(const c of String(id))h=(h*31+c.charCodeAt(0))&0xffff;return ((h%9)-4)*.45};
     function card(it,opts={}){
-      const el=document.createElement('article');el.className='fb-card'+(opts.cls?' '+opts.cls:'');el.dataset.lang=it.lang||'fa';el.dataset.id=it.id;
+      const el=document.createElement('article');el.className='fb-card'+(opts.cls?' '+opts.cls:'')+(opts.still?' still':'');el.dataset.lang=it.lang||'fa';el.dataset.id=it.id;
       el.style.setProperty('--r',rot(it.id)+'deg');if(opts.delay!=null)el.style.setProperty('--d',opts.delay+'s');
       const on=liked.has(it.id);
-      el.innerHTML=`<span class="pin"></span>${it.sample?`<span class="badge">${isEn()?'sample':'نمونه'}</span>`:it.featured?`<span class="badge">${isEn()?'★ featured':'★ برگزیده'}</span>`:''}
+      el.innerHTML=`<span class="pin"></span>${it.featured?`<span class="badge"><bdi>${isEn()?'★ featured':'★ برگزیده'}</bdi></span>`:''}
         <p class="q">${esc(it.text)}</p>
-        <div class="m"><span><b>${esc(it.name)}</b> · ${ago(it.at)}</span>
+        <div class="m"><span><bdi><b>${esc(it.name)}</b></bdi> · <bdi>${ago(it.at)}</bdi></span>
         <span style="display:flex;gap:6px;align-items:center"><span class="k">${(KIND[it.kind]||KIND.idea)[isEn()?1:0]}</span>
-        <button class="fb-like${on?' on':''}" type="button" aria-label="like"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.4 12 21 12 21z"/></svg><b>${it.likes||0}</b></button></span></div>`;
+        <button class="fb-like${on?' on':''}" type="button" aria-label="like" title="${isEn()?'I agree':'موافقم'}"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.3-9A5.3 5.3 0 0 1 12 6.3 5.3 5.3 0 0 1 21.3 12C19 16.4 12 21 12 21z"/></svg><b>${fmt(it.likes||0)}</b></button></span></div>`;
       el.querySelector('.fb-like').onclick=async e=>{
         const b=e.currentTarget;if(liked.has(it.id))return;
         b.classList.add('on','pop');liked.add(it.id);localStorage.setItem('fb_liked',JSON.stringify([...liked]));
-        b.querySelector('b').textContent=(+b.querySelector('b').textContent)+1;
+        it.likes=(it.likes||0)+1;document.querySelectorAll(`.fb-card[data-id="${it.id}"] .fb-like`).forEach(x=>{x.classList.add('on');x.querySelector('b').textContent=fmt(it.likes)});
+        if(stats){stats.likes++;paintLedger(false)}
         const r=b.getBoundingClientRect();if(window.__dust)window.__dust(r.left+r.width/2,r.top+r.height/2,18,false);
-        try{const res=await fetch(API+'?like='+encodeURIComponent(it.id),{method:'POST'});const d=await res.json();if(d.ok)document.querySelectorAll(`.fb-card[data-id="${it.id}"] .fb-like b`).forEach(x=>x.textContent=d.likes)}catch(_){}
+        try{const res=await fetch(API+'?like='+encodeURIComponent(it.id),{method:'POST',headers:{'x-fb-vid':vid}});const d=await res.json();
+          if(d.ok){it.likes=d.likes;document.querySelectorAll(`.fb-card[data-id="${it.id}"] .fb-like b`).forEach(x=>x.textContent=fmt(d.likes))}
+          else{liked.delete(it.id);localStorage.setItem('fb_liked',JSON.stringify([...liked]));it.likes--;document.querySelectorAll(`.fb-card[data-id="${it.id}"] .fb-like`).forEach(x=>{x.classList.remove('on');x.querySelector('b').textContent=fmt(it.likes)});if(d.message){msg.className='fb-msg bad';msg.textContent=d.message}}
+        }catch(_){}
       };
       return el;
     }
-    let cursor=null,items=[],featured=[];
+    // ── live ledger (counters, sparkline, kind bars) ──
+    let stats=null;const shown={total:0,week:0,likes:0};
+    function count(el,to){const from=+el.dataset.v||0;el.dataset.v=to;if(from===to){el.textContent=fmt(to);return}
+      const t=performance.now(),dur=from?600:1200;(function step(n){const p=Math.min(1,(n-t)/dur);el.textContent=fmt(Math.round(from+(to-from)*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(step)})(t);
+      const box=el.closest('.fb-num');if(box&&from){box.classList.remove('tick');void box.offsetWidth;box.classList.add('tick')}}
+    function paintLedger(animate){
+      if(!stats)return;
+      ledger.querySelectorAll('[data-n]').forEach(el=>count(el,stats[el.dataset.n]||0));
+      const days=stats.days||[],max=Math.max(1,...days),W=140,H=36,step=W/Math.max(1,days.length-1);
+      const pts=days.map((v,i)=>[i*step,H-4-(v/max)*(H-8)]);
+      const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+      const last=pts[pts.length-1]||[0,H];
+      document.getElementById('fbSpark').innerHTML=`<path class="fill" d="${line} L${W} ${H} L0 ${H}Z"/><path d="${line}"/><circle cx="${last[0]}" cy="${last[1]}" r="2.6"/>`;
+      const k=stats.kinds||{},sum=Math.max(1,...Object.values(k).map(x=>+x||0));
+      document.getElementById('fbKinds').innerHTML=['idea','critique','bug','praise'].map(key=>`<div><span>${KIND[key][isEn()?1:0]}</span><i style="--w:${((k[key]||0)/sum*100).toFixed(0)}%"></i><em>${fmt(k[key]||0)}</em></div>`).join('');
+      if(animate)requestAnimationFrame(()=>ledger.classList.add('in'));
+    }
+    // ── Cloudflare Turnstile (invisible; loaded only when the API says it is on) ──
+    let tsKey=null,tsWidget=null,tsToken='',tsLoading=null;
+    function loadTurnstile(){
+      if(!tsKey)return Promise.resolve();
+      if(tsLoading)return tsLoading;
+      tsLoading=new Promise(res=>{window.__fbTs=res;const sc=document.createElement('script');sc.src='https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__fbTs&render=explicit';sc.async=true;sc.onerror=res;setTimeout(res,5000);document.head.appendChild(sc)}).then(()=>{
+        if(!window.turnstile||tsWidget!=null)return;
+        try{tsWidget=turnstile.render(tsBox,{sitekey:tsKey,size:'flexible',appearance:'interaction-only',theme:html.dataset.theme==='dark'?'dark':'light',language:isEn()?'en':'fa',callback:t=>{tsToken=t},'expired-callback':()=>{tsToken=''},'error-callback':()=>{tsToken=''}})}catch(_){}
+      });
+      return tsLoading;
+    }
+    async function tokenFor(){if(!tsKey)return '';const t=Date.now();await loadTurnstile();
+      while(!tsToken&&window.turnstile&&Date.now()-t<7000)await new Promise(r=>setTimeout(r,150));return tsToken}
+    // ── data ──
+    let page=1,items=[],featured=[];
     function renderTicker(){
       track.innerHTML='';
-      const list=featured.length?featured:items.slice(0,6);
-      if(!list.length){track.parentElement.style.display='none';return}
-      track.parentElement.style.display='';
+      const list=featured.length?featured:items.slice(0,6),box=track.closest('.fb-ticker');
+      if(!list.length){box.style.display='none';return}
+      box.style.display='';
+      if(list.length<3){track.classList.add('few');list.forEach(it=>track.appendChild(card(it)));return}// too few to loop: static row
+      track.classList.remove('few');
       let seq=[...list];while(seq.length<8)seq=seq.concat(list);seq=[...seq,...seq];// ≥8 cards, doubled for the seamless 50% loop
       seq.forEach(it=>track.appendChild(card(it)));
       track.style.setProperty('--dur',Math.max(36,(seq.length/2)*8)+'s');
     }
-    function renderWall(append){
+    function renderWall(append,still){
       if(!append)wall.innerHTML='';
-      if(!items.length){wall.innerHTML=`<div class="fb-empty">${isEn()?'The wall is empty — pin the first note!':'دیوار هنوز خالی است — اولین یادداشت را شما بزنید!'}</div>`;return}
+      if(!items.length){wall.innerHTML=`<div class="fb-empty">${isEn()?'The wall is empty — pin the very first note!':'دیوار هنوز خالی است — اولین یادداشت را شما بزنید!'}</div>`;return}
       const start=append?wall.children.length:0;
-      items.slice(start).forEach((it,i)=>wall.appendChild(card(it,{delay:Math.min(i,10)*.06})));
+      items.slice(start).forEach((it,i)=>wall.appendChild(card(it,{delay:Math.min(i,10)*.06,still})));
     }
-    async function load(append){
+    let loadedOnce=false,sig='';
+    const signature=(d)=>JSON.stringify([d.items.map(i=>[i.id,i.likes,i.featured]),(d.featured||[]).map(i=>[i.id,i.likes]),d.total]);
+    async function load(append,quiet){
       try{
-        const res=await fetch(API+(append&&cursor?'?cursor='+cursor:'')+(append?'&':'?')+'limit=12');
-        const d=await res.json();if(!d.ok)throw 0;
-        if(d.demo){d.items.forEach(i=>i.sample=true);(d.featured||[]).forEach(i=>i.sample=true)}
-        if(append)items=items.concat(d.items);else{items=d.items;featured=d.featured||[]}
-        cursor=items.length?items[items.length-1].at:null;
-        total.textContent=(d.total??items.length).toLocaleString(isEn()?'en-US':'fa-IR');
-        more.hidden=!(d.items.length===12&&(d.total??0)>items.length);
-        if(!append)renderTicker();renderWall(append);
-        if(d.demo)msg.textContent=isEn()?'Preview mode — the database is not connected yet.':'حالت پیش‌نمایش — پایگاه‌داده هنوز متصل نیست.';
-      }catch(e){wall.innerHTML=`<div class="fb-empty">${isEn()?'Could not load the wall right now.':'فعلاً نتوانستیم دیوار را بارگذاری کنیم.'}</div>`}
+        const res=await fetch(API+'?limit=12&page='+(append?page+1:1),{headers:{accept:'application/json'}});
+        const d=await res.json();if(!d.ok)throw d;
+        stats=d.stats||stats;tsKey=d.turnstile||null;
+        if(quiet){const ns=signature(d);paintLedger(false);if(ns===sig)return;sig=ns}else if(!append)sig=signature(d);
+        if(append){page++;items=items.concat(d.items)}else{page=1;items=d.items;featured=d.featured||[]}
+        total.textContent=fmt(d.total??items.length);
+        more.hidden=!d.has_more;
+        if(!append)renderTicker();renderWall(append,quiet);paintLedger(!loadedOnce);loadedOnce=true;
+        if(tsKey&&(txt.value||document.activeElement===txt))loadTurnstile();
+      }catch(e){
+        if(!append){wall.innerHTML=`<div class="fb-empty">${e&&e.message?esc(e.message):(isEn()?'Could not load the wall right now.':'فعلاً نتوانستیم دیوار را بارگذاری کنیم.')}</div>`;track.parentElement.style.display='none'}
+      }
     }
     more.onclick=()=>load(true);
-    txt.addEventListener('input',()=>{cnt.textContent=txt.value.length;txt.style.height='auto';txt.style.height=Math.min(420,txt.scrollHeight)+'px'});
+    txt.addEventListener('input',()=>{cnt.textContent=fmt(txt.value.length);txt.style.height='auto';txt.style.height=Math.min(420,txt.scrollHeight)+'px'});
+    txt.addEventListener('focus',()=>{if(tsKey)loadTurnstile()},{once:true});
     document.getElementById('fbDate').textContent=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
     form.addEventListener('submit',async e=>{
       e.preventDefault();msg.className='fb-msg';msg.textContent='';
@@ -1516,15 +1607,19 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       if(text.length<6){msg.className='fb-msg bad';msg.textContent=isEn()?'Write a little more (at least 6 characters).':'کمی بیشتر بنویسید (حداقل ۶ حرف).';txt.focus();return}
       form.classList.add('sending');
       try{
-        const res=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:document.getElementById('fbName').value,kind:form.kind.value,text,hp:document.getElementById('fbHp').value,t:t0})});
+        const ts=await tokenFor();
+        const res=await fetch(API,{method:'POST',headers:{'content-type':'application/json','x-fb-vid':vid},body:JSON.stringify({name:document.getElementById('fbName').value,kind:form.kind.value,text,hp:document.getElementById('fbHp').value,t:t0,ts})});
         const d=await res.json().catch(()=>({}));
+        if(tsWidget&&window.turnstile){tsToken='';try{turnstile.reset(tsWidget)}catch(_){}}
         if(!res.ok||!d.ok){msg.className='fb-msg bad';msg.textContent=d.message||(isEn()?'Could not send — please try again.':'ارسال نشد — دوباره تلاش کنید.');return}
         form.classList.add('sent');setTimeout(()=>form.classList.remove('sent'),700);
         const r=document.getElementById('fbSend').getBoundingClientRect();if(window.__dust)window.__dust(r.left+r.width/2,r.top+r.height/2,46,true);
         if(d.status==='approved'&&!d.duplicate){
           const it={id:d.id,name:document.getElementById('fbName').value.trim()||(isEn()?'anonymous':'ناشناس'),kind:form.kind.value,text,lang:/[\u0600-\u06FF]/.test(text)?'fa':'en',likes:0,featured:false,at:Date.now()};
           items.unshift(it);if(wall.querySelector('.fb-empty'))wall.innerHTML='';wall.prepend(card(it,{cls:'new'}));
-          total.textContent=((+total.textContent.replace(/[^\d]/g,'')||0)+1).toLocaleString(isEn()?'en-US':'fa-IR');
+          if(stats){stats.total++;stats.week++;stats.kinds[it.kind]=(stats.kinds[it.kind]||0)+1;if(stats.days&&stats.days.length)stats.days[stats.days.length-1]++;paintLedger(false)}
+          total.textContent=fmt(stats?stats.total:items.length);
+          if(!featured.length)renderTicker();
           msg.className='fb-msg ok';msg.textContent=isEn()?'Pinned! Thank you — your note is on the wall.':'ثبت شد! ممنون — یادداشت شما روی دیوار است.';
         }else{
           msg.className='fb-msg ok';msg.textContent=d.duplicate?(isEn()?'This note is already on the wall.':'این یادداشت قبلاً روی دیوار است.'):(isEn()?'Received! It appears after a quick review.':'دریافت شد! بعد از یک بازبینی کوتاه روی دیوار می‌آید.');
@@ -1534,7 +1629,9 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       finally{form.classList.remove('sending')}
     });
     new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){load(false);o.disconnect()}}),{rootMargin:'400px'}).observe(form);
-    new MutationObserver(()=>{if(items.length){renderTicker();renderWall(false)}}).observe(html,{attributes:true,attributeFilter:['data-lang']});
+    new MutationObserver(()=>{if(items.length||stats){renderTicker();renderWall(false);paintLedger(false);ledger.querySelectorAll('[data-n]').forEach(el=>el.textContent=fmt(+el.dataset.v||0));total.textContent=fmt(stats?stats.total:items.length)}}).observe(html,{attributes:true,attributeFilter:['data-lang']});
+    // keep the wall fresh while the tab is open (other visitors' notes & likes) — every 45 s, only when visible
+    setInterval(()=>{if(document.visibilityState==='visible'&&loadedOnce&&!form.classList.contains('sending')&&page===1&&!txt.value)load(false,true)},45000);
   })();
   // ── dynamic theme-color (browser chrome follows theme) ──
   const tc=document.querySelector('meta[name="theme-color"]');

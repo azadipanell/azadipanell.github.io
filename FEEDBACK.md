@@ -1,42 +1,74 @@
-# صندوق پیشنهادات و انتقادات — راهنمای فنی
+# صندوق پیشنهادات و انتقادات — راهنمای فنی و مدیریت
 
-بخش `#feedback` سایت با یک **Cloudflare Pages Function** کار می‌کند: `functions/api/feedback.js` → مسیر `/api/feedback`.
-داده‌ها در **Cloudflare D1** (SQLite) ذخیره می‌شوند. اگر دیتابیس متصل نباشد، سایت در «حالت پیش‌نمایش» چند یادداشت نمونه نشان می‌دهد و فرم پیام «پایگاه‌داده متصل نیست» می‌دهد.
+بخش `#feedback` سایت **واقعی و زنده** است: هر یادداشتی که بازدیدکننده می‌فرستد، همان لحظه در انبار ذخیره می‌شود، روی «دیوار استودیو» می‌نشیند و در آمار بالای بخش (تعداد یادداشت‌ها، هفت روز اخیر، لایک‌ها، نمودار ۱۴ روزه، تفکیک نوع) حساب می‌شود. هیچ دادهٔ نمونه/ساختگی در سایت نیست.
 
-## ۱) یک‌بار راه‌اندازی دیتابیس (۳ دقیقه)
-1. داشبورد Cloudflare → **Storage & Databases → D1 → Create database** → نام: `shahyad-feedback`
-2. **Workers & Pages → shahyad → Settings → Bindings → Add → D1 database**
-   - Variable name: `FEEDBACK_DB`   - Database: `shahyad-feedback`
-3. (اختیاری، برای بازبینی قبل از انتشار) **Settings → Variables and Secrets → Add**
-   - `ADMIN_KEY` = یک رمز طولانی (Secret)
-   - اگر `ADMIN_KEY` تنظیم نشود، یادداشت‌ها **بلافاصله** منتشر می‌شوند. با `AUTO_APPROVE=1` می‌توانید حتی با وجود ADMIN_KEY انتشار فوری داشته باشید.
-4. یک بار **Retry deployment** بزنید (یا یک push جدید) تا بایندینگ اعمال شود. جدول‌ها خودکار ساخته می‌شوند.
+## معماری (یک خط)
+`index.html` ⇄ `/api/feedback` (Cloudflare Pages Function در `functions/api/feedback.js`) ⇄ **GitHub Issues** در ریپوی خصوصی `azadipanell/shahyad-feedback`
 
-## ۲) API
-| متد | مسیر | کار |
+- **هر یادداشت = یک Issue.** متن یادداشت بالای Issue است؛ زیرش یک بلوک مخفی `<!-- shahyad:meta {...} -->` (نام، نوع، زبان، زمان، هش IP، شمارندهٔ لایک) و یک جدول خوانا.
+- **هر لایک = یک کامنت** `<!-- shahyad:like v=… ip=… -->` روی همان Issue (دفتر لایک‌ها؛ برای هر دستگاه فقط یک‌بار، حداکثر ۵ لایک از هر IP برای هر یادداشت، ۴۰ لایک در ساعت).
+- **بدون دیتابیس، بدون سرور، رایگان.** بکاپ = خودِ ریپو (تاریخچهٔ کامل، قابل Export).
+- لیست Issueها در **Cache لبهٔ Cloudflare** نگه داشته می‌شود (۲۰ ثانیه، بعد با ETag اعتبارسنجی می‌شود — ۳۰۴ رایگان است). هر نوشتن (یادداشت/لایک) همان لحظه در cache همان دیتاسنتر merge می‌شود، پس کاربر بلافاصله نتیجه را می‌بیند. تغییراتی که شما در GitHub می‌دهید ≤ ۲۰ ثانیه بعد روی سایت می‌نشیند.
+
+## مدیریت = برچسب‌های GitHub (از موبایل هم می‌شود)
+ریپو: **https://github.com/azadipanell/shahyad-feedback/issues**
+
+| کار | چطور |
+|---|---|
+| سنجاق روی نوار متحرک «Best of the wall» | برچسب **`featured`** بزنید (اول سنجاق‌شده‌ها، بعد پُرلایک‌ترین‌ها، حداکثر ۸ کارت) |
+| پنهان‌کردن موقت / بازبینی | برچسب **`pending`** (فقط وقتی برداشته شود منتشر می‌شود) |
+| اسپم | برچسب **`spam`** یا Issue را **Close** کنید (هر دو = پنهان از سایت، ولی در انبار می‌ماند) |
+| ویرایش متن (غلط املایی و…) | متنِ بالای خط `---` را در Issue ویرایش کنید؛ بلوک `shahyad:meta` را دست نزنید |
+| تغییر نوع | برچسب نوع (`idea` / `critique` / `bug` / `praise`) را عوض کنید |
+| حذف کامل | Delete issue (فقط مالک ریپو) |
+| جواب‌دادن به نویسنده | فعلاً کانالی نیست (ناشناس است)؛ می‌توانید در همان Issue برای خودتان یادداشت بگذارید |
+
+**برچسب‌های ثابت** (نساخته‌شان را دست نزنید): `idea` `critique` `bug` `praise` `featured` `pending` `spam`.
+
+### بازبینی قبل از انتشار (اختیاری)
+پیش‌فرض: یادداشت‌ها **فوراً** منتشر می‌شوند، مگر آن‌که Turnstile نتواند بازدیدکننده را تأیید کند (آن‌وقت با `pending` می‌رود و شما تصمیم می‌گیرید).
+اگر می‌خواهید **همه** ابتدا به تأیید شما برسند: Cloudflare → Workers & Pages → `shahyad` → Settings → Variables → متغیر `MODERATE` = `1` → Retry deployment.
+
+### اعلان تلگرام برای هر یادداشت (اختیاری)
+دو متغیر بسازید: `TG_BOT_TOKEN` (توکن ربات از @BotFather) و `TG_CHAT_ID` (آی‌دی عددی چت خودتان) → هر یادداشت تازه با لینک مدیریت برایتان می‌آید.
+
+## محافظت در برابر اسپم و تقلب
+Cloudflare **Turnstile** نامرئی (ویجت `shahyad feedback form`)، honeypot، حداقل ۲.۵ ثانیه زمان پرکردن فرم، فیلتر لینک/تکرار، **۵ یادداشت در ساعت برای هر IP**، حذف متن تکراری در ۲۴ ساعت، حداکثر ۵۰۰ کاراکتر، لایک یک‌بار برای هر دستگاه (شناسهٔ تصادفی محلی) + سقف IP. فقط متن، نام مستعار، کشور و **هشِ نمک‌دار IP** ذخیره می‌شود — نه خود IP.
+
+## API
+| متد | مسیر | خروجی |
 |---|---|---|
-| GET | `/api/feedback?limit=24&cursor=<created_at>` | یادداشت‌های منتشرشده + برگزیده‌ها (`featured`) + `total` |
-| POST | `/api/feedback` بدنهٔ JSON `{name, kind, text, t}` | ثبت یادداشت (kind: idea / critique / bug / praise) |
-| POST | `/api/feedback?like=<id>` | لایک (هر بازدیدکننده روزی یک بار برای هر یادداشت) |
+| GET | `/api/feedback?page=1&limit=12` | `items` (جدیدترین‌ها)، `featured`، `total`، `has_more`، `stats {total, week, likes, kinds, days[14], pending, featured, last_at}`، `turnstile` (sitekey) |
+| POST | `/api/feedback` بدنهٔ JSON `{name, kind, text, t, ts, hp}` | `{ok, id, status: approved\|pending, duplicate?}` — خطاها: `short` `spam` `rate` `too_fast` `bad_json` `storage(503)` |
+| POST | `/api/feedback?like=<id>` (هدر `x-fb-vid`) | `{ok, likes, already?}` |
 
-محافظت‌ها: honeypot، حداقل زمان پرکردن فرم (۲.۵ ثانیه)، فیلتر لینک/اسپم، حداکثر ۵ پیام در ساعت برای هر IP، حذف تکراری‌ها، حداکثر ۵۰۰ کاراکتر. فقط متن، نام مستعار و هشِ IP ذخیره می‌شود.
+## متغیرهای محیطی (Pages → Settings → Variables and Secrets)
+| نام | نوع | توضیح |
+|---|---|---|
+| `GH_TOKEN` | Secret | توکن GitHub با دسترسی **Issues: Read & Write** فقط روی ریپوی `shahyad-feedback` |
+| `GH_REPO` | Text | `azadipanell/shahyad-feedback` (Preview: `…-sandbox`) |
+| `HASH_SALT` | Secret | نمک هش IP (تصادفی؛ تغییرش شمارندهٔ IP را ریست می‌کند) |
+| `TURNSTILE_SITEKEY` / `TURNSTILE_SECRET` | Text / Secret | ویجت Turnstile؛ حذفشان = بدون کپچا |
+| `MODERATE` | Text | `1` = همه‌چیز ابتدا pending |
+| `TG_BOT_TOKEN` / `TG_CHAT_ID` | Secret / Text | اعلان تلگرام (اختیاری) |
 
-## ۳) مدیریت (بدون پنل — با curl یا مرورگر)
+## ⚠️ چرخاندن توکن GitHub (حتماً یک‌بار انجام دهید)
+الان `GH_TOKEN` همان توکن کلاسیکِ پرقدرتی است که در چت دادید. آن را با یک **Fine-grained token** محدود جایگزین کنید:
+1. این لینک را باز کنید (فرم را پیش‌پر می‌کند): **https://github.com/settings/personal-access-tokens/new?name=shahyad-feedback-api&description=Suggestion+box+of+shahyad.dpdns.org&expires_in=none&issues=write**
+2. Repository access → **Only select repositories** → `shahyad-feedback` و `shahyad-feedback-sandbox` را انتخاب کنید → Generate token.
+3. Cloudflare → Workers & Pages → `shahyad` → Settings → Variables and Secrets → `GH_TOKEN` را Edit کنید و توکن تازه را بگذارید → **Retry deployment** (یا یک push).
+4. توکن کلاسیک قدیمی (`ghp_vuq5…`) را در https://github.com/settings/tokens **Delete** کنید.
+
+## توسعهٔ محلی
 ```bash
-KEY="ADMIN_KEY شما"; U=https://shahyad.dpdns.org/api/feedback
-curl -H "Authorization: Bearer $KEY" "$U?pending=1"          # لیست در انتظار
-curl -X POST -H "Authorization: Bearer $KEY" "$U?approve=ID"  # انتشار
-curl -X POST -H "Authorization: Bearer $KEY" "$U?reject=ID"   # رد
-curl -X POST -H "Authorization: Bearer $KEY" "$U?feature=ID"  # سنجاق به نوار «برگزیده‌ها» (toggle)
+npx wrangler@3 pages dev . --port 8788 \
+  --binding GH_TOKEN=<token> --binding GH_REPO=azadipanell/shahyad-feedback-sandbox --binding HASH_SALT=dev
+# http://127.0.0.1:8788/#feedback  — یادداشت‌ها در ریپوی sandbox ثبت می‌شوند، نه ریپوی اصلی
 ```
-نوار متحرک: اول یادداشت‌های سنجاق‌شده (featured)، بعد پُرلایک‌ترین‌ها؛ تا ۸ کارت.
 
-## ۴) بکاپ و مدیریت مستقیم داده
-- داشبورد D1 → Console: `SELECT * FROM feedback ORDER BY created_at DESC;`
-- خروجی کامل: `npx wrangler d1 export shahyad-feedback --remote --output feedback.sql`
-- حذف یک یادداشت: `DELETE FROM feedback WHERE id='...';`
-
-## ۵) توسعهٔ محلی
+## بکاپ / خروجی گرفتن از همهٔ یادداشت‌ها
 ```bash
-npx wrangler@3 pages dev . --port 8788 --d1 FEEDBACK_DB --persist-to .wrangler/state
+gh issue list -R azadipanell/shahyad-feedback --state all --limit 1000 --json number,title,body,labels,createdAt,state > feedback-backup.json
+# یا بدون gh:
+curl -H "Authorization: Bearer <token>" "https://api.github.com/repos/azadipanell/shahyad-feedback/issues?state=all&per_page=100" > feedback-page1.json
 ```
