@@ -6,22 +6,25 @@
 <title>شهیاد | SHAHYAD — Configuration Panels · Nika Net</title>
 <meta name="description" content="شهیاد (SHAHYAD) — استودیو توسعه نرم‌افزار و پنل‌های پیکربندی. نیکا نت: پنل چندکاربره VLESS/Trojan روی یک Cloudflare Worker رایگان با خروجی Clash، Sing-box و Base64.">
 <meta name="keywords" content="شهیاد, SHAHYAD, Nika Net, نیکا نت, Cloudflare Worker, VLESS, Trojan, پنل پراکسی, Clash, Sing-box">
-<link rel="canonical" href="https://azadipanell.github.io/">
+<link rel="canonical" href="https://shahyad.dpdns.org/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="شهیاد | SHAHYAD Configuration Panels">
 <meta property="og:description" content="پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان — Clash · Sing-box · Base64">
-<meta property="og:image" content="https://azadipanell.github.io/assets/og.jpg">
+<meta property="og:image" content="https://shahyad.dpdns.org/assets/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:url" content="https://azadipanell.github.io/">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://azadipanell.github.io/assets/og.jpg">
+<meta property="og:url" content="https://shahyad.dpdns.org/">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://shahyad.dpdns.org/assets/og.jpg">
 <meta name="theme-color" content="#f3efe6">
 <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://azadipanell.github.io/","logo":"https://azadipanell.github.io/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://shahyad.dpdns.org/","logo":"https://shahyad.dpdns.org/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"آیا نیکا نت واقعاً رایگان است؟","acceptedAnswer":{"@type":"Answer","text":"بله. کد تحت لایسنس MIT است و روی پلن رایگان Cloudflare Workers + D1 اجرا می‌شود. هزینه‌ی سرور صفر است؛ فقط محدودیت‌های پلن رایگان Cloudflare اعمال می‌شود."}},{"@type":"Question","name":"با چه کلاینت‌هایی کار می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"هر کلاینتی که VLESS یا Trojan روی WebSocket را پشتیبانی کند: v2rayNG، Hiddify، Streisand، Clash/Mihomo، Sing-box و… لینک اشتراک به‌طور خودکار فرمت مناسب کلاینت را تشخیص می‌دهد."}},{"@type":"Question","name":"آیا داده‌های من جایی ذخیره می‌شود؟","acceptedAnswer":{"@type":"Answer","text":"فقط در حساب Cloudflare خودتان (D1). هیچ سرور واسطی وجود ندارد و تیم شهیاد به هیچ داده‌ای دسترسی ندارد."}},{"@type":"Question","name":"ربات @NikaNettbot چه کار می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"لانچر پنل است: پنل شما را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس و مسیرهای تصادفی نداشته باشید."}},{"@type":"Question","name":"چطور کمک کنم یا مشکل گزارش دهم؟","acceptedAnswer":{"@type":"Answer","text":"در GitHub یک Issue یا Pull Request باز کنید، یا در کانال @shahyad_asr پیام بگذارید. مشارکت همیشه خوش‌آمد است."}}]}</script>
+<script>/* SHAHYAD: move visitors from old/alias hosts to the canonical domain — only fires once the new domain is actually live */
+(function(){var C="shahyad.dpdns.org",h=location.hostname;if(h===C||!("fetch"in window))return;if(h!=="azadipanell.github.io"&&!/^[a-z0-9-]+\.pages\.dev$/.test(h))return;var to="https://"+C+location.pathname+location.search+location.hash;fetch("https://"+C+"/robots.txt",{mode:"cors",cache:"no-store"}).then(function(r){if(r.ok)location.replace(to)}).catch(function(){})})();
+</script>
 <script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.classList.add("js")})()</script>
 <style>
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}

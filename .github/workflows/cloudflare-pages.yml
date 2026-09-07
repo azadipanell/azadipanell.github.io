@@ -1,0 +1,39 @@
+name: Deploy to Cloudflare Pages
+
+# Every push to `main` is published to Cloudflare Pages (shahyad.dpdns.org).
+# GitHub Pages keeps serving azadipanell.github.io from the same branch and
+# forwards visitors to the canonical domain.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Publish static site
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare static bundle
+        run: |
+          mkdir -p /tmp/dist
+          rsync -a ./ /tmp/dist/ \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='README.md'
+          echo "Files to publish: $(find /tmp/dist -type f | wc -l)"
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy /tmp/dist --project-name=shahyad --branch=main --commit-dirty=true

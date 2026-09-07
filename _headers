@@ -1,0 +1,21 @@
+# Cloudflare Pages headers — https://developers.cloudflare.com/pages/configuration/headers/
+# (GitHub Pages ignores this file; it only takes effect on Cloudflare.)
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Lets the old github.io / pages.dev hosts probe this file to confirm the canonical domain is live
+/robots.txt
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/assets/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
