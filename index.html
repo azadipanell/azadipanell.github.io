@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://azadipanell.github.io/","logo":"https://azadipanell.github.io/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
-<script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script>
+<script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.classList.add("js")})()</script>
 <style>
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
@@ -562,6 +562,121 @@
   html[data-lang="en"] .stamp{left:auto;right:0;transform:rotate(12deg)}
   html[data-lang="en"] .tg-card .handle{text-align:left}
   html[data-lang="en"] #bar{right:auto;left:0}
+
+  /* ═══════════ REFINEMENT PASS · warm bronze light theme + polish ═══════════ */
+  :root{--amber:#8a6a34;--amber2:rgba(138,106,52,.14);--amber-ink:#f8f4ea}
+  html{scroll-padding-top:84px}
+
+  /* breathing room & type scale */
+  section{padding:84px 0}
+  .hero{padding:80px 0 58px}
+  h2{font-size:2.1rem}
+  nav ul a{transition:color .25s}
+  nav ul a:hover{color:var(--graphite)}
+
+  /* warm paper glow behind hero (light) */
+  html[data-theme="light"] .hero{background:
+    radial-gradient(ellipse 780px 430px at 84% -14%,var(--amber2),transparent 65%),
+    radial-gradient(ellipse 620px 360px at 10% 116%,rgba(138,106,52,.09),transparent 62%)}
+
+  /* nav: shrink + shadow on scroll */
+  nav{transition:box-shadow .3s}
+  nav .wrap{transition:height .3s}
+  nav .brand img{transition:width .3s,height .3s}
+  nav.scrolled{box-shadow:0 18px 44px -26px rgba(43,42,39,.5)}
+  nav.scrolled .wrap{height:58px}
+  nav.scrolled .brand img{width:36px;height:36px}
+  html[data-theme="dark"] nav.scrolled{box-shadow:0 18px 44px -22px rgba(0,0,0,.7)}
+  nav ul a.act{color:var(--graphite)}
+  nav ul a.act::after{background:var(--amber)}
+
+  /* progress bar in accent */
+  #bar{background:var(--amber)}
+
+  /* selection */
+  ::selection{background:var(--amber);color:var(--amber-ink)}
+
+  /* light-theme accent: ink details turn warm bronze */
+  html[data-theme="light"] h1 .en{color:var(--amber)}
+  html[data-theme="light"] .eyebrow{color:var(--amber);border-color:rgba(138,106,52,.55);background:rgba(138,106,52,.05)}
+  html[data-theme="light"] h2 svg.ul path{stroke:var(--amber)}
+  html[data-theme="light"] h2 small::after{color:var(--amber)}
+  html[data-theme="light"] .lead::first-letter{color:var(--amber)}
+  html[data-theme="light"] #pre .en{color:var(--amber)}
+
+  /* light buttons: tactile bronze depth */
+  html[data-theme="light"] .btn.dark{box-shadow:3px 4px 0 rgba(43,42,39,.16)}
+  html[data-theme="light"] .btn.dark:hover{box-shadow:6px 8px 0 rgba(138,106,52,.32)}
+  html[data-theme="light"] .btn.line:hover{background:var(--amber2);border-color:var(--amber);color:var(--amber)}
+  html[data-theme="light"] .lang:hover{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+  html[data-theme="light"] #top:hover{border-color:var(--amber);color:var(--amber)}
+  html[data-theme="light"] .fab{box-shadow:4px 5px 0 rgba(138,106,52,.4)}
+  html[data-theme="light"] .fab:hover{background:var(--amber);border-color:var(--amber)}
+  html[data-theme="light"] .fab:hover svg{fill:var(--amber-ink)}
+
+  /* light cards & boxes */
+  html[data-theme="light"] .card:hover{border-color:rgba(138,106,52,.65)}
+  html[data-theme="light"] .tg-card:hover{border-color:rgba(138,106,52,.65)}
+  html[data-theme="light"] .status{color:var(--amber)}
+  html[data-theme="light"] .status i{background:var(--amber);box-shadow:0 0 0 3px var(--amber2)}
+  html[data-theme="light"] ul.feat li::before{color:var(--amber)}
+  html[data-theme="light"] .tag{transition:.25s}
+  html[data-theme="light"] .tag:hover{color:var(--amber);border-bottom-color:var(--amber)}
+  html[data-theme="light"] .stat b::after{border-color:rgba(138,106,52,.55)}
+  html[data-theme="light"] .step .n{border-color:var(--amber);color:var(--amber)}
+  html[data-theme="light"] .deploy p b{color:var(--amber)}
+  html[data-theme="light"] .tech span:hover{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+  html[data-theme="light"] .member:hover .ph::after{border-color:var(--amber)}
+  html[data-theme="light"] .member:hover h3{color:var(--amber)}
+  html[data-theme="light"] .tg-card .handle{color:var(--amber)}
+
+  /* light code: bronze-tinted ink */
+  html[data-theme="light"] code{background:rgba(138,106,52,.12);color:#5f4a22}
+  html[data-theme="light"] pre{border-color:rgba(138,106,52,.5);box-shadow:3px 4px 0 rgba(138,106,52,.2)}
+  html[data-theme="light"] pre .cp{background:#fff;border-color:rgba(138,106,52,.45);color:#5f4a22}
+  html[data-theme="light"] pre .cp:hover{background:var(--amber);color:var(--amber-ink)}
+
+  /* light roadmap / faq / quote / footer */
+  html[data-theme="light"] .road li.done::before{background:var(--amber);border-color:var(--amber)}
+  html[data-theme="light"] .faq summary{transition:color .25s}
+  html[data-theme="light"] .faq summary:hover{color:var(--amber)}
+  html[data-theme="light"] details[open] summary i{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+  html[data-theme="light"] blockquote{border-color:rgba(138,106,52,.5)}
+  html[data-theme="light"] blockquote::before,html[data-theme="light"] blockquote::after{color:var(--amber);opacity:.55}
+  html[data-theme="light"] footer a{transition:.25s}
+  html[data-theme="light"] footer a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+
+  /* light ornaments: bronze ink */
+  html[data-theme="light"] .orn svg{stroke:var(--amber);opacity:.75}
+  html[data-theme="light"] .flourish{stroke:var(--amber);opacity:.4}
+  html[data-theme="light"] .doodle{stroke:var(--amber);opacity:.5}
+
+  /* github stat chips */
+  html[data-theme="light"] .gh a:hover{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+  html[data-theme="light"] .gh a:hover b{color:var(--amber-ink)}
+
+  /* staggered reveal for card rows */
+  .grid>.fade:nth-child(2),.steps>.fade:nth-child(2),.tg-grid>.fade:nth-child(2){transition-delay:.08s}
+  .grid>.fade:nth-child(3),.steps>.fade:nth-child(3){transition-delay:.16s}
+  .grid>.fade:nth-child(4),.team>.fade:nth-child(2){transition-delay:.24s}
+
+  /* hero entrance choreography (only when JS is on) */
+  html.js .hero .eyebrow,html.js .hero h1,html.js .hero .lead,html.js .hero .btns,html.js .hero .gh{opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease}
+  body.ready .hero .eyebrow{opacity:1;transform:none;transition-delay:.05s}
+  body.ready .hero h1{opacity:1;transform:none;transition-delay:.18s}
+  body.ready .hero .lead{opacity:1;transform:none;transition-delay:.34s}
+  body.ready .hero .btns{opacity:1;transform:none;transition-delay:.5s}
+  body.ready .hero .gh{opacity:1;transform:none;transition-delay:.64s}
+
+  /* mobile comfort */
+  @media(max-width:600px){
+    .hero{padding:54px 0 42px}
+    section{padding:64px 0}
+    .btns .btn{padding:11px 20px;font-size:.95rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html.js .hero .eyebrow,html.js .hero h1,html.js .hero .lead,html.js .hero .btns,html.js .hero .gh{opacity:1;transform:none}
+  }
 </style>
 </head>
 <body>
@@ -921,8 +1036,8 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     setTimeout(()=>{html.classList.add('switching');html.dataset.theme=d;localStorage.setItem('theme',d);requestAnimationFrame(()=>requestAnimationFrame(()=>html.classList.remove('switching')));w.style.transition='opacity .4s';w.style.opacity=0;setTimeout(()=>{w.classList.remove('go');w.style.transition='';w.style.opacity=''},420)},520)};
 
   // back to top + active nav
-  const topBtn=document.getElementById('top'),secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('nav ul a[href^="#"]')];
-  addEventListener('scroll',()=>{topBtn.classList.toggle('show',scrollY>600);
+  const topBtn=document.getElementById('top'),navEl=document.querySelector('nav'),secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('nav ul a[href^="#"]')];
+  addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',scrollY>10);topBtn.classList.toggle('show',scrollY>600);
     let cur='';secs.forEach(sc=>{if(scrollY>=sc.offsetTop-140)cur=sc.id});
     links.forEach(l=>l.classList.toggle('act',l.getAttribute('href')==='#'+cur))},{passive:true});
   topBtn.onclick=e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})};

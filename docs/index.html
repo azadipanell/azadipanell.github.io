@@ -16,7 +16,15 @@
   @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
   @font-face{font-family:"Cormorant";src:url(../fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
-  :root{--paper:#f3efe6;--paper2:#ebe5d8;--graphite:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
+  :root{--paper:#f3efe6;--paper2:#ebe5d8;--graphite:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--amber:#8a6a34;--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
+  html[data-theme="light"] article h2::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'><path d='M1 4c30-3 60-4 118-1' fill='none' stroke='%238a6a34' stroke-width='1.4' stroke-linecap='round'/></svg>")}
+  html[data-theme="light"] aside a.act::before{color:var(--amber)}
+  html[data-theme="light"] .steps li::before{border-color:var(--amber);color:var(--amber)}
+  html[data-theme="light"] .box.tip{border-color:rgba(138,106,52,.6)}
+  html[data-theme="light"] .box.tip b{color:var(--amber)}
+  html[data-theme="light"] code{background:rgba(138,106,52,.12);color:#5f4a22}
+  html[data-theme="light"] .btn{box-shadow:3px 4px 0 rgba(43,42,39,.16)}
+  html[data-theme="light"] .btn:hover{box-shadow:5px 7px 0 rgba(138,106,52,.32)}
   html[data-theme="dark"]{--paper:#1f2229;--paper2:#181a20;--graphite:#efe9dc;--pencil:#cfc8b8;--pencil2:#8f8a7c;--pencil3:#4d5160;--amber:#e7b36a;color-scheme:dark}
   html[data-theme="dark"] body{background:var(--paper) url(../assets/slate.webp) repeat;background-size:400px}
   html[data-theme="dark"] .en,html[data-theme="dark"] article h1 small,html[data-theme="dark"] aside .t{color:var(--amber)}
