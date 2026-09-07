@@ -17,19 +17,32 @@
   @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
   @font-face{font-family:"Cormorant";src:url(../fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
   :root{--paper:#f3efe6;--paper2:#ebe5d8;--graphite:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
-  html[data-theme="dark"]{--paper:#23262a;--paper2:#1d1f23;--graphite:#eceae2;--pencil:#cfcdc4;--pencil2:#9a9890;--pencil3:#5f625f}
+  html[data-theme="dark"]{--paper:#1f2229;--paper2:#181a20;--graphite:#efe9dc;--pencil:#cfc8b8;--pencil2:#8f8a7c;--pencil3:#4d5160;--amber:#e7b36a;color-scheme:dark}
+  html[data-theme="dark"] body{background:var(--paper) url(../assets/slate.webp) repeat;background-size:400px}
+  html[data-theme="dark"] .en,html[data-theme="dark"] article h1 small,html[data-theme="dark"] aside .t{color:var(--amber)}
+  html[data-theme="dark"] aside a.act{color:var(--amber)}html[data-theme="dark"] aside a.act::before{color:var(--amber)}
+  html[data-theme="dark"] .btn{background:var(--amber);border-color:var(--amber);color:#1f2229;box-shadow:0 0 20px rgba(231,179,106,.25)}
+  html[data-theme="dark"] .btn.line{background:none;color:var(--graphite);border-color:var(--pencil);box-shadow:none}
+  html[data-theme="dark"] .steps li::before{border-color:var(--amber);color:var(--amber)}
+  html[data-theme="dark"] code{background:rgba(231,179,106,.12);color:#f0d7ae}
+  html[data-theme="dark"] pre{background:#0f1114;border-color:var(--pencil3);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  html[data-theme="dark"] .box{background:rgba(255,255,255,.03);border-color:var(--pencil2)}
+  html[data-theme="dark"] .tabs button.on{background:var(--amber);border-color:var(--amber);color:#1f2229}
+  html[data-theme="dark"] article h2::after{filter:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'><path d='M1 4c30-3 60-4 118-1' fill='none' stroke='%23e7b36a' stroke-width='1.4' stroke-linecap='round'/></svg>")}
+  html[data-theme="dark"] .brand img{filter:invert(1) grayscale(1);background:#000;border-color:var(--pencil3)}
+  html[data-theme="dark"] article h1{text-shadow:0 0 18px rgba(239,233,220,.18)}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:"Vazirmatn",Tahoma,sans-serif;background:var(--paper);color:var(--graphite);line-height:1.95}
   body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-  html[data-theme="dark"] body::after{filter:invert(1);opacity:.3}
+  html[data-theme="dark"] body::after{filter:invert(1);opacity:.18}
   a{color:var(--graphite)}
   .en{font-family:"Cormorant",Georgia,serif;letter-spacing:.3em;text-transform:uppercase}
   nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1.5px solid var(--pencil)}
   nav .in{max-width:1180px;margin:0 auto;padding:0 22px;height:64px;display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
   .brand img{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--pencil);mix-blend-mode:multiply}
-  html[data-theme="dark"] .brand img{mix-blend-mode:screen;filter:invert(1) grayscale(1)}
+  
   nav .r{display:flex;gap:16px;align-items:center;font-size:.92rem}
   nav .r a{text-decoration:none;color:var(--pencil)}
   .theme{border:1.5px solid var(--pencil);border-radius:50%;width:30px;height:30px;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--graphite)}
@@ -50,19 +63,19 @@
   .lead{color:var(--pencil);margin-bottom:26px;font-size:1.05rem}
   article h2{font-size:1.5rem;margin:56px 0 14px;padding-bottom:6px;position:relative;scroll-margin-top:90px}
   article h2::after{content:"";position:absolute;right:0;bottom:0;width:120px;height:6px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'><path d='M1 4c30-3 60-4 118-1' fill='none' stroke='%234a4843' stroke-width='1.4' stroke-linecap='round'/></svg>") no-repeat}
-  html[data-theme="dark"] article h2::after{filter:invert(1)}
+  
   article h3{font-size:1.1rem;margin:26px 0 8px}
   article p,article li{color:var(--pencil)}
   article ol,article ul{padding-right:24px;margin:8px 0 12px}
   article li{margin:4px 0}
   code{background:rgba(127,127,127,.15);padding:1px 6px;border-radius:4px;font-size:.9em;direction:ltr;unicode-bidi:embed;font-family:Consolas,Menlo,monospace}
   pre{background:color-mix(in srgb,var(--paper) 70%,#fff);border:1.5px solid var(--pencil);border-radius:8px;padding:18px;direction:ltr;text-align:left;overflow-x:auto;font-size:.88rem;line-height:1.7;font-family:Consolas,Menlo,monospace;box-shadow:3px 4px 0 rgba(43,42,39,.12);margin:12px 0 18px;position:relative;color:var(--graphite)}
-  html[data-theme="dark"] pre{background:#1a1c1f}
+  
   pre code{background:none;padding:0}
   pre .c{color:var(--pencil3)}
   pre .cp{position:absolute;top:6px;right:8px;font-size:.7rem;border:1px solid var(--pencil3);padding:1px 8px;border-radius:4px;background:var(--paper);cursor:pointer;color:var(--pencil);font-family:"Vazirmatn"}
   .box{border:1.5px solid var(--pencil);border-radius:var(--sk);padding:16px 20px;margin:16px 0;position:relative;background:rgba(255,255,255,.3)}
-  html[data-theme="dark"] .box{background:rgba(255,255,255,.03)}
+  
   .box::before{content:"";position:absolute;inset:-4px;border:1px solid var(--pencil3);border-radius:var(--sk2);pointer-events:none;opacity:.7}
   .box b{display:block;margin-bottom:4px}
   .box.tip{border-style:dashed}
