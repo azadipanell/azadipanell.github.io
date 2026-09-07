@@ -18,6 +18,7 @@
 <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Markazi-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://shahyad.dpdns.org/","logo":"https://shahyad.dpdns.org/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
@@ -30,7 +31,9 @@
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"Cormorant";src:url(fonts/Cormorant-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Markazi";src:url(fonts/Markazi-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap;unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200D,U+0020-007E}
+@font-face{font-family:"Markazi";src:url(fonts/Markazi-Bold.woff2) format("woff2");font-weight:700;font-display:swap;unicode-range:U+0600-06FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200D,U+0020-007E}
+@font-face{font-family:"Cormorant";src:url(fonts/Cormorant-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Cormorant";src:url(fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
 
   :root{
@@ -100,7 +103,7 @@
   .btn svg{width:18px;height:18px;fill:currentColor}
 
   .logo-wrap{position:relative;width:100%;max-width:460px;aspect-ratio:1}
-  .logo-wrap picture,.logo-wrap>img.swap-night{position:absolute;inset:8%;width:84%;height:84%;isolation:isolate;background:var(--paper);border-radius:50%;overflow:hidden}.logo-wrap img{width:100%;height:100%;border-radius:50%;mix-blend-mode:multiply;filter:contrast(1.05);animation:float 7s ease-in-out infinite}
+  .logo-wrap picture,.logo-wrap>img.swap-night{position:absolute;inset:8%;width:84%;height:84%;isolation:isolate;background:transparent;border-radius:50%;overflow:hidden;pointer-events:none}body.ready .logo-wrap picture{background:var(--paper);transition:background 1.4s ease 1.6s}.logo-wrap img{width:100%;height:100%;border-radius:50%;mix-blend-mode:multiply;filter:contrast(1.05);animation:float 7s ease-in-out infinite}
   .logo-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
   .ring{fill:none;stroke:var(--pencil2);stroke-width:.6}
   .ring.dash{stroke-dasharray:2 4;animation:spin 90s linear infinite;transform-origin:center}
@@ -253,8 +256,8 @@
   .tower .d:nth-child(10){animation-delay:1.7s}.tower .d:nth-child(11){animation-delay:1.9s}.tower .d:nth-child(12){animation-delay:2s}
   @keyframes draw{to{stroke-dashoffset:0}}
   /* hero: sketch first, then real logo fades over it */
-  .logo-wrap .tower{position:absolute;inset:8%;width:84%;height:84%;color:var(--pencil);opacity:1;transition:opacity 1.2s ease 3.4s}
-  .logo-wrap img{opacity:0;transition:opacity 1.4s ease 3.2s}.logo-wrap>img.swap-night{animation:float 7s ease-in-out infinite}
+  .logo-wrap .tower{position:absolute;inset:8%;width:84%;height:84%;color:var(--pencil);opacity:1;transition:opacity 1.2s ease 1.8s}
+  .logo-wrap img{opacity:0;transition:opacity 1.4s ease 1.6s}.logo-wrap>img.swap-night{animation:float 7s ease-in-out infinite}
   body.ready .logo-wrap img{opacity:1}
   body.ready .logo-wrap .tower{opacity:0}
 
@@ -318,7 +321,7 @@
   /* ── github live stats ── */
   .gh{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:.85rem}
   @media(max-width:860px){.gh{justify-content:center}}
-  .gh a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--pencil2);border-radius:var(--sk);padding:3px 12px;color:var(--pencil);transition:.25s}
+  .gh a.zero{display:none}.gh a.show{display:inline-flex!important}.gh a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--pencil2);border-radius:var(--sk);padding:3px 12px;color:var(--pencil);transition:.25s}
   .gh a:hover{background:var(--graphite);color:var(--paper);border-color:var(--graphite)}
   .gh svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
   .gh b{font-family:"Cormorant",serif;font-size:1.05rem;font-weight:600}
@@ -384,8 +387,8 @@
   .member .ph::after{inset:-9px;border:1px dashed var(--pencil3);border-radius:inherit}
 
   /* telegram cards: spot art */
-  .tg-card .ico{width:86px;height:86px;border:0;background:none}
-  .tg-card .ico img{width:100%;height:100%;mix-blend-mode:multiply;background:var(--paper);border-radius:50%}
+  .tg-card .ico{width:96px;height:96px;border:1px solid var(--pencil3);background:var(--paper);border-radius:50%;overflow:hidden;box-shadow:3px 4px 0 rgba(43,42,39,.12)}
+  .tg-card .ico img{width:100%;height:100%;mix-blend-mode:multiply;background:var(--paper);border-radius:50%;filter:contrast(1.4) brightness(.9);transform:scale(1.2)}
 
   /* blockquote: pencil frame */
   blockquote{border:1.5px solid var(--pencil);border-radius:var(--sk);padding:44px 40px;margin:20px auto 60px;background:rgba(255,255,255,.3)}
@@ -725,6 +728,120 @@
     details::details-content>p{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease .08s}
     details[open]::details-content>p{opacity:1}
   }
+
+  /* ═══════════ WOW PASS · display type, live diagram, plates, terminal ═══════════ */
+  /* Markazi Text for Persian display headings (body stays Vazirmatn) */
+  html[data-lang="fa"] h1,html[data-lang="fa"] h2,html:not([data-lang="en"]) h1,html:not([data-lang="en"]) h2{font-family:"Markazi","Vazirmatn",serif;font-weight:700;letter-spacing:0}
+  html:not([data-lang="en"]) h1{font-size:clamp(3.2rem,6.4vw,5.4rem);line-height:1.05;margin-bottom:10px}
+  html:not([data-lang="en"]) h2{font-size:2.9rem;line-height:1.1}
+  html:not([data-lang="en"]) h2 small{margin-top:6px;font-size:.3em}
+  html:not([data-lang="en"]) h1 .en{font-size:.3em;margin-top:4px}
+  html:not([data-lang="en"]) .card h3,html:not([data-lang="en"]) .step h3,html:not([data-lang="en"]) .tg-card h3{font-family:"Markazi","Vazirmatn",serif;font-weight:600;font-size:1.55rem;line-height:1.15}
+  html:not([data-lang="en"]) .tg-card h3{font-size:1.7rem}
+  html:not([data-lang="en"]) blockquote{font-family:"Markazi","Vazirmatn",serif;font-size:2.1rem;font-style:normal;line-height:1.35}
+  html:not([data-lang="en"]) .faq summary{font-family:"Markazi","Vazirmatn",serif;font-size:1.35rem;font-weight:600}
+  html:not([data-lang="en"]) .lead b{font-family:"Markazi","Vazirmatn",serif;font-size:1.25em;font-weight:700;color:var(--amber)}
+  html:not([data-lang="en"]) h2::before{top:-30px}
+  @media(max-width:600px){html:not([data-lang="en"]) h1{font-size:3rem}html:not([data-lang="en"]) h2{font-size:2.3rem}}
+  /* light hero: no more blank disc — tower sketch stays visible until the logo is ready */
+  html:not([data-theme="dark"]) .logo-wrap picture{background:transparent}
+  html:not([data-theme="dark"]) body.ready .logo-wrap picture{background:var(--paper);transition:background .4s ease 1.6s}
+  /* ── live diagram overlay ── */
+  .how .fig{overflow:hidden}
+  .how .flow{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);pointer-events:none}
+  html[data-theme="dark"] .how .flow{inset:8px;width:calc(100% - 16px);height:calc(100% - 16px)}
+  .how .pk circle{fill:var(--amber)}
+  .how .pk .halo{opacity:.35;filter:url(#fglow)}
+  .how .pk.back circle{fill:var(--graphite)}
+  html[data-theme="dark"] .how .pk.back circle{fill:#efe9dc}
+  .how .beat{fill:none;stroke:var(--amber);stroke-width:1.2;stroke-dasharray:3 6}
+  .how .tls{fill:none;stroke:var(--amber);stroke-width:1.6;stroke-linejoin:round}
+  .how .tls rect{fill:var(--paper)}
+  html[data-theme="dark"] .how .tls rect{fill:#0f1114}
+  html[data-theme="dark"] .how .day-only{display:none}
+  html:not([data-theme="dark"]) .how .night-only{display:none}
+  @media(prefers-reduced-motion:reduce){.how .flow .pk,.how .beat{display:none}}
+  /* ── chapter divider ── */
+  .chapter{max-width:1100px;margin:10px auto 56px;padding:0 22px;text-align:center;color:var(--pencil2)}
+  .chapter .rule{display:block;width:100%;height:60px;fill:none;stroke:var(--pencil2);stroke-width:1}
+  .chapter .rule circle,.chapter .rule path:last-of-type{fill:var(--pencil2)}
+  .chapter .orn2{stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 2.2s ease .2s}
+  .chapter.in .orn2{stroke-dashoffset:0}
+  .chapter .en{font-size:.78rem;display:block;margin-top:-8px}
+  html[data-theme="light"] .chapter{color:var(--amber)}
+  html[data-theme="light"] .chapter .rule{stroke:var(--amber);opacity:.8}
+  html[data-theme="light"] .chapter .rule circle,html[data-theme="light"] .chapter .rule path:last-of-type{fill:var(--amber)}
+  html[data-theme="dark"] .chapter .rule{stroke:var(--amber);opacity:.7}
+  html[data-theme="dark"] .chapter .rule circle,html[data-theme="dark"] .chapter .rule path:last-of-type{fill:var(--amber)}
+  html[data-theme="dark"] .chapter .en{color:var(--amber)}
+  /* ── plate with real screenshots ── */
+  .plate{max-width:1000px;margin:0 auto;padding:16px 16px 14px;background:#fff;border:1px solid var(--pencil3);box-shadow:6px 8px 0 rgba(43,42,39,.15);transform:rotate(-.4deg);position:relative}
+  .plate-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.7rem;color:var(--pencil2);padding:0 4px 12px;border-bottom:1px dashed var(--pencil3);margin-bottom:16px;direction:ltr}
+  .plate-head .dots{letter-spacing:.2em}
+  .shots{position:relative;padding-bottom:7%}
+  .shot{border:1px solid var(--pencil3);background:#0e0c09;overflow:hidden;box-shadow:0 22px 50px -18px rgba(0,0,0,.55)}
+  .shot img{width:100%;height:auto;display:block}
+  .shot.desk{border-radius:8px;width:88%;margin-inline-start:0}
+  .shot .chrome{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#1a1712;border-bottom:1px solid rgba(201,168,106,.18);direction:ltr}
+  .shot .chrome i{width:9px;height:9px;border-radius:50%;background:#3a352c;display:inline-block}
+  .shot .chrome i:nth-child(1){background:#d98a6f}.shot .chrome i:nth-child(2){background:#e0c078}.shot .chrome i:nth-child(3){background:#9cb878}
+  .shot .chrome b{flex:1;text-align:center;font:.66rem/1.6 Consolas,Menlo,monospace;color:#8f8a7c;font-weight:400;background:#0e0c09;border-radius:4px;padding:0 10px;margin-inline-start:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .shot.phone{position:absolute;right:0;bottom:0;width:22%;border-radius:18px;border:2px solid #2a2620;box-shadow:0 30px 60px -20px rgba(0,0,0,.7),0 0 0 1px rgba(201,168,106,.25);transform:rotate(2deg)}
+  html[dir="rtl"] .shot.desk{margin-inline-start:auto}
+  html[dir="rtl"] .shot.phone{right:auto;left:0;transform:rotate(-2deg)}
+  .plate figcaption{margin-top:16px}
+  html[data-theme="dark"] .plate{background:#0f1114;border-color:var(--pencil3);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 6px rgba(255,255,255,.02)}
+  html[data-theme="dark"] .plate-head{border-color:var(--pencil3)}
+  html[data-theme="dark"] .shot{border-color:rgba(201,168,106,.25)}
+  @media(max-width:600px){.plate{padding:10px 10px 8px;transform:none}.shot.desk{width:100%}.shots{padding-bottom:0}.shot.phone{position:static;width:46%;margin:12px auto 0;transform:none!important;border-radius:14px}.plate-head span[data-fa],.plate-head span[data-en]{display:none}.plate figcaption{font-size:.62rem}}
+  /* ── project etching (replaces the corporate banner) ── */
+  .frame.etch{position:relative;padding:12px;transform:rotate(1deg)}
+  .frame.etch img{filter:none}
+  .frame.etch .etch-cap{position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);background:var(--paper);border:1px solid var(--pencil3);padding:1px 12px;font-size:.62rem;color:var(--pencil2);white-space:nowrap}
+  html[data-theme="light"] .frame.etch{border:1px solid rgba(138,106,52,.35);box-shadow:6px 8px 0 rgba(138,106,52,.18)}
+  html[data-theme="light"] .frame.etch .etch-cap{color:var(--amber);border-color:rgba(138,106,52,.45)}
+  html[data-theme="dark"] .frame.etch{background:#0f1114;border:1px solid var(--pencil3)}
+  html[data-theme="dark"] .frame.etch .etch-cap{background:#0f1114;border-color:var(--pencil3)}
+  /* ── terminal ── */
+  .term{max-width:760px;margin:0 auto 26px;border:1.5px solid var(--pencil);border-radius:10px;overflow:hidden;background:#0f1114;box-shadow:4px 6px 0 rgba(43,42,39,.15);direction:ltr;text-align:left}
+  .term .tbar{display:flex;align-items:center;gap:7px;padding:8px 12px;background:#1a1d24;border-bottom:1px solid rgba(255,255,255,.06)}
+  .term .tbar i{width:11px;height:11px;border-radius:50%;background:#3a3f4b;display:inline-block}
+  .term .tbar i:nth-child(1){background:#d98a6f}.term .tbar i:nth-child(2){background:#e0c078}.term .tbar i:nth-child(3){background:#9cb878}
+  .term .tbar .en{margin-left:auto;font-size:.62rem;color:#6a6e7a;letter-spacing:.2em}
+  .term .tbody{background:transparent;border:0;box-shadow:none;border-radius:0;margin:0;padding:16px 18px 18px;min-height:172px;font-size:.86rem;line-height:1.75;color:#e6e1d4;white-space:pre-wrap}
+  .term .tbody .p{color:var(--amber)}
+  .term .tbody .ok{color:#9cb878}
+  .term .tbody .dim{color:#7c8190}
+  .term .caret{display:inline-block;width:8px;height:1em;background:var(--amber);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media(max-width:600px){.term .tbody{font-size:.72rem;min-height:150px;padding:12px 12px 14px}.term .tbar .en{display:none}}
+  html[data-theme="light"] .term{border-color:rgba(138,106,52,.5);box-shadow:4px 6px 0 rgba(138,106,52,.22)}
+  html[data-theme="dark"] .term{border-color:var(--pencil3);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  /* ── light theme: bronze accent everywhere the ink used to be flat ── */
+  html[data-theme="light"] .btn.dark{background:linear-gradient(160deg,#a07d3f,#7d5f2c);border-color:#7d5f2c;color:var(--amber-ink)}
+  html[data-theme="light"] .btn.dark:hover{background:linear-gradient(160deg,#b08a48,#8a6a34)}
+  html[data-theme="light"] .btn.line{border-color:rgba(43,42,39,.7)}
+  html[data-theme="light"] .brand img{border-color:rgba(138,106,52,.6)}
+  html[data-theme="light"] .ic svg{stroke:var(--amber)}
+  html[data-theme="light"] .card h3,html[data-theme="light"] .step h3,html[data-theme="light"] .tg-card h3{color:#3b2f17}
+  html[data-theme="light"] .stat b{color:var(--amber)}
+  html[data-theme="light"] .lead b{color:var(--amber)}
+  html[data-theme="light"] .tag{border-bottom-color:rgba(138,106,52,.45)}
+  html[data-theme="light"] .mq{border-color:rgba(138,106,52,.45);background:linear-gradient(180deg,#efe9db,#e8e1d1)}
+  html[data-theme="light"] .mq-track span{color:#5f4a22}
+  html[data-theme="light"] .proj{border-color:rgba(138,106,52,.45)}
+  html[data-theme="light"] .torn .l{stroke:rgba(138,106,52,.55)}
+  html[data-theme="light"] .member .ph{border-color:rgba(138,106,52,.7);box-shadow:4px 5px 0 rgba(138,106,52,.18)}
+  html[data-theme="light"] .tg-card .ico{border-color:rgba(138,106,52,.5);box-shadow:3px 4px 0 rgba(138,106,52,.18)}
+  html[data-theme="light"] .road li::before{border-color:var(--amber)}
+  html[data-theme="light"] .road li{border-right-color:rgba(138,106,52,.55)}
+  html[data-theme="light"] .faq details{border-color:rgba(138,106,52,.35)}
+  html[data-theme="light"] footer{border-top-color:rgba(138,106,52,.5)}
+  html[data-theme="light"] .logo-wrap .ring{stroke:var(--amber);opacity:.7}
+  html[data-theme="light"] .logo-wrap .ray,html[data-theme="light"] .logo-wrap .tick{stroke:var(--amber)}
+  html[data-theme="light"] .logo-wrap .tower{color:#5f4a22}
+  /* hero stat chips: hidden until real numbers arrive */
+  .gh a{opacity:.9}
 </style>
 </head>
 <body>
@@ -778,8 +895,8 @@
         <a class="btn line" href="https://t.me/NikaNettbot" target="_blank"><svg viewBox="0 0 24 24"><path d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.47 1.47.22 1.7-.8l3.08-14.4c.28-1.27-.46-1.77-1.29-1.46L1.9 11.3c-1.23.48-1.21 1.17-.21 1.48l4.62 1.44L17.03 7.5c.5-.33.96-.15.58.18z"/></svg><span data-fa>لانچر ربات</span><span data-en>Bot launcher</span></a>
       </div>
       <div class="gh" id="gh">
-        <a href="https://github.com/azadipanell/Nika-Net/stargazers" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><b data-gh="stars">–</b><span data-fa>ستاره</span><span data-en>stars</span></a>
-        <a href="https://github.com/azadipanell/Nika-Net/network/members" target="_blank"><svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3a3 3 0 003 3h6a3 3 0 003-3V7M12 13v4"/></svg><b data-gh="forks">–</b><span data-fa>فورک</span><span data-en>forks</span></a>
+        <a class="zero" href="https://github.com/azadipanell/Nika-Net/stargazers" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><b data-gh="stars"></b><span data-fa>ستاره</span><span data-en>stars</span></a>
+        <a class="zero" href="https://github.com/azadipanell/Nika-Net/network/members" target="_blank"><svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3a3 3 0 003 3h6a3 3 0 003-3V7M12 13v4"/></svg><b data-gh="forks"></b><span data-fa>فورک</span><span data-en>forks</span></a>
         <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank"><svg viewBox="0 0 24 24"><path d="M20 12l-8 8-8-8V4h8z"/><circle cx="9" cy="8" r="1.2"/></svg><b data-gh="ver">v0.1.0</b></a>
         <a href="https://github.com/azadipanell/Nika-Net/commits" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg><span data-fa>آخرین تغییر:</span><span data-en>updated:</span> <b data-gh="date">–</b></a>
       </div>
@@ -844,15 +961,47 @@
     <span class="lbl" style="left:19%;bottom:14%"><span data-fa>کلاینت شما</span><span data-en>your client</span></span>
     <span class="lbl" style="left:50%;bottom:8%"><span data-fa>Cloudflare Worker + D1 · بدون سرور مبدأ</span><span data-en>Cloudflare Worker + D1 · no origin server</span></span>
     <span class="lbl" style="left:82%;bottom:14%"><span data-fa>اینترنت آزاد</span><span data-en>open internet</span></span>
+    <svg class="flow" viewBox="0 0 1915 821" preserveAspectRatio="none" aria-hidden="true">
+      <defs><filter id="fglow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3"/></filter></defs>
+      <!-- request: phone → worker → internet -->
+      <path id="fp1" d="M456 385 L 646 385" fill="none" stroke="none"/>
+      <path id="fp2" d="M1212 385 L 1318 385" fill="none" stroke="none"/>
+      <!-- reply: dashed arc back to the phone (the two engravings draw it differently → one path per theme) -->
+      <path id="fp3" class="day-only" d="M925 574 L868 597 L811 612 L754 619 L698 618 L641 611 L584 597 L527 578 L470 553" fill="none" stroke="none"/>
+      <path id="fp4" class="night-only" d="M1415 602 L1325 631 L1235 653 L1145 668 L1055 676 L965 677 L875 671 L785 658 L695 639 L605 613 L515 580" fill="none" stroke="none"/>
+      <g class="pk"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="2.6s" begin="0s" repeatCount="indefinite"><mpath href="#fp1"/></animateMotion></g>
+      <g class="pk"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite"><mpath href="#fp1"/></animateMotion></g>
+      <g class="pk"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="1.6s" begin=".6s" repeatCount="indefinite"><mpath href="#fp2"/></animateMotion></g>
+      <g class="pk"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="1.6s" begin="1.9s" repeatCount="indefinite"><mpath href="#fp2"/></animateMotion></g>
+      <g class="pk back day-only"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="2.4s" begin=".3s" repeatCount="indefinite"><mpath href="#fp3"/></animateMotion></g>
+      <g class="pk back day-only"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="2.4s" begin="1.5s" repeatCount="indefinite"><mpath href="#fp3"/></animateMotion></g>
+      <g class="pk back night-only"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="4.2s" begin=".3s" repeatCount="indefinite"><mpath href="#fp4"/></animateMotion></g>
+      <g class="pk back night-only"><circle r="7" class="halo"/><circle r="3.4"/><animateMotion dur="4.2s" begin="2.4s" repeatCount="indefinite"><mpath href="#fp4"/></animateMotion></g>
+      <!-- worker heartbeat -->
+      <circle class="beat" cx="935" cy="385" r="150"><animate attributeName="r" values="120;190" dur="3.2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".35;0" dur="3.2s" repeatCount="indefinite"/></circle>
+      <!-- lock: traffic is TLS-wrapped -->
+      <g class="tls" transform="translate(551 350)"><rect x="-9" y="-2" width="18" height="14" rx="2"/><path d="M-5 -2v-4a5 5 0 0 1 10 0v4"/></g>
+      <g class="tls" transform="translate(1264 350)"><rect x="-9" y="-2" width="18" height="14" rx="2"/><path d="M-5 -2v-4a5 5 0 0 1 10 0v4"/></g>
+    </svg>
     </figure>
   <p class="en" style="color:var(--pencil2);font-size:.85rem;margin-top:22px">Fig. 0 — How Nika Net works</p>
 </div>
 
-<!-- MOCKUP -->
+<!-- CHAPTER DIVIDER -->
+<div class="chapter" aria-hidden="true">
+  <svg viewBox="0 0 1200 90" preserveAspectRatio="none" class="rule"><path d="M0 45h470M730 45h470"/><path class="orn2" d="M485 45c20-22 40-22 60 0s40 22 60 0 40-22 60 0 40 22 60 0"/><path d="M475 45l10-6v12zM725 45l-10-6v12z"/><circle cx="600" cy="45" r="4"/></svg>
+  <span class="en"><span data-fa>Chapter II · the panel</span><span data-en>Chapter II · the panel</span></span>
+</div>
+
+<!-- MOCKUP · real panel plate -->
 <div class="mock wrap">
-  <figure class="fade">
-    <div class="frame" data-px="-.04"><picture class="swap-day"><source srcset="assets/mockup.webp" type="image/webp"><img src="assets/mockup.jpg" alt="Nika Net panel sketch" loading="lazy"></picture><img class="swap-night" src="assets/mockup-night.webp" alt="Nika Net panel sketch" loading="lazy"></div>
-    <figcaption class="en"><span data-fa>Fig. 1 — Nika Net panel · desktop & mobile</span><span data-en>Fig. 1 — Nika Net panel · desktop & mobile</span></figcaption>
+  <figure class="fade plate">
+    <div class="plate-head en"><span>Plate 1</span><span class="dots">· · ·</span><span data-fa>Nika Net · v0.1.0 · Farsi / RTL</span><span data-en>Nika Net · v0.1.0 · Farsi / RTL</span></div>
+    <div class="shots">
+      <div class="shot desk"><div class="chrome"><i></i><i></i><i></i><b>nika.shahyad.workers.dev/nika-7f3a2k9q/</b></div><picture><source srcset="assets/panel-desktop.webp" type="image/webp"><img src="assets/panel-desktop.jpg" alt="Nika Net admin panel — dashboard" loading="lazy" width="1600" height="1000"></picture></div>
+      <div class="shot phone"><img src="assets/panel-mobile.webp" alt="Nika Net admin panel on mobile" loading="lazy" width="600" height="1200"></div>
+    </div>
+    <figcaption class="en"><span data-fa>Fig. 1 — Real panel screenshots · dashboard, desktop & mobile</span><span data-en>Fig. 1 — Real panel screenshots · dashboard, desktop & mobile</span></figcaption>
   </figure>
 </div>
 
@@ -888,7 +1037,7 @@
         <a class="btn line" href="https://t.me/NikaNettbot" target="_blank">✈ @NikaNettbot</a>
       </div>
     </div>
-    <div class="frame fade"><picture class="swap-day"><source srcset="assets/preview.webp" type="image/webp"><img src="assets/preview.jpg" alt="Nika Net preview" loading="lazy"></picture><img class="swap-night" src="assets/preview-night.webp" alt="Nika Net preview" loading="lazy"></div>
+    <div class="frame fade etch"><picture class="swap-day"><source srcset="assets/mockup.webp" type="image/webp"><img src="assets/mockup.jpg" alt="Nika Net panel — engraving" loading="lazy"></picture><img class="swap-night" src="assets/mockup-night.webp" alt="Nika Net panel — chalk drawing" loading="lazy"><span class="etch-cap en">Nika Net · sketch № 2</span></div>
   </div>
 <svg class="torn bot" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg></section>
 
@@ -898,6 +1047,7 @@
     <h2 class="fade"><span data-fa>نصب سریع</span><span data-en>Quick start</span><small class="en">Three steps</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8c40-4 80-6 120-3 30 2 50 2 76-1"/></svg></h2>
     <p class="sub fade" data-fa>در سه قدم، پنل خودتان را روی حساب رایگان Cloudflare بالا بیاورید.</p>
     <p class="sub fade" data-en>Bring up your own panel on a free Cloudflare account in three steps.</p>
+    <div class="term fade" aria-label="terminal demo"><div class="tbar"><i></i><i></i><i></i><span class="en">shahyad@studio — zsh</span></div><pre class="tbody" dir="ltr"><code id="termOut"></code><span class="caret"></span></pre></div>
     <div class="deploy sketch fade">
       <p data-fa><b>ترمینال بلد نیستید؟</b> با یک کلیک، Cloudflare ریپو را فورک می‌کند و Worker + دیتابیس را خودش می‌سازد.</p>
       <p data-en><b>No terminal?</b> One click and Cloudflare forks the repo and provisions the Worker + database for you.</p>
@@ -1113,9 +1263,41 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     if(!d){const r=await fetch('https://api.github.com/repos/azadipanell/Nika-Net');if(!r.ok)throw 0;const j=await r.json();
       let ver='';try{const rr=await fetch('https://api.github.com/repos/azadipanell/Nika-Net/releases/latest');if(rr.ok)ver=(await rr.json()).tag_name||''}catch(e){}
       d={s:j.stargazers_count,f:j.forks_count,p:j.pushed_at,v:ver};localStorage.setItem(k,JSON.stringify({t:Date.now(),d}))}
-    const q=n=>document.querySelector(`[data-gh="${n}"]`);q('stars').textContent=d.s;q('forks').textContent=d.f;if(d.v)q('ver').textContent=d.v;
+    const q=n=>document.querySelector(`[data-gh="${n}"]`),show=n=>q(n)?.closest('a')?.classList.add('show');if(d.s>0){q('stars').textContent=d.s;show('stars')}if(d.f>0){q('forks').textContent=d.f;show('forks')}if(d.v)q('ver').textContent=d.v;
     const dt=new Date(d.p),l=html.dataset.lang==='en'?'en-GB':'fa-IR';q('date').textContent=dt.toLocaleDateString(l,{month:'short',day:'numeric'})}catch(e){}})();
 
+
+  // ── typing terminal (install) ──
+  (function(){
+    const out=document.getElementById('termOut');if(!out)return;
+    const lines=[
+      ['p','$ '],['c','npx wrangler d1 create nika-net-db'],['n'],
+      ['ok','✔ Successfully created DB nika-net-db'],['n'],
+      ['p','$ '],['c','npm run build && npx wrangler deploy'],['n'],
+      ['dim','  esbuild → dist/_worker.js  (142 KB · 0 errors)'],['n'],
+      ['ok','✔ Deployed nika-net  https://nika.<you>.workers.dev'],['n'],
+      ['p','$ '],['c','open https://nika.<you>.workers.dev/setup'],['n'],
+      ['ok','✔ Panel ready · نیکا نت آماده است 🎉']
+    ];
+    let started=false;
+    function run(){
+      if(started)return;started=true;
+      if(matchMedia('(prefers-reduced-motion:reduce)').matches){out.innerHTML=lines.map(l=>l[0]==='n'?'\n':`<span class="${l[0]==='c'?'':l[0]}">${l[1]}</span>`).join('');return}
+      let i=0;
+      function next(){
+        if(i>=lines.length){setTimeout(()=>{out.innerHTML='';i=0;next()},9000);return}
+        const l=lines[i++];
+        if(l[0]==='n'){out.appendChild(document.createTextNode('\n'));setTimeout(next,120);return}
+        const sp=document.createElement('span');sp.className=l[0]==='c'?'':l[0];out.appendChild(sp);
+        if(l[0]==='c'){let k=0;(function type(){sp.textContent=l[1].slice(0,++k);if(k<l[1].length)setTimeout(type,28+Math.random()*50);else setTimeout(next,380)})()}
+        else{sp.textContent=l[1];setTimeout(next,l[0]==='ok'?520:260)}
+      }
+      next();
+    }
+    new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){run();o.disconnect()}}),{threshold:.4}).observe(out.closest('.term'));
+  })();
+  // ── chapter rule draws itself ──
+  (function(){const c=document.querySelector('.chapter');if(!c)return;new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){c.classList.add('in');o.disconnect()}}),{threshold:.6}).observe(c)})();
   // ── dynamic theme-color (browser chrome follows theme) ──
   const tc=document.querySelector('meta[name="theme-color"]');
   function syncTC(){if(tc)tc.setAttribute('content',html.dataset.theme==='dark'?'#1f2229':'#f3efe6')}
