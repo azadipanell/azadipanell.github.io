@@ -19,3 +19,7 @@
 
 /assets/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/api/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex
