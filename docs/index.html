@@ -9,6 +9,7 @@
 <meta property="og:title" content="مستندات نیکا نت | شهیاد">
 <meta property="og:description" content="راهنمای فارسی نصب و راه‌اندازی Nika Net روی Cloudflare Worker رایگان">
 <meta property="og:image" content="https://azadipanell.github.io/assets/og.jpg">
+<meta name="theme-color" content="#f3efe6">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script>
@@ -230,6 +231,10 @@ npx wrangler deploy</code></pre>
 
 <script>
   const html=document.documentElement;
+  const tc=document.querySelector('meta[name="theme-color"]');
+  const syncTC=()=>{if(tc)tc.setAttribute('content',html.dataset.theme==='dark'?'#1f2229':'#f3efe6')};
+  syncTC();
+  new MutationObserver(syncTC).observe(html,{attributes:true,attributeFilter:['data-theme']});
   document.getElementById('themeBtn').onclick=()=>{const d=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=d;localStorage.setItem('theme',d)};
   document.querySelectorAll('.cp').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(b.parentElement.innerText.replace(/^copy\n?/,'').trim());b.textContent='✓';setTimeout(()=>b.textContent='copy',1200)});
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('p-'+b.dataset.t).classList.add('on')});

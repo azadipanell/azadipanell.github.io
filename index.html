@@ -19,7 +19,9 @@
 <link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"SHAHYAD","alternateName":"شهیاد","url":"https://azadipanell.github.io/","logo":"https://azadipanell.github.io/assets/shahyad-logo.jpg","sameAs":["https://github.com/azadipanell","https://t.me/shahyad_asr","https://t.me/NikaNettbot"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"آیا نیکا نت واقعاً رایگان است؟","acceptedAnswer":{"@type":"Answer","text":"بله. کد تحت لایسنس MIT است و روی پلن رایگان Cloudflare Workers + D1 اجرا می‌شود. هزینه‌ی سرور صفر است؛ فقط محدودیت‌های پلن رایگان Cloudflare اعمال می‌شود."}},{"@type":"Question","name":"با چه کلاینت‌هایی کار می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"هر کلاینتی که VLESS یا Trojan روی WebSocket را پشتیبانی کند: v2rayNG، Hiddify، Streisand، Clash/Mihomo، Sing-box و… لینک اشتراک به‌طور خودکار فرمت مناسب کلاینت را تشخیص می‌دهد."}},{"@type":"Question","name":"آیا داده‌های من جایی ذخیره می‌شود؟","acceptedAnswer":{"@type":"Answer","text":"فقط در حساب Cloudflare خودتان (D1). هیچ سرور واسطی وجود ندارد و تیم شهیاد به هیچ داده‌ای دسترسی ندارد."}},{"@type":"Question","name":"ربات @NikaNettbot چه کار می‌کند؟","acceptedAnswer":{"@type":"Answer","text":"لانچر پنل است: پنل شما را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس و مسیرهای تصادفی نداشته باشید."}},{"@type":"Question","name":"چطور کمک کنم یا مشکل گزارش دهم؟","acceptedAnswer":{"@type":"Answer","text":"در GitHub یک Issue یا Pull Request باز کنید، یا در کانال @shahyad_asr پیام بگذارید. مشارکت همیشه خوش‌آمد است."}}]}</script>
 <script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.classList.add("js")})()</script>
 <style>
   @font-face{font-family:"Vazirmatn";src:url(fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -677,6 +679,49 @@
   @media(prefers-reduced-motion:reduce){
     html.js .hero .eyebrow,html.js .hero h1,html.js .hero .lead,html.js .hero .btns,html.js .hero .gh{opacity:1;transform:none}
   }
+
+  /* ═══════════ DELIGHT PASS · marquee, tilt, dust, numbers ═══════════ */
+
+  /* ── tech marquee strip ── */
+  .mq{overflow:hidden;direction:ltr;border-top:1.5px solid var(--pencil);border-bottom:1.5px solid var(--pencil);background:var(--paper2);padding:11px 0}
+  .mq-track{display:flex;align-items:center;width:max-content;animation:mq 44s linear infinite}
+  .mq-track span{font-family:"Cormorant",serif;font-size:1.02rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--pencil);padding:0 16px;white-space:nowrap}
+  .mq-track i{font-style:normal;color:var(--amber);font-size:.72rem}
+  .mq:hover .mq-track{animation-play-state:paused}
+  @keyframes mq{to{transform:translateX(-50%)}}
+  html[data-theme="dark"] .mq{border-color:var(--pencil3);background:linear-gradient(180deg,var(--paper2),#15171c)}
+  html[data-theme="dark"] .mq-track span{color:var(--pencil2)}
+  @media(prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+  /* ── 3D tilt ── */
+  .card{transition:transform .35s ease,box-shadow .3s,border-color .3s}
+  .card.tilting{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-5px);transition:transform .12s ease-out}
+  .member.tilting{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .12s ease-out}
+  .tg-card.tilting{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-5px);transition:transform .12s ease-out}
+  .logo-wrap.tilting{transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .15s ease-out}
+
+  /* ── logo easter-egg glow ── */
+  .logo-wrap{transition:filter .6s}
+  .logo-wrap.glow{filter:drop-shadow(0 0 30px rgba(138,106,52,.6)) drop-shadow(0 0 8px rgba(138,106,52,.35))}
+  html[data-theme="dark"] .logo-wrap.glow{filter:drop-shadow(0 0 46px rgba(231,179,106,.65)) drop-shadow(0 0 10px rgba(231,179,106,.4))}
+
+  /* ── pencil dust canvas ── */
+  #dust{position:fixed;inset:0;z-index:298;pointer-events:none}
+
+  /* ── section numbers (editorial) ── */
+  html{counter-reset:sec}
+  section[id]{counter-increment:sec}
+  h2::before{content:counter(sec,decimal-leading-zero);position:absolute;top:-34px;right:50%;transform:translateX(50%);font-family:"Cormorant",serif;font-size:1rem;font-weight:600;letter-spacing:.45em;text-indent:.45em;color:var(--amber);opacity:.85}
+  html[dir="rtl"] .proj h2::before{right:0;left:auto;transform:none;text-indent:0}
+  html[data-lang="en"] .proj h2::before{left:0;right:auto;transform:none;text-indent:0}
+
+  /* ── FAQ: animated open/close (progressive) ── */
+  @supports selector(::details-content){
+    details::details-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.4,0,.2,1)}
+    details[open]::details-content{grid-template-rows:1fr}
+    details::details-content>p{overflow:hidden;min-height:0;opacity:0;transition:opacity .3s ease .08s}
+    details[open]::details-content>p{opacity:1}
+  }
 </style>
 </head>
 <body>
@@ -762,6 +807,8 @@
     </div>
   </div>
 </header>
+
+<div class="mq" aria-hidden="true"><div class="mq-track"><span>VLESS</span><i>✦</i><span>Trojan</span><i>✦</i><span>WebSocket + TLS</span><i>✦</i><span>Clash / Mihomo</span><i>✦</i><span>Sing-box</span><i>✦</i><span>Base64</span><i>✦</i><span>Cloudflare Workers</span><i>✦</i><span>D1 / SQLite</span><i>✦</i><span>TypeScript</span><i>✦</i><span>VLESS</span><i>✦</i><span>Trojan</span><i>✦</i><span>WebSocket + TLS</span><i>✦</i><span>Clash / Mihomo</span><i>✦</i><span>Sing-box</span><i>✦</i><span>Base64</span><i>✦</i><span>Cloudflare Workers</span><i>✦</i><span>D1 / SQLite</span><i>✦</i><span>TypeScript</span><i>✦</i></div></div>
 
 <div class="orn"><svg viewBox="0 0 520 28" preserveAspectRatio="none"><path d="M0 14h200M320 14h200"/><path d="M215 14c8-10 18-10 26 0s18 10 26 0 18-10 26 0"/><circle cx="260" cy="14" r="3"/><path d="M205 14l6-4v8zM315 14l-6-4v8z"/></svg></div>
 
@@ -1065,6 +1112,122 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       d={s:j.stargazers_count,f:j.forks_count,p:j.pushed_at,v:ver};localStorage.setItem(k,JSON.stringify({t:Date.now(),d}))}
     const q=n=>document.querySelector(`[data-gh="${n}"]`);q('stars').textContent=d.s;q('forks').textContent=d.f;if(d.v)q('ver').textContent=d.v;
     const dt=new Date(d.p),l=html.dataset.lang==='en'?'en-GB':'fa-IR';q('date').textContent=dt.toLocaleDateString(l,{month:'short',day:'numeric'})}catch(e){}})();
+
+  // ── dynamic theme-color (browser chrome follows theme) ──
+  const tc=document.querySelector('meta[name="theme-color"]');
+  function syncTC(){if(tc)tc.setAttribute('content',html.dataset.theme==='dark'?'#1f2229':'#f3efe6')}
+  syncTC();
+  new MutationObserver(syncTC).observe(html,{attributes:true,attributeFilter:['data-theme']});
+
+  const FINE=matchMedia('(hover:hover) and (pointer:fine)').matches,REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // ── smooth scroll (desktop wheel; touch & reduced-motion stay native) ──
+  if(FINE&&!REDUCE)(function(){
+    let current=scrollY,target=scrollY;
+    const max=()=>Math.max(0,document.documentElement.scrollHeight-innerHeight);
+    const clamp=v=>Math.max(0,Math.min(max(),v));
+    addEventListener('wheel',e=>{
+      if(e.ctrlKey)return;
+      e.preventDefault();
+      if(!document.body.classList.contains('ready')){target=0;return}
+      let d=e.deltaY;if(e.deltaMode===1)d*=16;else if(e.deltaMode===2)d*=innerHeight;
+      target=clamp(target+d);
+    },{passive:false});
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+      const href=a.getAttribute('href');
+      const el=href.length>1?document.querySelector(href):null;
+      if(!el)return;
+      e.preventDefault();
+      target=clamp(el.getBoundingClientRect().top+scrollY-84);
+      if(href.length>1)history.pushState(null,'',href);
+    }));
+    (function frame(){
+      if(Math.abs(scrollY-current)>2){current=target=scrollY}
+      const diff=target-current;
+      if(Math.abs(diff)>.5){current+=diff*.085;window.scrollTo({top:current,behavior:'instant'})}
+      else if(current!==target){current=target;window.scrollTo({top:current,behavior:'instant'})}
+      requestAnimationFrame(frame);
+    })();
+    addEventListener('resize',()=>{target=clamp(target)});
+    window.__SS={go:y=>{target=clamp(y)}};
+  })();
+  if(window.__SS)topBtn.onclick=e=>{e.preventDefault();window.__SS.go(0)};
+
+  // ── pencil dust particles ──
+  (function(){
+    const cv=document.createElement('canvas');cv.id='dust';document.body.appendChild(cv);
+    const ctx=cv.getContext('2d');let parts=[],run=false;
+    const rs=()=>{cv.width=innerWidth;cv.height=innerHeight};rs();addEventListener('resize',rs);
+    function spawn(x,y,n,big){
+      const cs=getComputedStyle(document.documentElement);
+      const cols=[cs.getPropertyValue('--pencil').trim()||'#4a4843',cs.getPropertyValue('--amber').trim()||'#8a6a34',cs.getPropertyValue('--pencil2').trim()||'#77746c'];
+      for(let i=0;i<n;i++){
+        const a=Math.random()*Math.PI*2,sp=(big?2.6:1.4)+Math.random()*(big?4.5:2.6);
+        parts.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-(big?2.2:1),g:.11+Math.random()*.09,
+          life:1,dec:.018+Math.random()*.022,w:1+Math.random()*(big?3:2.2),
+          rot:Math.random()*6.28,vr:(Math.random()-.5)*.32,c:cols[i%3]});
+      }
+      if(!run){run=true;requestAnimationFrame(tick)}
+    }
+    function tick(){
+      ctx.clearRect(0,0,cv.width,cv.height);
+      parts=parts.filter(p=>p.life>0);
+      for(const p of parts){
+        p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.985;p.life-=p.dec;p.rot+=p.vr;
+        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+        ctx.globalAlpha=Math.max(0,p.life)*.9;ctx.fillStyle=p.c;
+        ctx.fillRect(-p.w/2,-p.w/4,p.w,p.w/2);ctx.restore();
+      }
+      if(parts.length)requestAnimationFrame(tick);
+      else{run=false;ctx.clearRect(0,0,cv.width,cv.height)}
+    }
+    document.addEventListener('click',e=>{
+      const b=e.target.closest('.btn,.cp,.theme');
+      if(b)spawn(e.clientX||innerWidth/2,e.clientY||innerHeight/2,16,false);
+    });
+    window.__dust=spawn;
+  })();
+
+  // ── 3D tilt + magnetic buttons ──
+  if(FINE&&!REDUCE){
+    document.querySelectorAll('.logo-wrap,.card,.member,.tg-card').forEach(el=>{
+      const max=el.classList.contains('logo-wrap')?6:el.classList.contains('card')?5:4;
+      el.addEventListener('mousemove',e=>{
+        const r=el.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        el.style.setProperty('--rx',(-y*max).toFixed(2)+'deg');
+        el.style.setProperty('--ry',(x*max).toFixed(2)+'deg');
+        el.classList.add('tilting');
+      });
+      el.addEventListener('mouseleave',()=>{
+        el.classList.remove('tilting');
+        el.style.setProperty('--rx','0deg');el.style.setProperty('--ry','0deg');
+      });
+    });
+    document.querySelectorAll('.hero .btns .btn,.fab').forEach(el=>{
+      el.addEventListener('mousemove',e=>{
+        const r=el.getBoundingClientRect();
+        const x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);
+        el.style.transform=`translate(${(x*.2).toFixed(1)}px,${(y*.2).toFixed(1)}px)`;
+      });
+      el.addEventListener('mouseleave',()=>{el.style.transform=''});
+    });
+  }
+
+  // ── easter egg: triple-click the emblem ──
+  (function(){
+    const em=document.querySelector('.logo-wrap');if(!em)return;
+    let n=0,last=0;
+    em.addEventListener('click',()=>{
+      const now=Date.now();if(now-last>1500)n=0;last=now;n++;
+      if(n<3)return;
+      n=0;
+      const r=em.getBoundingClientRect();
+      if(window.__dust)window.__dust(r.left+r.width/2,r.top+r.height/2,46,true);
+      em.classList.add('glow');
+      setTimeout(()=>em.classList.remove('glow'),1500);
+    });
+  })();
 </script>
 </body>
 </html>
