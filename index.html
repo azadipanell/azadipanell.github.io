@@ -10,9 +10,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="شهیاد | SHAHYAD Configuration Panels">
 <meta property="og:description" content="پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان — Clash · Sing-box · Base64">
-<meta property="og:image" content="https://azadipanell.github.io/assets/shahyad-logo.jpg">
+<meta property="og:image" content="https://azadipanell.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://azadipanell.github.io/">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://azadipanell.github.io/assets/og.jpg">
 <meta name="theme-color" content="#f3efe6">
 <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -321,6 +322,30 @@
   html[data-theme="dark"] ::selection{background:var(--graphite);color:var(--paper)}
   html{transition:background .4s}
 
+
+  /* ── a11y ── */
+  :focus{outline:none}
+  :focus-visible{outline:2px dashed var(--graphite);outline-offset:4px;border-radius:6px}
+  .skip{position:absolute;top:-60px;right:16px;background:var(--graphite);color:var(--paper);padding:8px 16px;z-index:999;border-radius:var(--sk)}
+  .skip:focus{top:12px}
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    .fade{opacity:1;transform:none}.tower .d{stroke-dashoffset:0}.logo-wrap img{opacity:1}.logo-wrap .tower{opacity:0}
+    #pre{display:none}#trail{display:none}
+  }
+  /* ── github live stats ── */
+  .gh{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;font-size:.85rem}
+  @media(max-width:860px){.gh{justify-content:center}}
+  .gh a{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--pencil2);border-radius:var(--sk);padding:3px 12px;color:var(--pencil);transition:.25s}
+  .gh a:hover{background:var(--graphite);color:var(--paper);border-color:var(--graphite)}
+  .gh svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+  .gh b{font-family:"Cormorant",serif;font-size:1.05rem;font-weight:600}
+  /* ── deploy row ── */
+  .deploy{margin:0 auto 34px;max-width:760px;padding:22px 26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between}
+  .deploy p{color:var(--pencil);font-size:.95rem;flex:1;min-width:240px}
+  .deploy p b{color:var(--graphite)}
+  .btn svg.cf{width:20px;height:20px;fill:currentColor}
+
   .fade{opacity:0;transform:translateY(18px);transition:.7s ease}
   .fade.in{opacity:1;transform:none}
 
@@ -338,6 +363,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#about">پرش به محتوا</a>
 <div id="pre"><svg class="tower" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
 <circle class="d" cx="100" cy="100" r="92"/>
 <circle class="d" cx="100" cy="100" r="86" stroke-width=".7"/>
@@ -365,6 +391,7 @@
       <li><a href="#team"><span data-fa>تیم</span><span data-en>Team</span></a></li>
       <li><a href="#telegram"><span data-fa>تلگرام</span><span data-en>Telegram</span></a></li>
       <li><a href="#faq"><span data-fa>سؤالات</span><span data-en>FAQ</span></a></li>
+      <li><a href="docs/"><span data-fa>مستندات</span><span data-en>Docs</span></a></li>
       <li><a href="https://github.com/azadipanell" target="_blank">GitHub ↗</a></li>
       <li style="display:flex;gap:8px;align-items:center"><button class="lang" id="langBtn">EN</button><button class="theme" id="themeBtn" aria-label="theme"><svg viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button></li>
     </ul>
@@ -383,6 +410,12 @@
         <a class="btn dark" href="https://github.com/azadipanell/Nika-Net" target="_blank">★ <span data-fa>مشاهده Nika Net در GitHub</span><span data-en>Nika Net on GitHub</span></a>
         <a class="btn line" href="#install"><span data-fa>شروع سریع</span><span data-en>Quick start</span></a>
         <a class="btn line" href="https://t.me/NikaNettbot" target="_blank"><svg viewBox="0 0 24 24"><path d="M9.04 15.47 8.7 20.2c.48 0 .69-.21.94-.46l2.26-2.16 4.68 3.43c.86.47 1.47.22 1.7-.8l3.08-14.4c.28-1.27-.46-1.77-1.29-1.46L1.9 11.3c-1.23.48-1.21 1.17-.21 1.48l4.62 1.44L17.03 7.5c.5-.33.96-.15.58.18z"/></svg><span data-fa>لانچر ربات</span><span data-en>Bot launcher</span></a>
+      </div>
+      <div class="gh" id="gh">
+        <a href="https://github.com/azadipanell/Nika-Net/stargazers" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><b data-gh="stars">–</b><span data-fa>ستاره</span><span data-en>stars</span></a>
+        <a href="https://github.com/azadipanell/Nika-Net/network/members" target="_blank"><svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3a3 3 0 003 3h6a3 3 0 003-3V7M12 13v4"/></svg><b data-gh="forks">–</b><span data-fa>فورک</span><span data-en>forks</span></a>
+        <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank"><svg viewBox="0 0 24 24"><path d="M20 12l-8 8-8-8V4h8z"/><circle cx="9" cy="8" r="1.2"/></svg><b data-gh="ver">v0.1.0</b></a>
+        <a href="https://github.com/azadipanell/Nika-Net/commits" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg><span data-fa>آخرین تغییر:</span><span data-en>updated:</span> <b data-gh="date">–</b></a>
       </div>
     </div>
     <div class="logo-wrap fade in">
@@ -485,6 +518,11 @@
     <h2 class="fade"><span data-fa>نصب سریع</span><span data-en>Quick start</span><small class="en">Three steps</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8c40-4 80-6 120-3 30 2 50 2 76-1"/></svg></h2>
     <p class="sub fade" data-fa>در سه قدم، پنل خودتان را روی حساب رایگان Cloudflare بالا بیاورید.</p>
     <p class="sub fade" data-en>Bring up your own panel on a free Cloudflare account in three steps.</p>
+    <div class="deploy sketch fade">
+      <p data-fa><b>ترمینال بلد نیستید؟</b> با یک کلیک، Cloudflare ریپو را فورک می‌کند و Worker + دیتابیس را خودش می‌سازد.</p>
+      <p data-en><b>No terminal?</b> One click and Cloudflare forks the repo and provisions the Worker + database for you.</p>
+      <a class="btn dark" href="https://deploy.workers.cloudflare.com/?url=https://github.com/azadipanell/Nika-Net" target="_blank"><svg class="cf" viewBox="0 0 24 24"><path d="M16.5 8A5.5 5.5 0 006 9.2 4 4 0 007 17h9.5a4.5 4.5 0 000-9z"/></svg> Deploy to Cloudflare</a>
+    </div>
     <div class="steps">
       <div class="step sketch fade"><span class="n">1</span><h3><span data-fa>ساخت دیتابیس D1</span><span data-en>Create a D1 database</span></h3><p data-fa>یک دیتابیس بسازید و <code>database_id</code> را در <code>wrangler.toml</code> قرار دهید.</p><p data-en>Create the database and paste its <code>database_id</code> into <code>wrangler.toml</code>.</p>
         <pre><button class="cp">copy</button>npx wrangler d1 create nika-net-db</pre></div>
@@ -498,6 +536,7 @@ src/worker.ts   <span class="c"># entry & routing</span>
 src/protocols/  <span class="c"># VLESS & Trojan relay</span>
 src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     </div>
+    <p style="text-align:center;margin-top:34px"><a class="btn line" href="docs/">📖 <span data-fa>راهنمای کامل فارسی نصب و عیب‌یابی</span><span data-en>Full install & troubleshooting guide</span></a></p>
   </div>
 </section>
 
@@ -590,7 +629,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
         <details><summary>با چه کلاینت‌هایی کار می‌کند؟<i>+</i></summary><p>هر کلاینتی که VLESS یا Trojan روی WebSocket را پشتیبانی کند: v2rayNG، Hiddify، Streisand، Clash/Mihomo، Sing-box و… لینک اشتراک به‌طور خودکار فرمت مناسب کلاینت را تشخیص می‌دهد.</p></details>
         <details><summary>آیا داده‌های من جایی ذخیره می‌شود؟<i>+</i></summary><p>فقط در حساب Cloudflare خودتان (D1). هیچ سرور واسطی وجود ندارد و تیم شهیاد به هیچ داده‌ای دسترسی ندارد.</p></details>
         <details><summary>ربات @NikaNettbot چه کار می‌کند؟<i>+</i></summary><p>لانچر پنل است: پنل شما را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس و مسیرهای تصادفی نداشته باشید.</p></details>
-        <details><summary>چطور کمک کنم یا مشکل گزارش دهم؟<i>+</i></summary><p>در GitHub یک Issue یا Pull Request باز کنید، یا در کانال @shahyad_asr پیام بگذارید. مشارکت همیشه خوش‌آمد است.</p></details>
+        <details><summary>چطور کمک کنم یا مشکل گزارش دهم؟<i>+</i></summary><p>ابتدا <a href="docs/#trouble">بخش عیب‌یابی مستندات</a> را ببینید. سپس در GitHub یک Issue یا Pull Request باز کنید، یا در کانال @shahyad_asr پیام بگذارید. مشارکت همیشه خوش‌آمد است.</p></details>
       </div>
       <div data-en>
         <details open><summary>Is Nika Net really free?<i>+</i></summary><p>Yes. MIT-licensed and designed for Cloudflare's free Workers + D1 tier. Zero server cost — only Cloudflare's free-plan limits apply.</p></details>
@@ -608,7 +647,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 <footer>
   <div class="wrap">
     <div class="brand"><img src="assets/shahyad-logo.jpg" alt=""> <span data-fa>شهیاد</span><span data-en>SHAHYAD</span></div>
-    <p><a href="https://github.com/azadipanell" target="_blank">GitHub</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">Nika Net</a> · <a href="https://github.com/azadipanell/Nika-Net/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://t.me/NikaNettbot" target="_blank">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a></p>
+    <p><a href="https://github.com/azadipanell" target="_blank">GitHub</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">Nika Net</a> · <a href="docs/"><span data-fa>مستندات</span><span data-en>Docs</span></a> · <a href="https://github.com/azadipanell/Nika-Net/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://t.me/NikaNettbot" target="_blank">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a></p>
     <p class="en">© 2025–2026 SHAHYAD · Configuration Panels · Connecting Intelligence</p>
   </div>
 </footer>
@@ -683,6 +722,14 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       for(let i=1;i<pts.length;i++){const a=1-(now-pts[i].t)/500;ctx.strokeStyle=col;ctx.globalAlpha=a*.6;ctx.lineWidth=1.2;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(pts[i-1].x,pts[i-1].y);ctx.lineTo(pts[i].x,pts[i].y);ctx.stroke()}
       ctx.globalAlpha=1;requestAnimationFrame(loop)})();
   }
+
+  // live GitHub stats (cached 1h)
+  (async()=>{try{const k='gh_nika',c=JSON.parse(localStorage.getItem(k)||'null');let d=c&&Date.now()-c.t<36e5?c.d:null;
+    if(!d){const r=await fetch('https://api.github.com/repos/azadipanell/Nika-Net');if(!r.ok)throw 0;const j=await r.json();
+      let ver='';try{const rr=await fetch('https://api.github.com/repos/azadipanell/Nika-Net/releases/latest');if(rr.ok)ver=(await rr.json()).tag_name||''}catch(e){}
+      d={s:j.stargazers_count,f:j.forks_count,p:j.pushed_at,v:ver};localStorage.setItem(k,JSON.stringify({t:Date.now(),d}))}
+    const q=n=>document.querySelector(`[data-gh="${n}"]`);q('stars').textContent=d.s;q('forks').textContent=d.f;if(d.v)q('ver').textContent=d.v;
+    const dt=new Date(d.p),l=html.dataset.lang==='en'?'en-GB':'fa-IR';q('date').textContent=dt.toLocaleDateString(l,{month:'short',day:'numeric'})}catch(e){}})();
 </script>
 </body>
 </html>

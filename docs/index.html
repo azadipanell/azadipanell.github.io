@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مستندات نیکا نت — راهنمای نصب و عیب‌یابی | شهیاد</title>
+<meta name="description" content="راهنمای کامل فارسی نصب Nika Net روی Cloudflare Workers: دیپلوی یک‌کلیکی، Wrangler، داشبورد، تنظیمات بعد از نصب و عیب‌یابی.">
+<link rel="canonical" href="https://azadipanell.github.io/docs/">
+<meta property="og:title" content="مستندات نیکا نت | شهیاد">
+<meta property="og:description" content="راهنمای فارسی نصب و راه‌اندازی Nika Net روی Cloudflare Worker رایگان">
+<meta property="og:image" content="https://azadipanell.github.io/assets/og.jpg">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="preload" href="../fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script>
+<style>
+  @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Cormorant";src:url(../fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+  :root{--paper:#f3efe6;--paper2:#ebe5d8;--graphite:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
+  html[data-theme="dark"]{--paper:#23262a;--paper2:#1d1f23;--graphite:#eceae2;--pencil:#cfcdc4;--pencil2:#9a9890;--pencil3:#5f625f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Vazirmatn",Tahoma,sans-serif;background:var(--paper);color:var(--graphite);line-height:1.95}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  html[data-theme="dark"] body::after{filter:invert(1);opacity:.3}
+  a{color:var(--graphite)}
+  .en{font-family:"Cormorant",Georgia,serif;letter-spacing:.3em;text-transform:uppercase}
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1.5px solid var(--pencil)}
+  nav .in{max-width:1180px;margin:0 auto;padding:0 22px;height:64px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
+  .brand img{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--pencil);mix-blend-mode:multiply}
+  html[data-theme="dark"] .brand img{mix-blend-mode:screen;filter:invert(1) grayscale(1)}
+  nav .r{display:flex;gap:16px;align-items:center;font-size:.92rem}
+  nav .r a{text-decoration:none;color:var(--pencil)}
+  .theme{border:1.5px solid var(--pencil);border-radius:50%;width:30px;height:30px;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:var(--graphite)}
+  .theme svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5}
+
+  .layout{max-width:1180px;margin:0 auto;padding:40px 22px 80px;display:grid;grid-template-columns:240px 1fr;gap:50px;align-items:start}
+  @media(max-width:860px){.layout{grid-template-columns:1fr}}
+  aside{position:sticky;top:84px;border-right:1.5px dashed var(--pencil3);padding-right:16px;font-size:.92rem}
+  @media(max-width:860px){aside{position:static;border:0;padding:0;border-bottom:1.5px dashed var(--pencil3);padding-bottom:16px}}
+  aside .t{font-size:.75rem;color:var(--pencil2);margin-bottom:8px}
+  aside a{display:block;text-decoration:none;color:var(--pencil);padding:4px 0;position:relative}
+  aside a.act{color:var(--graphite);font-weight:700}
+  aside a.act::before{content:"✎";position:absolute;right:-22px;color:var(--pencil2)}
+  @media(max-width:860px){aside a{display:inline-block;margin-left:14px}aside a.act::before{display:none}}
+
+  article h1{font-size:2.2rem;margin-bottom:6px}
+  article h1 small{display:block;font-size:.4em;color:var(--pencil2)}
+  .lead{color:var(--pencil);margin-bottom:26px;font-size:1.05rem}
+  article h2{font-size:1.5rem;margin:56px 0 14px;padding-bottom:6px;position:relative;scroll-margin-top:90px}
+  article h2::after{content:"";position:absolute;right:0;bottom:0;width:120px;height:6px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'><path d='M1 4c30-3 60-4 118-1' fill='none' stroke='%234a4843' stroke-width='1.4' stroke-linecap='round'/></svg>") no-repeat}
+  html[data-theme="dark"] article h2::after{filter:invert(1)}
+  article h3{font-size:1.1rem;margin:26px 0 8px}
+  article p,article li{color:var(--pencil)}
+  article ol,article ul{padding-right:24px;margin:8px 0 12px}
+  article li{margin:4px 0}
+  code{background:rgba(127,127,127,.15);padding:1px 6px;border-radius:4px;font-size:.9em;direction:ltr;unicode-bidi:embed;font-family:Consolas,Menlo,monospace}
+  pre{background:color-mix(in srgb,var(--paper) 70%,#fff);border:1.5px solid var(--pencil);border-radius:8px;padding:18px;direction:ltr;text-align:left;overflow-x:auto;font-size:.88rem;line-height:1.7;font-family:Consolas,Menlo,monospace;box-shadow:3px 4px 0 rgba(43,42,39,.12);margin:12px 0 18px;position:relative;color:var(--graphite)}
+  html[data-theme="dark"] pre{background:#1a1c1f}
+  pre code{background:none;padding:0}
+  pre .c{color:var(--pencil3)}
+  pre .cp{position:absolute;top:6px;right:8px;font-size:.7rem;border:1px solid var(--pencil3);padding:1px 8px;border-radius:4px;background:var(--paper);cursor:pointer;color:var(--pencil);font-family:"Vazirmatn"}
+  .box{border:1.5px solid var(--pencil);border-radius:var(--sk);padding:16px 20px;margin:16px 0;position:relative;background:rgba(255,255,255,.3)}
+  html[data-theme="dark"] .box{background:rgba(255,255,255,.03)}
+  .box::before{content:"";position:absolute;inset:-4px;border:1px solid var(--pencil3);border-radius:var(--sk2);pointer-events:none;opacity:.7}
+  .box b{display:block;margin-bottom:4px}
+  .box.tip{border-style:dashed}
+  .steps{counter-reset:s;list-style:none;padding:0}
+  .steps li{position:relative;padding-right:46px;margin:14px 0}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;right:0;top:2px;width:32px;height:32px;border:1.5px solid var(--graphite);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Cormorant",serif;font-weight:600;color:var(--graphite)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border:1.5px solid var(--graphite);border-radius:var(--sk);text-decoration:none;font-weight:500;transition:.25s;background:var(--graphite);color:var(--paper)}
+  .btn:hover{transform:translateY(-2px) rotate(-.5deg)}
+  .btn.line{background:none;color:var(--graphite)}
+  .btn svg{width:18px;height:18px;fill:currentColor}
+  table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:.93rem}
+  th,td{border-bottom:1px dashed var(--pencil3);padding:8px 10px;text-align:right}
+  th{font-weight:700}
+  .tabs{display:flex;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+  .tabs button{border:1.5px solid var(--pencil);background:none;padding:6px 16px;border-radius:var(--sk);cursor:pointer;font-family:inherit;color:var(--pencil)}
+  .tabs button.on{background:var(--graphite);color:var(--paper);border-color:var(--graphite)}
+  .pane{display:none}.pane.on{display:block}
+  footer{border-top:1.5px solid var(--pencil);padding:28px 22px;text-align:center;color:var(--pencil2);font-size:.85rem}
+  footer a{margin:0 8px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="in">
+  <a class="brand" href="../"><img src="../assets/shahyad-logo.jpg" alt=""> شهیاد <span class="en" style="font-size:.7rem;color:var(--pencil2)">Docs</span></a>
+  <div class="r"><a href="../">خانه</a><a href="../#faq">سؤالات</a><a href="https://github.com/azadipanell/Nika-Net" target="_blank">GitHub ↗</a><a href="https://t.me/shahyad_asr" target="_blank">کانال</a><button class="theme" id="themeBtn" aria-label="theme"><svg viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button></div>
+</div></nav>
+
+<div class="layout">
+<aside>
+  <div class="en t">Contents</div>
+  <a href="#intro">پیش‌نیازها</a>
+  <a href="#oneclick">روش ۱ · یک‌کلیکی</a>
+  <a href="#wrangler">روش ۲ · Wrangler</a>
+  <a href="#dashboard">روش ۳ · داشبورد</a>
+  <a href="#after">بعد از نصب</a>
+  <a href="#clients">اتصال کلاینت‌ها</a>
+  <a href="#bot">ربات تلگرام</a>
+  <a href="#trouble">عیب‌یابی</a>
+  <a href="#update">به‌روزرسانی</a>
+</aside>
+
+<article>
+  <h1>راهنمای نصب نیکا نت<small class="en">Nika Net · Deployment guide · v0.1</small></h1>
+  <p class="lead">این راهنما شما را از صفر تا اولین کاربر متصل همراهی می‌کند. سه روش نصب وجود دارد؛ اگر مبتدی هستید <b>روش ۱</b> یا <b>روش ۳</b> را انتخاب کنید.</p>
+
+  <h2 id="intro">پیش‌نیازها</h2>
+  <ul>
+    <li>یک حساب رایگان <a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflare</a> (بدون نیاز به کارت بانکی)</li>
+    <li>برای روش ۱ و ۲: یک حساب GitHub و/یا Node.js نسخه ۱۸ به بالا</li>
+    <li>برای روش ۳: فقط مرورگر!</li>
+  </ul>
+  <div class="box tip"><b>چرا Cloudflare Worker؟</b>سرور مبدأ ندارد، پلن رایگان روزانه ۱۰۰٬۰۰۰ درخواست می‌دهد، دامنه‌ی <code>workers.dev</code> رایگان و TLS خودکار است. همه‌ی داده‌ها در حساب خودتان می‌ماند.</div>
+
+  <h2 id="oneclick">روش ۱ · نصب یک‌کلیکی با Workers Builds <span class="en" style="font-size:.6em;color:var(--pencil2)">Recommended</span></h2>
+  <p>Cloudflare ریپو را در حساب گیت‌هاب شما فورک می‌کند، Worker و دیتابیس D1 را می‌سازد و با هر تغییر خودکار دیپلوی می‌کند.</p>
+  <p style="margin:16px 0"><a class="btn" href="https://deploy.workers.cloudflare.com/?url=https://github.com/azadipanell/Nika-Net" target="_blank"><svg viewBox="0 0 24 24"><path d="M16.5 8A5.5 5.5 0 006 9.2 4 4 0 007 17h9.5a4.5 4.5 0 000-9z"/></svg> Deploy to Cloudflare</a></p>
+  <ol class="steps">
+    <li>روی دکمه بالا بزنید و با حساب Cloudflare و GitHub وارد شوید.</li>
+    <li>در صفحه‌ی تنظیمات، <b>Build command</b> را <code>npm run build</code> و <b>Deploy command</b> را <code>npx wrangler deploy</code> بگذارید.</li>
+    <li>بخش D1 را تأیید کنید تا دیتابیس <code>nika-net-db</code> با بایندینگ <code>DB</code> ساخته شود.</li>
+    <li>روی <b>Create and deploy</b> بزنید. بعد از ۱–۲ دقیقه آدرس Worker آماده است → به <a href="#after">بعد از نصب</a> بروید.</li>
+  </ol>
+
+  <h2 id="wrangler">روش ۲ · دیپلوی دستی با Wrangler</h2>
+  <p>مناسب توسعه‌دهنده‌ها. ترمینال را باز کنید:</p>
+  <pre><button class="cp">copy</button><code><span class="c"># 1) نصب و ورود</span>
+npm install -g wrangler
+wrangler login
+
+<span class="c"># 2) دریافت پروژه</span>
+git clone https://github.com/azadipanell/Nika-Net.git
+cd Nika-Net
+
+<span class="c"># 3) ساخت دیتابیس D1</span>
+wrangler d1 create nika-net-db
+<span class="c">#   ← database_id خروجی را در wrangler.toml قرار دهید</span>
+
+<span class="c"># 4) ساخت و دیپلوی</span>
+npm install
+npm run build
+npx wrangler deploy</code></pre>
+  <div class="box"><b>wrangler.toml</b>مطمئن شوید <code>main = "dist/_worker.js"</code> است و در بخش <code>[[d1_databases]]</code> مقدار <code>binding = "DB"</code> و <code>database_id</code> شما درج شده باشد.</div>
+
+  <h2 id="dashboard">روش ۳ · فقط با داشبورد Cloudflare (بدون نصب چیزی)</h2>
+  <ol class="steps">
+    <li>فایل <code>dist/_worker.js</code> را از <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank">Releases</a> دانلود کنید (یا خودتان <code>npm run build</code> بزنید).</li>
+    <li>در داشبورد Cloudflare: <b>Workers &amp; Pages → Create → Create Worker</b> → یک نام بدهید → <b>Deploy</b>.</li>
+    <li><b>Edit code</b> → کل محتوای فایل را جایگزین کد پیش‌فرض کنید → <b>Deploy</b>.</li>
+    <li><b>Workers &amp; Pages → D1 → Create database</b> با نام دلخواه بسازید.</li>
+    <li>در Worker: <b>Settings → Bindings → Add → D1 database</b>؛ نام متغیر را دقیقاً <code>DB</code> بگذارید و دیتابیس را انتخاب کنید.</li>
+    <li>(اختیاری) <b>Settings → Variables → Add secret</b> با نام <code>NIKA_CLAIM_TOKEN</code> تا فقط با توکن بتوان پنل را راه‌اندازی کرد.</li>
+    <li>آدرس Worker را باز کنید — صفحه‌ی خوش‌آمد لینک پنل را نشان می‌دهد.</li>
+  </ol>
+
+  <h2 id="after">بعد از نصب</h2>
+  <ol class="steps">
+    <li>روی لینک پنل در صفحه‌ی خوش‌آمد کلیک کنید.</li>
+    <li>نام کاربری و رمز مدیر (حداقل ۶ کاراکتر) را تعیین کنید.</li>
+    <li>به <b>تنظیمات</b> بروید:
+      <table><tr><th>گزینه</th><th>توضیح</th></tr>
+      <tr><td>دامنه‌ها</td><td>دامنه‌ی <code>workers.dev</code> خودکار هست؛ دامنه‌ی شخصی را در صورت اتصال اضافه کنید.</td></tr>
+      <tr><td>Clean IP</td><td>اگر IP تمیز دارید هر خط یکی؛ وگرنه خالی بگذارید تا از دامنه استفاده شود.</td></tr>
+      <tr><td>پورت‌ها</td><td>پیش‌فرض <code>443, 80</code>. برای TLS فقط پورت‌های امن Cloudflare.</td></tr>
+      <tr><td>مسیرها</td><td>مسیر پنل و رله تصادفی‌اند؛ با یک کلیک قابل چرخش.</td></tr></table></li>
+    <li>در <b>کاربران</b> یک کاربر بسازید: نام، سهمیه حجم (GB)، تاریخ انقضا. لینک اشتراک + QR نمایش داده می‌شود.</li>
+    <li>لینک را برای کاربر بفرستید. تمام ✓</li>
+  </ol>
+  <div class="box tip"><b>نکته‌ی امنیتی</b>لینک پنل را جایی عمومی نگذارید. بازدیدکنندگان بدون مسیر درست فقط صفحه‌ی استتار می‌بینند.</div>
+
+  <h2 id="clients">اتصال کلاینت‌ها</h2>
+  <p>یک لینک اشتراک برای همه کافی است؛ فرمت به‌طور خودکار بر اساس کلاینت انتخاب می‌شود.</p>
+  <div class="tabs"><button class="on" data-t="a">اندروید</button><button data-t="i">iOS</button><button data-t="w">ویندوز</button><button data-t="m">مک / لینوکس</button></div>
+  <div class="pane on" id="p-a"><ul><li><b>v2rayNG</b>: منوی ⋮ → Add subscription → لینک را پیست کنید → Update.</li><li><b>Hiddify</b>: + → Add from clipboard.</li><li><b>Clash Meta / NekoBox</b>: پروفایل → URL → لینک اشتراک.</li></ul></div>
+  <div class="pane" id="p-i"><ul><li><b>Streisand</b> یا <b>Hiddify</b>: افزودن اشتراک با لینک.</li><li><b>Shadowrocket</b>: + → Type: Subscribe → URL.</li><li><b>Sing-box</b>: Profiles → New → Remote → لینک.</li></ul></div>
+  <div class="pane" id="p-w"><ul><li><b>Hiddify Next</b>، <b>v2rayN</b>، <b>Clash Verge</b>: افزودن اشتراک / پروفایل با لینک.</li></ul></div>
+  <div class="pane" id="p-m"><ul><li><b>Clash Verge</b>، <b>Hiddify Next</b>، <b>sing-box</b> CLI: پروفایل ریموت با لینک اشتراک.</li></ul></div>
+  <p>خروجی‌های اختصاصی هم در دسترس‌اند: <code>?format=clash</code> · <code>?format=singbox</code> · <code>?format=base64</code></p>
+
+  <h2 id="bot">ربات تلگرام</h2>
+  <p>ربات <a href="https://t.me/NikaNettbot" target="_blank"><b>@NikaNettbot</b></a> لانچر پنل است: پنل را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس‌های تصادفی نباشد.</p>
+  <p style="margin:12px 0"><a class="btn" href="https://t.me/NikaNettbot" target="_blank">✈ اجرای ربات</a> <a class="btn line" href="https://t.me/shahyad_asr" target="_blank">کانال اطلاع‌رسانی</a></p>
+
+  <h2 id="trouble">عیب‌یابی</h2>
+  <h3>تنظیمات ذخیره نمی‌شود</h3><p>بایندینگ D1 دقیقاً با نام <code>DB</code> ساخته شده باشد و Worker بعد از افزودن بایندینگ دوباره دیپلوی شده باشد.</p>
+  <h3>اتصال برقرار نمی‌شود</h3><p>در تنظیمات، حالت TLS و پورت‌ها را با دامنه هماهنگ کنید. برای <code>workers.dev</code> فقط TLS + پورت 443. اگر Clean IP وارد کرده‌اید، یک‌بار خالی کنید و تست بگیرید.</p>
+  <h3>صفحه‌ی خوش‌آمد را از دست دادم و مسیر پنل را نمی‌دانم</h3>
+  <pre><button class="cp">copy</button><code>wrangler d1 execute nika-net-db --command "SELECT value FROM kv WHERE key='panel_settings'"</code></pre>
+  <p>فیلد <code>panelPath</code> مسیر پنل است. یا در داشبورد D1 → Console همین کوئری را اجرا کنید.</p>
+  <h3>خطای 1101 / Worker threw exception</h3><p>معمولاً بایندینگ D1 نیست یا فایل <code>_worker.js</code> ناقص پیست شده. لاگ را در <b>Workers → Logs</b> ببینید.</p>
+  <h3>حجم مصرفی درست شمرده نمی‌شود</h3><p>شمارش با کمی تأخیر (batch) انجام می‌شود؛ چند دقیقه صبر کنید. در پلن رایگان، محدودیت CPU-time نیز می‌تواند بر دقت اثر بگذارد.</p>
+
+  <h2 id="update">به‌روزرسانی</h2>
+  <ul>
+    <li><b>روش ۱</b>: در فورک خود <b>Sync fork</b> بزنید؛ Cloudflare خودکار دیپلوی می‌کند.</li>
+    <li><b>روش ۲</b>: <code>git pull && npm run build && npx wrangler deploy</code></li>
+    <li><b>روش ۳</b>: فایل جدید <code>_worker.js</code> را از Releases بگیرید و دوباره پیست کنید. داده‌ها در D1 محفوظ می‌ماند.</li>
+  </ul>
+  <p>تغییرات هر نسخه در <a href="https://github.com/azadipanell/Nika-Net/blob/main/CHANGELOG.md" target="_blank">CHANGELOG</a> و کانال <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a> اعلام می‌شود.</p>
+</article>
+</div>
+
+<footer><a href="../">خانه</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">GitHub</a> · <a href="https://t.me/NikaNettbot" target="_blank">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a><br><span class="en">© 2025–2026 SHAHYAD · MIT</span></footer>
+
+<script>
+  const html=document.documentElement;
+  document.getElementById('themeBtn').onclick=()=>{const d=html.dataset.theme==='dark'?'light':'dark';html.dataset.theme=d;localStorage.setItem('theme',d)};
+  document.querySelectorAll('.cp').forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(b.parentElement.innerText.replace(/^copy\n?/,'').trim());b.textContent='✓';setTimeout(()=>b.textContent='copy',1200)});
+  document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('p-'+b.dataset.t).classList.add('on')});
+  const hs=[...document.querySelectorAll('article h2')],as=[...document.querySelectorAll('aside a')];
+  addEventListener('scroll',()=>{let c=hs[0].id;hs.forEach(h=>{if(scrollY>=h.offsetTop-120)c=h.id});as.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+c))},{passive:true});
+</script>
+</body>
+</html>
