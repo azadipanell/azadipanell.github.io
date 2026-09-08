@@ -2,7 +2,7 @@
 <script>(function(){var C="shahyad.dpdns.org",h=location.hostname;if(h===C||!("fetch"in window))return;if(h!=="azadipanell.github.io"&&!/^[a-z0-9-]+\.pages\.dev$/.test(h))return;var to="https://"+C+location.pathname+location.search+location.hash;fetch("https://"+C+"/robots.txt",{mode:"cors",cache:"no-store"}).then(function(r){if(r.ok)location.replace(to)}).catch(function(){})})()</script>
 <script>(function(){var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script>
 <style>
-@font-face{font-family:V;src:url(/fonts/Vazirmatn-Regular.woff2) format("woff2");font-display:swap}@font-face{font-family:V;src:url(/fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}@font-face{font-family:C;src:url(/fonts/Cormorant-SemiBold.woff2) format("woff2");font-display:swap}@font-face{font-family:M;src:url(/fonts/Markazi-Bold.woff2) format("woff2");font-display:swap}
+@font-face{font-family:V;src:url(/fonts/Vazirmatn-Regular.woff2) format("woff2");font-display:swap}@font-face{font-family:V;src:url(/fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}@font-face{font-family:C;src:url(/fonts/Fraunces-var.woff2) format("woff2");font-display:swap}@font-face{font-family:JB;src:url(/fonts/JBMono-var.woff2) format("woff2");font-display:swap}@font-face{font-family:M;src:url(/fonts/Markazi-Bold.woff2) format("woff2");font-display:swap}
 :root{--paper:#f3efe6;--ink:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--amber:#8a6a34;--amber2:rgba(138,106,52,.14);--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
 html[data-theme=dark]{--paper:#1f2229;--ink:#efe9dc;--pencil:#cfc8b8;--pencil2:#8f8a7c;--pencil3:#4d5160;--amber:#e7b36a;--amber2:rgba(231,179,106,.18);color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -22,7 +22,7 @@ p.lead{color:var(--pencil);margin:8px auto 24px;max-width:480px}
 .card:hover{transform:translateY(-3px) rotate(-.4deg);border-color:var(--amber);box-shadow:4px 6px 0 var(--amber2)}
 .card i{display:block;width:30px;height:30px;margin:0 auto 6px;color:var(--amber)}.card i svg{width:100%;height:100%}
 .card b{display:block;font-size:.98rem}.card small{display:block;color:var(--pencil2);font-size:.76rem;line-height:1.5}
-.path{display:inline-block;font-family:Consolas,Menlo,monospace;direction:ltr;font-size:.8rem;color:var(--pencil2);border-bottom:1px dashed var(--pencil3);margin-bottom:22px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
+.path{display:inline-block;font-family:JB,Consolas,Menlo,monospace;direction:ltr;font-size:.8rem;color:var(--pencil2);border-bottom:1px dashed var(--pencil3);margin-bottom:22px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
 .hint{display:none;margin:-10px auto 22px;padding:10px 16px;border:1.5px dashed var(--amber);border-radius:var(--sk);color:var(--pencil);font-size:.9rem;max-width:520px;background:var(--amber2)}
 .hint.show{display:block}.hint a{color:var(--amber);font-weight:700}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 26px;border:1.5px solid var(--ink);border-radius:var(--sk);color:var(--paper);background:var(--ink);text-decoration:none;transition:.25s;font-weight:500}

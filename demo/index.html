@@ -12,7 +12,8 @@
 @font-face{font-family:"Vazirmatn";src:url(/fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Vazirmatn";src:url(/fonts/Vazirmatn-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Vazirmatn";src:url(/fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:600 700;font-display:swap}
-@font-face{font-family:"Cormorant";src:url(/fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(/fonts/Fraunces-var.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"JBMono";src:url(/fonts/JBMono-var.woff2) format("woff2");font-weight:400;font-display:swap}
 /* ============ Nika Net theme — vintage ink · antique gold · parchment ============ */
 :root{
   --bg:#0e0c09;
@@ -32,7 +33,7 @@
   --warn:#d8b15f;
   --bad:#d98a6f;
   --radius:14px;
-  --serif:"Cormorant","Didot","Bodoni MT","Playfair Display",Georgia,serif;
+  --serif:"Fraunces","Didot","Bodoni MT","Playfair Display",Georgia,serif;
   --sans:"Vazirmatn",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -124,8 +125,8 @@ tr:hover td{background:rgba(201,168,106,.03)}
 .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;border-radius:99px;font-size:11px;font-weight:700;border:1px solid}
 .badge.ok{background:rgba(156,184,120,.12);color:var(--ok);border-color:rgba(156,184,120,.35)}
 .badge.off{background:rgba(217,138,111,.12);color:var(--bad);border-color:rgba(217,138,111,.35)}
-.mono{font-family:ui-monospace,"Cascadia Code",Menlo,monospace;font-size:11.5px;color:var(--gold);direction:ltr;display:inline-block;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
-.link-sub{direction:ltr;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);display:block;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mono{font-family:"JBMono",ui-monospace,"Cascadia Code",Menlo,monospace;font-size:11.5px;color:var(--gold);direction:ltr;display:inline-block;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+.link-sub{direction:ltr;font-family:"JBMono",ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);display:block;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .row-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
@@ -143,7 +144,7 @@ tr:hover td{background:rgba(201,168,106,.03)}
 .empty{text-align:center;color:var(--muted);padding:42px 0;font-size:14px}
 .logline{padding:10px 12px;border-bottom:1px solid rgba(201,168,106,.08);font-size:12px;color:var(--muted);display:flex;gap:12px;align-items:baseline}
 .logline b{color:var(--text);font-weight:600}
-.logline time{color:var(--gold);font-family:monospace;white-space:nowrap}
+.logline time{color:var(--gold);font-family:"JBMono",monospace;white-space:nowrap}
 .copy-btn{cursor:pointer;color:var(--gold);background:none;border:0;font-size:14px;padding:2px 5px}
 .copy-btn:hover{color:var(--gold2)}
 .menu-btn{display:none}

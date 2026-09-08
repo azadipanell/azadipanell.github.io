@@ -19,7 +19,8 @@
 <style>
   @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Vazirmatn";src:url(../fonts/Vazirmatn-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"Cormorant";src:url(../fonts/Cormorant-SemiBold.woff2) format("woff2");font-weight:600;font-display:swap}
+  @font-face{font-family:"Fraunces";src:url(../fonts/Fraunces-var.woff2) format("woff2");font-weight:600;font-display:swap}
+  @font-face{font-family:"JBMono";src:url(../fonts/JBMono-var.woff2) format("woff2");font-weight:400;font-display:swap}
   :root{--paper:#f3efe6;--paper2:#ebe5d8;--graphite:#2b2a27;--pencil:#4a4843;--pencil2:#77746c;--pencil3:#a7a39a;--amber:#8a6a34;--sk:255px 15px 225px 15px/15px 225px 15px 255px;--sk2:15px 255px 15px 225px/225px 15px 255px 15px}
   html[data-theme="light"] article h2::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'><path d='M1 4c30-3 60-4 118-1' fill='none' stroke='%238a6a34' stroke-width='1.4' stroke-linecap='round'/></svg>")}
   html[data-theme="light"] aside a.act::before{color:var(--amber)}
@@ -49,7 +50,7 @@
   body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
   html[data-theme="dark"] body::after{filter:invert(1);opacity:.18}
   a{color:var(--graphite)}
-  .en{font-family:"Cormorant",Georgia,serif;letter-spacing:.3em;text-transform:uppercase}
+  .en{font-family:"Fraunces",Georgia,serif;letter-spacing:.3em;text-transform:uppercase}
   nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1.5px solid var(--pencil)}
   nav .in{max-width:1180px;margin:0 auto;padding:0 22px;height:64px;display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
@@ -80,8 +81,8 @@
   article p,article li{color:var(--pencil)}
   article ol,article ul{padding-right:24px;margin:8px 0 12px}
   article li{margin:4px 0}
-  code{background:rgba(127,127,127,.15);padding:1px 6px;border-radius:4px;font-size:.9em;direction:ltr;unicode-bidi:embed;font-family:Consolas,Menlo,monospace}
-  pre{background:color-mix(in srgb,var(--paper) 70%,#fff);border:1.5px solid var(--pencil);border-radius:8px;padding:18px;direction:ltr;text-align:left;overflow-x:auto;font-size:.88rem;line-height:1.7;font-family:Consolas,Menlo,monospace;box-shadow:3px 4px 0 rgba(43,42,39,.12);margin:12px 0 18px;position:relative;color:var(--graphite)}
+  code{background:rgba(127,127,127,.15);padding:1px 6px;border-radius:4px;font-size:.9em;direction:ltr;unicode-bidi:embed;font-family:"JBMono",Consolas,Menlo,monospace}
+  pre{background:color-mix(in srgb,var(--paper) 70%,#fff);border:1.5px solid var(--pencil);border-radius:8px;padding:18px;direction:ltr;text-align:left;overflow-x:auto;font-size:.88rem;line-height:1.7;font-family:"JBMono",Consolas,Menlo,monospace;box-shadow:3px 4px 0 rgba(43,42,39,.12);margin:12px 0 18px;position:relative;color:var(--graphite)}
   
   pre code{background:none;padding:0}
   pre .c{color:var(--pencil3)}
@@ -93,7 +94,7 @@
   .box.tip{border-style:dashed}
   .steps{counter-reset:s;list-style:none;padding:0}
   .steps li{position:relative;padding-right:46px;margin:14px 0}
-  .steps li::before{counter-increment:s;content:counter(s);position:absolute;right:0;top:2px;width:32px;height:32px;border:1.5px solid var(--graphite);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Cormorant",serif;font-weight:600;color:var(--graphite)}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;right:0;top:2px;width:32px;height:32px;border:1.5px solid var(--graphite);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Fraunces",serif;font-weight:600;color:var(--graphite)}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border:1.5px solid var(--graphite);border-radius:var(--sk);text-decoration:none;font-weight:500;transition:.25s;background:var(--graphite);color:var(--paper)}
   .btn:hover{transform:translateY(-2px) rotate(-.5deg)}
   .btn.line{background:none;color:var(--graphite)}
