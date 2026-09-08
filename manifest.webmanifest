@@ -1,0 +1,21 @@
+{
+  "name": "شهیاد | SHAHYAD — Nika Net",
+  "short_name": "SHAHYAD",
+  "description": "پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان — Nika Net by SHAHYAD",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3efe6",
+  "theme_color": "#f3efe6",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "مستندات نصب", "url": "/docs/", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] },
+    { "name": "صندوق پیشنهادات", "url": "/#feedback", "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

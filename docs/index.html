@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مستندات نیکا نت — راهنمای نصب و عیب‌یابی | شهیاد</title>
-<meta name="description" content="راهنمای کامل فارسی نصب Nika Net روی Cloudflare Workers: دیپلوی یک‌کلیکی، Wrangler، داشبورد، تنظیمات بعد از نصب و عیب‌یابی.">
+<meta name="description" content="راهنمای کامل فارسی Nika Net روی Cloudflare Workers: نصب یک‌کلیکی، دامنهٔ شخصی، Clean IP، بکاپ و بازیابی D1، ریست رمز ادمین، محدودیت‌های پلن رایگان، نصب و عیب‌یابی.">
 <link rel="canonical" href="https://shahyad.dpdns.org/docs/">
 <meta property="og:title" content="مستندات نیکا نت | شهیاد">
 <meta property="og:description" content="راهنمای فارسی نصب و راه‌اندازی Nika Net روی Cloudflare Worker رایگان">
@@ -108,16 +108,28 @@
   footer{border-top:1.5px solid var(--pencil);padding:28px 22px;text-align:center;color:var(--pencil2);font-size:.85rem}
   footer a{margin:0 8px}
   @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  #q{width:100%;border:1.5px solid var(--pencil);border-radius:var(--sk);background:rgba(255,255,255,.4);padding:8px 12px;font:inherit;font-size:.9rem;color:var(--graphite);margin-bottom:12px;outline:none}
+  #q:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(138,106,52,.14)}
+  html[data-theme="dark"] #q{background:rgba(255,255,255,.04)}
+  #qres{margin:-4px 0 12px;font-size:.85rem}
+  #qres a{display:block;padding:5px 8px;border:1px dashed var(--pencil3);border-radius:8px;margin-bottom:6px;color:var(--graphite);text-decoration:none;line-height:1.5}
+  #qres a:hover{border-color:var(--amber)}#qres a b{color:var(--amber);font-weight:500}#qres a small{display:block;color:var(--pencil2);font-size:.75rem}
+  #qres .none{color:var(--pencil2);padding:4px 8px}
+  mark.hl{background:rgba(138,106,52,.28);color:inherit;border-radius:3px;padding:0 2px}html[data-theme="dark"] mark.hl{background:rgba(231,179,106,.3)}
+  @media(max-width:860px){#qres a{display:inline-block;margin-left:8px}}
 </style>
 </head>
 <body>
 <nav><div class="in">
   <a class="brand" href="../"><img src="../assets/shahyad-logo.jpg" alt=""> شهیاد <span class="en" style="font-size:.7rem;color:var(--pencil2)">Docs</span></a>
-  <div class="r"><a href="../">خانه</a><a href="../#faq">سؤالات</a><a href="https://github.com/azadipanell/Nika-Net" target="_blank">GitHub ↗</a><a href="https://t.me/shahyad_asr" target="_blank">کانال</a><button class="theme" id="themeBtn" aria-label="theme"><svg viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button></div>
+  <div class="r"><a href="../">خانه</a><a href="../#faq">سؤالات</a><a href="https://github.com/azadipanell/Nika-Net" target="_blank" rel="noopener">GitHub ↗</a><a href="https://t.me/shahyad_asr" target="_blank" rel="noopener">کانال</a><button class="theme" id="themeBtn" aria-label="theme"><svg viewBox="0 0 24 24"><path d="M21 13A9 9 0 1111 3a7 7 0 0010 10z"/></svg></button></div>
 </div></nav>
 
 <div class="layout">
 <aside>
+  <input id="q" type="search" placeholder="جستجو در راهنما… (/)" autocomplete="off" aria-label="search docs">
+  <div id="qres"></div>
   <div class="en t">Contents</div>
   <a href="#intro">پیش‌نیازها</a>
   <a href="#oneclick">روش ۱ · یک‌کلیکی</a>
@@ -126,6 +138,12 @@
   <a href="#after">بعد از نصب</a>
   <a href="#clients">اتصال کلاینت‌ها</a>
   <a href="#bot">ربات تلگرام</a>
+  <div class="en t" style="margin-top:14px">Advanced</div>
+  <a href="#domain">دامنهٔ شخصی</a>
+  <a href="#cleanip">Clean IP</a>
+  <a href="#backup">بکاپ و بازیابی</a>
+  <a href="#reset">ریست رمز ادمین</a>
+  <a href="#limits">محدودیت‌ها</a>
   <a href="#trouble">عیب‌یابی</a>
   <a href="#update">به‌روزرسانی</a>
 </aside>
@@ -136,7 +154,7 @@
 
   <h2 id="intro">پیش‌نیازها</h2>
   <ul>
-    <li>یک حساب رایگان <a href="https://dash.cloudflare.com/sign-up" target="_blank">Cloudflare</a> (بدون نیاز به کارت بانکی)</li>
+    <li>یک حساب رایگان <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Cloudflare</a> (بدون نیاز به کارت بانکی)</li>
     <li>برای روش ۱ و ۲: یک حساب GitHub و/یا Node.js نسخه ۱۸ به بالا</li>
     <li>برای روش ۳: فقط مرورگر!</li>
   </ul>
@@ -144,7 +162,7 @@
 
   <h2 id="oneclick">روش ۱ · نصب یک‌کلیکی با Workers Builds <span class="en" style="font-size:.6em;color:var(--pencil2)">Recommended</span></h2>
   <p>Cloudflare ریپو را در حساب گیت‌هاب شما فورک می‌کند، Worker و دیتابیس D1 را می‌سازد و با هر تغییر خودکار دیپلوی می‌کند.</p>
-  <p style="margin:16px 0"><a class="btn" href="https://deploy.workers.cloudflare.com/?url=https://github.com/azadipanell/Nika-Net" target="_blank"><svg viewBox="0 0 24 24"><path d="M16.5 8A5.5 5.5 0 006 9.2 4 4 0 007 17h9.5a4.5 4.5 0 000-9z"/></svg> Deploy to Cloudflare</a></p>
+  <p style="margin:16px 0"><a class="btn" href="https://deploy.workers.cloudflare.com/?url=https://github.com/azadipanell/Nika-Net" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M16.5 8A5.5 5.5 0 006 9.2 4 4 0 007 17h9.5a4.5 4.5 0 000-9z"/></svg> Deploy to Cloudflare</a></p>
   <ol class="steps">
     <li>روی دکمه بالا بزنید و با حساب Cloudflare و GitHub وارد شوید.</li>
     <li>در صفحه‌ی تنظیمات، <b>Build command</b> را <code>npm run build</code> و <b>Deploy command</b> را <code>npx wrangler deploy</code> بگذارید.</li>
@@ -174,7 +192,7 @@ npx wrangler deploy</code></pre>
 
   <h2 id="dashboard">روش ۳ · فقط با داشبورد Cloudflare (بدون نصب چیزی)</h2>
   <ol class="steps">
-    <li>فایل <code>dist/_worker.js</code> را از <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank">Releases</a> دانلود کنید (یا خودتان <code>npm run build</code> بزنید).</li>
+    <li>فایل <code>dist/_worker.js</code> را از <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank" rel="noopener">Releases</a> دانلود کنید (یا خودتان <code>npm run build</code> بزنید).</li>
     <li>در داشبورد Cloudflare: <b>Workers &amp; Pages → Create → Create Worker</b> → یک نام بدهید → <b>Deploy</b>.</li>
     <li><b>Edit code</b> → کل محتوای فایل را جایگزین کد پیش‌فرض کنید → <b>Deploy</b>.</li>
     <li><b>Workers &amp; Pages → D1 → Create database</b> با نام دلخواه بسازید.</li>
@@ -208,8 +226,83 @@ npx wrangler deploy</code></pre>
   <p>خروجی‌های اختصاصی هم در دسترس‌اند: <code>?format=clash</code> · <code>?format=singbox</code> · <code>?format=base64</code></p>
 
   <h2 id="bot">ربات تلگرام</h2>
-  <p>ربات <a href="https://t.me/NikaNettbot" target="_blank"><b>@NikaNettbot</b></a> لانچر پنل است: پنل را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس‌های تصادفی نباشد.</p>
-  <p style="margin:12px 0"><a class="btn" href="https://t.me/NikaNettbot" target="_blank">✈ اجرای ربات</a> <a class="btn line" href="https://t.me/shahyad_asr" target="_blank">کانال اطلاع‌رسانی</a></p>
+  <p>ربات <a href="https://t.me/NikaNettbot" target="_blank" rel="noopener"><b>@NikaNettbot</b></a> لانچر پنل است: پنل را مستقیم از تلگرام باز می‌کند تا نیازی به حفظ آدرس‌های تصادفی نباشد.</p>
+  <p style="margin:12px 0"><a class="btn" href="https://t.me/NikaNettbot" target="_blank" rel="noopener">✈ اجرای ربات</a> <a class="btn line" href="https://t.me/shahyad_asr" target="_blank" rel="noopener">کانال اطلاع‌رسانی</a></p>
+
+  <h2 id="domain">دامنهٔ شخصی (به‌جای workers.dev)</h2>
+  <p>دامنهٔ <code>*.workers.dev</code> در ایران به‌صورت دوره‌ای فیلتر می‌شود و بعضی اپراتورها SNI آن را می‌بندند. یک دامنهٔ شخصی روی Cloudflare این مشکل را عملاً حل می‌کند و اجازه می‌دهد از Clean IP هم استفاده کنید.</p>
+  <div class="box tip"><b>دامنهٔ رایگان کافی است</b>لازم نیست دامنه بخرید. <a href="https://dash.domain.digitalplat.org" target="_blank" rel="noopener">DigitalPlat</a> (پسوندهایی مثل <code>dpdns.org</code>)، <a href="https://nic.eu.org" target="_blank" rel="noopener">eu.org</a> یا <a href="https://www.duckdns.org" target="_blank" rel="noopener">DuckDNS</a> رایگان‌اند. همین سایت روی <code>shahyad.dpdns.org</code> است.</div>
+  <ol class="steps">
+    <li>در Cloudflare → <b>Add a site</b> دامنه را اضافه کنید (پلن Free) و دو NS داده‌شده را در پنل دامنه ثبت کنید. فعال شدن معمولاً چند دقیقه تا چند ساعت طول می‌کشد.</li>
+    <li>Cloudflare → <b>Workers &amp; Pages → nika-net → Settings → Domains &amp; Routes → Add → Custom domain</b> → مثلاً <code>nn.example.com</code>. رکورد DNS و گواهی TLS خودکار ساخته می‌شود.</li>
+    <li>اطمینان حاصل کنید که در DNS، رکورد دامنه <b>Proxied (ابر نارنجی)</b> است — بدون پروکسی، Worker اجرا نمی‌شود.</li>
+    <li><b>SSL/TLS → Overview → Full</b> (یا Full strict). حالت Flexible باعث حلقهٔ ریدایرکت می‌شود.</li>
+    <li>وارد پنل شوید (همان مسیر تصادفی قبلی، فقط روی دامنهٔ جدید) → <b>تنظیمات → دامنه‌ها</b> → دامنهٔ جدید را اضافه کنید و ذخیره کنید.</li>
+    <li>کاربران یک‌بار <b>Update subscription</b> بزنند تا کانفیگ‌ها با دامنهٔ جدید بیایند.</li>
+  </ol>
+  <div class="box"><b>اگر با Wrangler دیپلوی می‌کنید</b>می‌توانید دامنه را در <code>wrangler.toml</code> هم ثبت کنید تا با هر دیپلوی حفظ شود:
+  <pre><button class="cp">copy</button><code>routes = [
+  { pattern = "nn.example.com", custom_domain = true }
+]</code></pre></div>
+
+  <h2 id="cleanip">Clean IP — وقتی دامنه هست ولی وصل نمی‌شود</h2>
+  <p>گاهی دامنه سالم است ولی IPهایی که DNS به شما می‌دهد از سمت اپراتور کند یا مسدودند. کلاینت‌ها اجازه می‌دهند به‌جای IP پیش‌فرض، به یک IP دیگر از شبکهٔ Cloudflare وصل شوید و همچنان با SNI دامنهٔ شما دست بدهید. نیکا نت این کار را خودش در کانفیگ‌ها انجام می‌دهد؛ شما فقط IP را وارد می‌کنید.</p>
+  <ol class="steps">
+    <li>یک اسکنر Clean IP روی همان اینترنتی که کاربران دارند اجرا کنید (مثلاً <a href="https://github.com/MortezaBashsiz/CFScanner" target="_blank" rel="noopener">CFScanner</a> یا اسکنر داخلی Hiddify). هدف: IPهایی با تأخیر کم و بدون قطعی.</li>
+    <li>سه تا پنج IP بهتر را بردارید. IPهای رنج <code>104.x</code>، <code>172.6x</code> و <code>188.114.9x</code> معمولاً گزینه‌های خوبی هستند، ولی این‌ها با زمان و اپراتور عوض می‌شوند.</li>
+    <li>پنل → <b>تنظیمات → Clean IP</b> → هر خط یک IP (یا یک دامنهٔ CDN معتبر مثل <code>www.speedtest.net</code>). ذخیره کنید.</li>
+    <li>پنل برای هر IP یک نود جداگانه در لینک اشتراک می‌سازد؛ کاربر می‌تواند بین آن‌ها جابه‌جا شود یا Clash / Sing-box خودش بهترین را انتخاب کند.</li>
+  </ol>
+  <div class="box tip"><b>چند نکتهٔ مهم</b>
+    <ul style="margin-top:6px">
+      <li>Clean IP <b>مخصوص هر اپراتور</b> است؛ IPی که روی همراه اول عالی است شاید روی ایرانسل بد باشد. برای هر گروه کاربر جدا اسکن کنید.</li>
+      <li>روی دامنهٔ <code>workers.dev</code> هم کار می‌کند، ولی با دامنهٔ شخصی پایدارتر است.</li>
+      <li>IPها را هر چند هفته یک‌بار تازه کنید؛ کاربران فقط Update بزنند.</li>
+      <li>اگر می‌خواهید کاربر «هیچ کاری نکند»، از پورت‌های TLS متنوع Cloudflare استفاده کنید: <code>443, 2053, 2083, 2087, 2096, 8443</code>.</li>
+    </ul>
+  </div>
+
+  <h2 id="backup">بکاپ و بازیابی داده‌ها</h2>
+  <p>همهٔ داده‌های پنل در یک جدول ساده در D1 خودتان است: <code>kv</code> (کلیدهای <code>panel_settings</code> و <code>users</code>) و جدول <code>logs</code>. پس بکاپ یعنی چند خط JSON.</p>
+  <h3>خروجی گرفتن (backup)</h3>
+  <pre><button class="cp">copy</button><code># کل دیتابیس، شامل schema و داده (روش پیشنهادی)
+npx wrangler d1 export nika-net-db --remote --output nika-backup.sql
+
+# یا فقط داده‌های مهم به‌صورت JSON
+npx wrangler d1 execute nika-net-db --remote --json \
+  --command "SELECT key, value FROM kv" > nika-kv.json</code></pre>
+  <h3>بازیابی (restore) روی یک Worker تازه</h3>
+  <ol class="steps">
+    <li>نیکا نت را طبق راهنمای نصب بالا بیاورید، ولی صفحهٔ راه‌اندازی اولیه را <b>باز نکنید</b>.</li>
+    <li>فایل بکاپ را وارد کنید:
+      <pre><button class="cp">copy</button><code>npx wrangler d1 execute nika-net-db --remote --file nika-backup.sql</code></pre></li>
+    <li>Worker را یک‌بار دوباره دیپلوی کنید (یا چند دقیقه صبر کنید تا cache خالی شود). مسیر پنل و همهٔ کاربران همان قبلی‌ها هستند.</li>
+  </ol>
+  <div class="box tip"><b>بکاپ خودکار</b>یک GitHub Action هفتگی با همان دستور <code>d1 export</code> بسازید و خروجی را در یک ریپوی خصوصی commit کنید. سکرت لازم فقط <code>CLOUDFLARE_API_TOKEN</code> با مجوز D1 Edit است.</div>
+  <div class="box"><b>در داشبورد (بدون ترمینال)</b>Workers &amp; Pages → D1 → <code>nika-net-db</code> → <b>Console</b> → همان کوئری SELECT را اجرا و خروجی را کپی کنید. برای بازیابی، در Console اجرا کنید:
+  <pre><button class="cp">copy</button><code>INSERT OR REPLACE INTO kv (key, value, updated)
+VALUES ('users', '<i>&lt;متن JSON بکاپ&gt;</i>', strftime('%s','now') * 1000);</code></pre></div>
+
+  <h2 id="reset">رمز ادمین را فراموش کرده‌ام</h2>
+  <p>رمز در همان کلید <code>panel_settings</code> ذخیره است. با یک دستور می‌توانید آن را عوض کنید:</p>
+  <pre><button class="cp">copy</button><code>npx wrangler d1 execute nika-net-db --remote --command \
+  "UPDATE kv SET value = json_set(value, '$.adminPass', 'NEW-STRONG-PASS') WHERE key = 'panel_settings'"</code></pre>
+  <p>برای دیدن نام کاربری و مسیر پنل:</p>
+  <pre><button class="cp">copy</button><code>npx wrangler d1 execute nika-net-db --remote --json --command \
+  "SELECT json_extract(value,'$.adminUser') AS user, json_extract(value,'$.panelPath') AS panel FROM kv WHERE key='panel_settings'"</code></pre>
+  <div class="box tip"><b>اگر لینک پنل لو رفته</b>بعد از ورود، در تنظیمات دکمهٔ <b>چرخش مسیرها</b> را بزنید؛ مسیر پنل و رله هم‌زمان عوض می‌شوند و لینک‌های اشتراک قدیمی از کار می‌افتند (کاربران باید لینک جدید بگیرند).</div>
+
+  <h2 id="limits">محدودیت‌های پلن رایگان (صادقانه)</h2>
+  <table>
+    <tr><th>مورد</th><th>پلن رایگان</th><th>در عمل یعنی</th></tr>
+    <tr><td>درخواست‌ها</td><td>۱۰۰٬۰۰۰ در روز</td><td>هر اتصال WebSocket یک درخواست است؛ برای ده‌ها کاربر معمولی کافی است.</td></tr>
+    <tr><td>CPU</td><td>۱۰ ms برای هر درخواست</td><td>رلهٔ داده روی CPU حساب نمی‌شود، ولی handshake و ساخت اشتراک می‌شود. استریم سنگین چند نفره ممکن است قطع شود.</td></tr>
+    <tr><td>D1</td><td>۵ GB فضا · ۵ میلیون خواندن در روز</td><td>هیچ‌وقت به آن نمی‌رسید.</td></tr>
+    <tr><td>UDP</td><td>پشتیبانی نمی‌شود</td><td>تماس صوتی/تصویری و بعضی بازی‌ها روان نیستند. WARP در نقشهٔ راه است.</td></tr>
+    <tr><td>اتصال به IP خام</td><td>ممنوع</td><td>Worker به مقصدهایی که IP هستند (نه دامنه) وصل نمی‌شود؛ بعضی اپ‌ها این‌طور کار می‌کنند و از پراکسی رد نمی‌شوند.</td></tr>
+    <tr><td>Cloudflare داخلی</td><td>ممنوع</td><td>سایت‌هایی که خودشان پشت Cloudflare هستند از داخل Worker قابل رله نیستند (خطای 1003). راه‌حل معمول: Clean IP + پورت‌های متنوع سمت کلاینت.</td></tr>
+  </table>
+  <p style="margin-top:10px">اگر از این‌ها رد شدید: پلن ۵ دلاری Workers (۱۰ میلیون درخواست، ۳۰ ثانیه CPU) گزینهٔ بعدی است و نیکا نت بدون تغییر روی آن کار می‌کند.</p>
 
   <h2 id="trouble">عیب‌یابی</h2>
   <h3>تنظیمات ذخیره نمی‌شود</h3><p>بایندینگ D1 دقیقاً با نام <code>DB</code> ساخته شده باشد و Worker بعد از افزودن بایندینگ دوباره دیپلوی شده باشد.</p>
@@ -218,6 +311,9 @@ npx wrangler deploy</code></pre>
   <pre><button class="cp">copy</button><code>wrangler d1 execute nika-net-db --command "SELECT value FROM kv WHERE key='panel_settings'"</code></pre>
   <p>فیلد <code>panelPath</code> مسیر پنل است. یا در داشبورد D1 → Console همین کوئری را اجرا کنید.</p>
   <h3>خطای 1101 / Worker threw exception</h3><p>معمولاً بایندینگ D1 نیست یا فایل <code>_worker.js</code> ناقص پیست شده. لاگ را در <b>Workers → Logs</b> ببینید.</p>
+  <h3>خطای 1003 یا «Direct IP access not allowed»</h3><p>مقصد یا IP خام است یا خودش پشت Cloudflare است؛ محدودیت پلتفرم است نه باگ. کاربر را به Clean IP و پورت دیگر هدایت کنید و اگر همچنان لازم بود، آن سرویس را از پراکسی مستثنی کند.</p>
+  <h3>روی یک اپراتور وصل می‌شود، روی اپراتور دیگر نه</h3><p>تقریباً همیشه مسئلهٔ Clean IP است. برای آن اپراتور جداگانه اسکن کنید (<a href="#cleanip">راهنما</a>) و چند پورت TLS مختلف در تنظیمات فعال کنید.</p>
+  <h3>بعد از افزودن دامنهٔ شخصی، صفحهٔ Cloudflare 522/525 می‌بینم</h3><p>SSL/TLS را روی <b>Full</b> بگذارید (نه Flexible) و مطمئن شوید رکورد DNS «Proxied» است و دامنه در Workers → Domains &amp; Routes ثبت شده.</p>
   <h3>حجم مصرفی درست شمرده نمی‌شود</h3><p>شمارش با کمی تأخیر (batch) انجام می‌شود؛ چند دقیقه صبر کنید. در پلن رایگان، محدودیت CPU-time نیز می‌تواند بر دقت اثر بگذارد.</p>
 
   <h2 id="update">به‌روزرسانی</h2>
@@ -226,11 +322,11 @@ npx wrangler deploy</code></pre>
     <li><b>روش ۲</b>: <code>git pull && npm run build && npx wrangler deploy</code></li>
     <li><b>روش ۳</b>: فایل جدید <code>_worker.js</code> را از Releases بگیرید و دوباره پیست کنید. داده‌ها در D1 محفوظ می‌ماند.</li>
   </ul>
-  <p>تغییرات هر نسخه در <a href="https://github.com/azadipanell/Nika-Net/blob/main/CHANGELOG.md" target="_blank">CHANGELOG</a> و کانال <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a> اعلام می‌شود.</p>
+  <p>تغییرات هر نسخه در <a href="https://github.com/azadipanell/Nika-Net/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG</a> و کانال <a href="https://t.me/shahyad_asr" target="_blank" rel="noopener">@shahyad_asr</a> اعلام می‌شود.</p>
 </article>
 </div>
 
-<footer><a href="../">خانه</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">GitHub</a> · <a href="https://t.me/NikaNettbot" target="_blank">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a><br><span class="en">© 2025–2026 SHAHYAD · MIT</span></footer>
+<footer><a href="../">خانه</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank" rel="noopener">GitHub</a> · <a href="https://t.me/NikaNettbot" target="_blank" rel="noopener">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank" rel="noopener">@shahyad_asr</a><br><span class="en">© 2025–2026 SHAHYAD · MIT</span></footer>
 
 <script>
   const html=document.documentElement;
@@ -243,6 +339,27 @@ npx wrangler deploy</code></pre>
   document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.pane').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('p-'+b.dataset.t).classList.add('on')});
   const hs=[...document.querySelectorAll('article h2')],as=[...document.querySelectorAll('aside a')];
   addEventListener('scroll',()=>{let c=hs[0].id;hs.forEach(h=>{if(scrollY>=h.offsetTop-120)c=h.id});as.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+c))},{passive:true});
+</script>
+
+<script>
+(function(){
+  const q=document.getElementById('q'),res=document.getElementById('qres'),art=document.querySelector('article');if(!q||!art)return;
+  const idx=[];let cur=null;
+  art.querySelectorAll('h2,h3,p,li,td,pre').forEach(el=>{if(el.tagName==='H2'){cur={id:el.id,title:el.textContent.trim(),h3:''};return}if(!cur)return;if(el.tagName==='H3'){cur={id:cur.id,title:cur.title,h3:el.textContent.trim()};return}const t=el.textContent.replace(/\s+/g,' ').trim();if(t.length>12)idx.push({id:cur.id,title:cur.title,h3:cur.h3,t,el})});
+  const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let marks=[];const clear=()=>{marks.forEach(m=>{const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()});marks=[]};
+  function run(){const v=q.value.trim().toLowerCase();clear();if(v.length<2){res.innerHTML='';return}
+    const seen=new Set(),out=[];for(const it of idx){const i=it.t.toLowerCase().indexOf(v);if(i<0)continue;const k=it.id+'|'+it.h3;if(seen.has(k))continue;seen.add(k);
+      const a=Math.max(0,i-40),b=Math.min(it.t.length,i+v.length+60);const snip=esc(it.t.slice(a,i))+'<b>'+esc(it.t.slice(i,i+v.length))+'</b>'+esc(it.t.slice(i+v.length,b));
+      out.push(`<a href="#${it.id}" data-el><small>${esc(it.title)}${it.h3?' › '+esc(it.h3):''}</small>${a?'…':''}${snip}${b<it.t.length?'…':''}</a>`);if(out.length>=8)break}
+    res.innerHTML=out.length?out.join(''):'<div class="none">چیزی پیدا نشد — در <a href="https://t.me/shahyad_asr" target="_blank" rel="noopener">کانال</a> بپرسید.</div>';
+    // highlight in article
+    const rx=new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+    idx.filter(it=>rx.test(it.t)).slice(0,40).forEach(it=>{const w=document.createTreeWalker(it.el,NodeFilter.SHOW_TEXT);const nodes=[];while(w.nextNode())nodes.push(w.currentNode);nodes.forEach(n=>{if(!rx.test(n.nodeValue))return;rx.lastIndex=0;const frag=document.createDocumentFragment();let last=0,m;while((m=rx.exec(n.nodeValue))){frag.appendChild(document.createTextNode(n.nodeValue.slice(last,m.index)));const mk=document.createElement('mark');mk.className='hl';mk.textContent=m[0];frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length}frag.appendChild(document.createTextNode(n.nodeValue.slice(last)));n.parentNode.replaceChild(frag,n)})})}
+  let t;q.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(run,120)});
+  addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();q.focus()}if(e.key==='Escape'&&document.activeElement===q){q.value='';run();q.blur()}});
+  const u=new URLSearchParams(location.search).get('q');if(u){q.value=u;run()}
+})();
 </script>
 </body>
 </html>

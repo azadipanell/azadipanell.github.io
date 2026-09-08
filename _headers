@@ -7,6 +7,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://shahyad.dpdns.org; font-src 'self'; connect-src 'self' https://api.github.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
 
 # Lets the old github.io / pages.dev hosts probe this file to confirm the canonical domain is live
 /robots.txt
@@ -23,3 +25,7 @@
 /api/*
   Cache-Control: no-store
   X-Robots-Tag: noindex
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=86400
