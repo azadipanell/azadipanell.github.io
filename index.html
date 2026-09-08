@@ -977,6 +977,174 @@
   html[data-theme="dark"] .fb-like.on{color:#1f2229}
   html[data-theme="dark"] .fb-card .badge{color:#1f2229}
   @media(prefers-reduced-motion:reduce){.fb-track{animation:none;flex-wrap:wrap;width:auto}.fb-wall .fb-card{animation:none;opacity:1;transform:none}}
+
+  /* ═══════════ WOW PASS II · signature hero, ink reveals, depth, motion ═══════════ */
+  /* — giant self-drawing wordmark behind the hero — */
+  .wm-wrap{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .wm{position:absolute;fill:none;stroke:var(--pencil3);stroke-width:6;stroke-linejoin:round;stroke-linecap:round;opacity:.55;
+    stroke-dasharray:2400;stroke-dashoffset:2400;transition:stroke-dashoffset 3.4s cubic-bezier(.4,0,.2,1) .3s,fill .9s ease 3.2s}
+  .wm.wm-fa{width:min(92vw,1180px);top:50%;left:50%;transform:translate(-50%,-56%)}
+  .wm.wm-en{width:min(80vw,900px);left:50%;bottom:6%;transform:translateX(-50%);stroke-width:8;opacity:.32}
+  html[data-lang="en"] .wm.wm-fa{display:none}
+  html[data-lang="en"] .wm.wm-en{top:50%;bottom:auto;transform:translate(-50%,-50%);width:min(96vw,1280px);opacity:.42}
+  html:not([data-lang="en"]) .wm.wm-en{display:none}
+  body.ready .wm{stroke-dashoffset:0;fill:rgba(43,42,39,.025)}
+  html[data-theme="dark"] .wm{stroke:rgba(231,179,106,.28);filter:drop-shadow(0 0 14px rgba(231,179,106,.18))}
+  html[data-theme="dark"] body.ready .wm{fill:rgba(231,179,106,.028)}
+  html[data-theme="light"] .wm{stroke:rgba(138,106,52,.34)}
+  @media(max-width:860px){.wm.wm-fa{width:150vw;top:22%;transform:translate(-50%,-30%)}.wm.wm-en{display:none!important}}
+  /* — hero copy: word-by-word entrance — */
+  .hero-copy{position:relative}
+  html.js .hero h1 .w{display:inline-block;opacity:0;transform:translateY(.35em) rotate(1.5deg);filter:blur(4px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.8,.2,1),filter .7s ease}
+  body.ready .hero h1 .w{opacity:1;transform:none;filter:none}
+  body.ready .hero h1 .w:nth-child(1){transition-delay:.25s}body.ready .hero h1 .w:nth-child(2){transition-delay:.38s}
+  body.ready .hero h1 .w:nth-child(3){transition-delay:.5s}body.ready .hero h1 .w:nth-child(4){transition-delay:.62s}
+  /* light ink: heading gets a subtle graphite-to-bronze gradient */
+  html[data-theme="light"] h1>span[data-fa],html[data-theme="light"] h1>span[data-en]{background:linear-gradient(120deg,var(--graphite) 55%,#6f5528);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  html[data-theme="dark"] h1>span[data-fa],html[data-theme="dark"] h1>span[data-en]{background:linear-gradient(120deg,#f1ebdc 40%,var(--amber));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 22px rgba(231,179,106,.22))}
+  /* — scroll cue — */
+  .cue{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--pencil2);font-size:.62rem;opacity:0;transition:opacity 1s ease 1.6s;z-index:2}
+  body.ready .cue{opacity:.85}
+  .cue i{width:1px;height:38px;background:linear-gradient(var(--pencil2),transparent);position:relative;overflow:hidden;display:block}
+  .cue i::after{content:"";position:absolute;left:-2px;top:-6px;width:5px;height:5px;border-radius:50%;background:var(--amber);animation:cue 1.8s ease-in-out infinite}
+  @keyframes cue{0%{transform:translateY(0);opacity:0}30%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+  @media(max-width:860px){.cue{display:none}}
+  /* — buttons: ink-fill sweep + pencil shadow — */
+  .btn{overflow:hidden;isolation:isolate}
+  .btn::before{content:"";position:absolute;inset:-2px -35%;background:var(--amber);transform:translateX(-100%) skewX(-14deg);transition:transform .45s cubic-bezier(.4,0,.2,1);z-index:-1;opacity:.95}
+  html[dir="rtl"] .btn::before{transform:translateX(100%) skewX(14deg)}
+  .btn:hover::before{transform:translateX(0) skewX(-14deg)}
+  html[dir="rtl"] .btn:hover::before{transform:translateX(0) skewX(14deg)}
+  .btn.line:hover{color:var(--amber-ink,#fff);border-color:var(--amber);background:transparent}
+  .btn.dark:hover{background:var(--graphite)}
+  html[data-theme="dark"] .btn.line:hover{color:#1f2229}
+  html[data-theme="dark"] .btn.dark:hover{background:var(--amber)}
+  html[data-theme="dark"] .btn.dark::before{background:#f0c37f}
+  /* — section headings: ink underline draws on reveal, chapter numeral pulses once — */
+  h2.in::before{animation:numin 1s ease both}
+  @keyframes numin{from{opacity:0;letter-spacing:.9em;transform:translateX(50%) translateY(-6px)}to{opacity:.85;letter-spacing:.45em}}
+  html[data-lang="en"] h2.in::before{animation:numin-en 1s ease both}
+  @keyframes numin-en{from{opacity:0;letter-spacing:.9em;transform:translateX(-50%) translateY(-6px)}to{opacity:.85;letter-spacing:.45em}}
+  /* — cards: layered paper edges + hover lift with bronze corner mark — */
+  .card,.step,.member,.tg-card{position:relative}
+  .card::after,.step::after,.member::after,.tg-card::after{content:"";position:absolute;width:26px;height:26px;border:1.5px solid var(--amber);border-radius:0 0 12px 0;opacity:0;transition:opacity .35s,transform .35s;pointer-events:none;transform:translate(6px,6px)}
+  html[dir="rtl"] .card::after,html[dir="rtl"] .step::after,html[dir="rtl"] .member::after,html[dir="rtl"] .tg-card::after{left:10px;bottom:10px;border-width:0 0 1.5px 1.5px;border-radius:0 0 0 12px;transform:translate(-6px,6px)}
+  html[dir="ltr"] .card::after,html[dir="ltr"] .step::after,html[dir="ltr"] .member::after,html[dir="ltr"] .tg-card::after{right:10px;bottom:10px;border-width:0 1.5px 1.5px 0}
+  .card:hover::after,.step:hover::after,.member:hover::after,.tg-card:hover::after{opacity:1;transform:none}
+  .step{transition:transform .35s ease,box-shadow .3s}
+  .step:hover{transform:translateY(-4px) rotate(.3deg);box-shadow:4px 6px 0 rgba(43,42,39,.12)}
+  html[data-theme="light"] .step:hover{box-shadow:6px 8px 0 rgba(138,106,52,.22);border-color:rgba(138,106,52,.65)}
+  /* — spot illustrations: gentle float — */
+  .card .spot{animation:floaty 6s ease-in-out infinite}
+  .card:nth-child(2) .spot{animation-delay:-1.5s}.card:nth-child(3) .spot{animation-delay:-3s}.card:nth-child(4) .spot{animation-delay:-4.5s}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+  .card:hover .spot{animation-play-state:paused}
+  /* — tech chips: staggered pop-in, bronze ink on hover — */
+  .tech span{opacity:0;transform:translateY(10px) rotate(-2deg);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1),background .25s,color .25s,border-color .25s}
+  .tech.in span{opacity:1;transform:none}
+  .tech.in span:nth-child(1){transition-delay:.02s}.tech.in span:nth-child(2){transition-delay:.07s}.tech.in span:nth-child(3){transition-delay:.12s}.tech.in span:nth-child(4){transition-delay:.17s}.tech.in span:nth-child(5){transition-delay:.22s}
+  .tech.in span:nth-child(6){transition-delay:.27s}.tech.in span:nth-child(7){transition-delay:.32s}.tech.in span:nth-child(8){transition-delay:.37s}.tech.in span:nth-child(9){transition-delay:.42s}.tech.in span:nth-child(10){transition-delay:.47s}
+  .tech.in span:hover{transform:rotate(-1.5deg) translateY(-3px)}
+  /* — roadmap: living timeline — the dashed spine draws in, done-dots get a bronze check, next item breathes — */
+  .road{position:relative}
+  .road li{opacity:0;transform:translateX(-14px);transition:opacity .6s ease,transform .6s ease}
+  html[dir="ltr"] .road li{transform:translateX(14px)}
+  .road.in li{opacity:1;transform:none}
+  .road.in li:nth-child(1){transition-delay:.05s}.road.in li:nth-child(2){transition-delay:.15s}.road.in li:nth-child(3){transition-delay:.25s}.road.in li:nth-child(4){transition-delay:.35s}.road.in li:nth-child(5){transition-delay:.45s}.road.in li:nth-child(6){transition-delay:.55s}.road.in li:nth-child(7){transition-delay:.65s}
+  .road li.done::before{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px var(--amber2)}
+  .road li.done::after{content:"";position:absolute;right:-4px;top:27px;width:5px;height:3px;border:solid var(--amber-ink,#fff);border-width:0 0 1.5px 1.5px;transform:rotate(-45deg)}
+  html[dir="ltr"] .road li.done::after{right:auto;left:-4px}
+  .road li.done+li:not(.done)::before{animation:nextpulse 2.4s ease-in-out infinite;border-color:var(--amber)}
+  @keyframes nextpulse{0%,100%{box-shadow:0 0 0 0 rgba(138,106,52,.35)}50%{box-shadow:0 0 0 7px rgba(138,106,52,0)}}
+  .road li.done+li:not(.done){font-weight:500}
+  .road li.done+li:not(.done)::marker{content:none}
+  .road li.done+li:not(.done) .next{display:inline-block;font-family:"Cormorant",serif;letter-spacing:.25em;font-size:.62rem;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber);border-radius:99px;padding:0 8px;margin-inline-start:8px;vertical-align:middle}
+  /* — FAQ: answers unfold with ink — */
+  details p{animation:unfold .45s ease both}
+  @keyframes unfold{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  details[open] summary{color:var(--amber)}
+  /* — team: portrait ring draws on hover — */
+  .member .ph{position:relative}
+  .member .ph::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px dashed var(--amber);opacity:0;transform:rotate(-30deg) scale(.92);transition:opacity .4s,transform .6s cubic-bezier(.2,.8,.2,1)}
+  .member:hover .ph::after{opacity:1;transform:rotate(0) scale(1)}
+  /* — plate & fig: soft parallax hover shine — */
+  .plate,.how .fig{transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+  .plate:hover{transform:rotate(0) translateY(-4px);box-shadow:10px 14px 0 rgba(43,42,39,.14)}
+  html[data-theme="dark"] .plate:hover{box-shadow:0 30px 70px rgba(0,0,0,.65),0 0 0 6px rgba(255,255,255,.03)}
+  /* — marquee: bronze separators glow in dark, slower & calmer — */
+  .mq-track{animation-duration:58s}
+  html[data-theme="dark"] .mq i{color:var(--amber);text-shadow:0 0 10px rgba(231,179,106,.5)}
+  /* — footer: signature + ornament — */
+  footer .sig-line{display:block;margin:6px auto 14px;width:220px;height:auto;fill:none;stroke:var(--pencil2);stroke-width:1.2;stroke-linecap:round;opacity:.8}
+  html[data-theme="dark"] footer .sig-line{stroke:var(--amber)}
+  footer .made{font-size:.78rem;color:var(--pencil2);margin-top:6px}
+  footer .made b{font-weight:500;color:var(--pencil)}
+  /* — blockquote: bigger quote marks in bronze, hand-drawn frame — */
+  html[data-theme="light"] blockquote::before,html[data-theme="light"] blockquote::after{color:rgba(138,106,52,.35)}
+  html[data-theme="dark"] blockquote::before,html[data-theme="dark"] blockquote::after{color:rgba(231,179,106,.35)}
+  /* — nav: active link gets a bronze ink dot — */
+  nav ul a.act{color:var(--graphite)}
+  nav ul a.act::before{content:"";position:absolute;top:-9px;left:50%;width:4px;height:4px;border-radius:50%;background:var(--amber);transform:translateX(-50%)}
+  html[data-theme="dark"] nav ul a.act{color:#f1ebdc}
+  /* — grain sparkle in dark: tiny drifting stars over the whole page — */
+  html[data-theme="dark"] body::after{opacity:.35}
+  #stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 1.2s}
+  html[data-theme="dark"] #stars{opacity:1}
+  /* — sketch → reality wipe on the project frame — */
+  .frame.etch{--cut:100}
+  .frame .reveal{position:absolute;inset:12px;overflow:hidden;clip-path:inset(0 0 0 calc(var(--cut)*1%));pointer-events:none}
+  .frame .reveal .real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:none;border-radius:2px}
+  .frame .reveal .seam{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--amber);box-shadow:0 0 12px rgba(138,106,52,.6)}
+  .frame .cut{position:absolute;inset:12px;width:calc(100% - 24px);height:calc(100% - 24px);margin:0;opacity:0;cursor:ew-resize;direction:ltr;-webkit-appearance:none;appearance:none;background:transparent;z-index:3}
+  .frame .cut::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%}
+  .frame .cut::-moz-range-thumb{width:44px;height:100%;border:0;background:transparent}
+  .frame .knob{position:absolute;top:50%;left:calc(12px + (100% - 24px) * var(--cut) / 100);transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--paper);border:1.5px solid var(--amber);display:grid;place-items:center;color:var(--amber);font-size:.7rem;letter-spacing:0;pointer-events:none;box-shadow:2px 3px 0 rgba(43,42,39,.15);transition:transform .2s;z-index:2}
+  .frame:hover .knob{transform:translate(-50%,-50%) scale(1.08)}
+  html[data-theme="dark"] .frame .knob{background:#1f2229;border-color:var(--amber)}
+  .frame .hint{position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-1deg);font-size:.72rem;color:var(--pencil2);background:var(--paper);border:1px solid var(--pencil3);padding:2px 12px;border-radius:var(--sk);white-space:nowrap;opacity:0;transition:opacity .5s ease 1.2s;z-index:2}
+  .frame.in .hint{opacity:1}
+  .frame.peeked .hint{opacity:0;transition-delay:0s}
+  html[data-theme="dark"] .frame .hint{background:#1f2229}
+  .frame .hint::before{content:"✎ ";color:var(--amber)}
+  .frame .reveal .real{opacity:0;transition:opacity .4s}
+  .frame.in .reveal .real{opacity:1}
+  @media(prefers-reduced-motion:no-preference){.frame.in:not(.peeked) .reveal,.frame.in:not(.peeked) .knob{animation:peek 2.6s cubic-bezier(.4,0,.2,1) .8s 1}}
+  @keyframes peek{0%{--cut:100}45%{--cut:58}100%{--cut:100}}
+  @property --cut{syntax:"<number>";inherits:true;initial-value:100}
+  /* — tech constellation — */
+  .sky{position:relative;justify-content:center}
+  .sky .links{display:none}
+  .sky .cap{display:block;width:100%;text-align:center;font-size:.62rem;color:var(--pencil2);margin-top:18px;font-weight:400;letter-spacing:.25em;border:0;background:none;padding:0;box-shadow:none;transform:none!important;position:static}
+  .sky .cap span{border:0;background:none;padding:0;box-shadow:none;position:static;transform:none!important;opacity:1;white-space:normal;color:inherit;font-weight:400}
+  .sky .cap span::before,.sky .cap span::after{display:none}
+  .sky .cap [data-fa]{font-family:"Vazirmatn",sans-serif;letter-spacing:0;text-transform:none;font-size:.78rem}
+  @media(min-width:900px){
+    .sky{display:block;height:300px;max-width:1000px;margin-inline:auto}
+    .sky .links{display:block;position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--pencil3);stroke-width:1.2;overflow:visible}
+    .sky .links line{stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.6s ease}
+    .sky.in .links line{stroke-dashoffset:0}
+    .sky .links line:nth-child(2n){transition-delay:.2s}.sky .links line:nth-child(3n){transition-delay:.4s}
+    .sky span{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) translateY(10px) rotate(-2deg);margin:0;white-space:nowrap;background:var(--paper)}
+    .sky.in span{transform:translate(-50%,-50%)}
+    .sky.in span:hover{transform:translate(-50%,-50%) rotate(-1.5deg) translateY(-3px)}
+    .sky span::before{content:"";position:absolute;inset:-6px;border:1px solid var(--pencil3);border-radius:var(--sk2);opacity:0;transition:opacity .3s}
+    .sky span:hover::before{opacity:.8}
+    .sky span[data-k="core"]{border-color:var(--amber);color:var(--amber);font-weight:500;box-shadow:0 0 0 4px var(--amber2)}
+    .sky span[data-k="core"]::after{content:"✦";position:absolute;top:-11px;right:-6px;font-size:.7rem;color:var(--amber);animation:twinkle 2.6s ease-in-out infinite}
+    .sky span:nth-child(3)::after{animation-delay:-.8s}.sky span:nth-child(8)::after{animation-delay:-1.6s}.sky span:nth-child(9)::after{animation-delay:-2.2s}
+    @keyframes twinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+    .sky .cap{position:absolute;left:0;right:0;bottom:-34px;margin:0;opacity:0;transition:opacity .8s ease 1.2s}
+    .sky.in .cap{opacity:1}
+    html[data-theme="dark"] .sky span{background:#1f2229}
+    html[data-theme="dark"] .sky .links{stroke:rgba(231,179,106,.35)}
+    html[data-theme="light"] .sky .links{stroke:rgba(138,106,52,.45)}
+    #tech{padding-bottom:110px}
+  }
+  /* — reduced motion — */
+  @media(prefers-reduced-motion:reduce){
+    .wm{transition:none;stroke-dashoffset:0}.sky .links line{transition:none;stroke-dashoffset:0}.hero h1 .w{transition:none;opacity:1;transform:none;filter:none}
+    .card .spot{animation:none}.tech span,.road li{opacity:1;transform:none;transition:none}.cue i::after{animation:none}.road li.done+li:not(.done)::before{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -1019,8 +1187,9 @@
 </nav>
 
 <header class="hero">
+  <div class="wm-wrap" aria-hidden="true"><svg class="wm wm-fa" viewBox="0 0 4103 1677" aria-hidden="true" focusable="false"><path transform="translate(-60 1210) scale(1 -1)" d="M455 -14Q336 -14 260.0 21.5Q184 57 145.5 132.0Q107 207 100 326L216 383Q232 283 286.0 253.0Q340 223 463 223Q503 223 551.0 225.5Q599 228 655 232Q678 234 688.0 242.0Q698 250 698 261Q698 273 689.0 293.0Q680 313 666 336Q633 394 583.0 461.0Q533 528 477.5 593.5Q422 659 370 712L510 857Q575 785 637.0 699.0Q699 613 748.5 523.5Q798 434 823 350Q845 278 845 221Q845 147 814 85Q801 57 782.5 38.0Q764 19 744 14Q714 7 664.0 0.5Q614 -6 558.5 -10.0Q503 -14 455 -14Z"/><path transform="translate(835 1210) scale(1 -1)" d="M454 0Q358 0 304.5 28.5Q251 57 214 112Q196 142 185.5 180.0Q175 218 168.0 271.5Q161 325 153 401Q142 507 130.0 607.5Q118 708 103.5 821.0Q89 934 70 1078L242 1088Q254 978 265.0 853.5Q276 729 285.5 619.0Q295 509 300 442Q305 366 314.5 323.0Q324 280 349 260Q378 235 454 235ZM454 0V235Q494 235 511.5 208.5Q529 182 529 115Q529 54 510.0 27.0Q491 0 454 0Z"/><path transform="translate(1289 1210) scale(1 -1)" d="M443 -427 270 -299 377 -163 548 -291ZM162 -427 -11 -299 96 -163 267 -291ZM0 0V235H276Q311 235 316.0 249.0Q321 263 311 314L258 586L409 595Q437 498 463.5 381.5Q490 265 490 161L434 235H576V0H553Q494 0 441.0 13.5Q388 27 361 44H475Q423 17 334.5 8.5Q246 0 101 0ZM576 0V235Q616 235 633.5 208.5Q651 182 651 115Q651 54 632.0 27.0Q613 0 576 0ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235Z"/><path transform="translate(1865 1210) scale(1 -1)" d="M897 0Q808 0 733.5 3.0Q659 6 583 25V207Q660 229 734.0 232.0Q808 235 897 235ZM0 0V235H213L178 0ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235ZM897 0V235Q937 235 954.5 208.5Q972 182 972 115Q972 54 953.0 27.0Q934 0 897 0ZM499 -413Q398 -413 317.0 -367.0Q236 -321 188.5 -233.5Q141 -146 141 -20Q141 79 171.5 207.5Q202 336 257.5 479.0Q313 622 389 763H471Q485 748 522.0 700.5Q559 653 601.0 586.5Q643 520 673.0 446.0Q703 372 703 305Q703 238 674.0 196.0Q645 154 618 128V123Q701 82 745.5 12.5Q790 -57 790 -143Q790 -258 713.5 -335.5Q637 -413 499 -413ZM519 -189Q536 -189 568.0 -186.0Q600 -183 625 -171Q665 -154 665 -122Q665 -96 635 -66Q611 -42 572.5 -25.0Q534 -8 483.0 1.0Q432 10 370 7L171 -1L269 85Q260 49 260 17Q260 -83 336.5 -136.0Q413 -189 519 -189ZM285 161 254 230Q287 228 315.5 226.5Q344 225 373 225Q463 225 516.5 242.0Q570 259 570 299Q570 329 542.0 381.0Q514 433 465.5 491.0Q417 549 357 596L461 586Q415 500 364.0 384.0Q313 268 285 161Z"/><path transform="translate(2762 1210) scale(1 -1)" d="M588 943 752 821 651 692 488 814ZM856 943 1020 821 919 692 755 814ZM679 1170 843 1048 742 919 579 1041ZM577 -11Q485 -11 411.5 -1.5Q338 8 267 30L311 29Q271 12 225.0 6.0Q179 0 80 0H0V235H163Q212 235 233.5 253.5Q255 272 268 339L317 599L465 572L419 296Q415 269 410.0 246.5Q405 224 399 206L383 235Q423 230 470.5 227.0Q518 224 577 224Q654 224 678.0 238.0Q702 252 702 304L704 560H854L857 302Q858 253 890.5 239.0Q923 225 1017 225Q1070 225 1104.0 229.5Q1138 234 1156 242Q1172 249 1172 269Q1172 286 1159 320Q1141 364 1106.5 432.0Q1072 500 1024 573L1167 668Q1222 591 1261.5 479.0Q1301 367 1301 261Q1301 175 1268.0 115.0Q1235 55 1173.0 24.5Q1111 -6 1023 -6Q970 -6 926.0 -0.5Q882 5 844.0 17.5Q806 30 768 52L815 54Q769 19 712.5 4.0Q656 -11 577 -11ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235Z"/></svg><svg class="wm wm-en" viewBox="0 0 4674 728" aria-hidden="true" focusable="false"><path transform="translate(-32 676) scale(1 -1)" d="M164 518Q164 479 184.0 450.5Q204 422 235.5 399.0Q267 376 302 354Q340 331 374.5 305.0Q409 279 431.5 245.5Q454 212 454 164Q454 112 427.0 72.5Q400 33 352.5 10.5Q305 -12 241 -12Q214 -12 184.5 -7.0Q155 -2 129.5 7.0Q104 16 88 26Q84 29 81.5 33.0Q79 37 78 45L72 196Q71 201 76.5 201.5Q82 202 83 198Q95 168 111.5 134.5Q128 101 150.0 73.0Q172 45 200.5 27.5Q229 10 266 10Q292 10 315.0 19.0Q338 28 353.0 50.5Q368 73 368 112Q368 159 346.5 192.5Q325 226 292.0 251.0Q259 276 223 298Q188 321 156.0 345.0Q124 369 103.5 400.5Q83 432 83 477Q83 532 113.0 567.0Q143 602 189.5 619.0Q236 636 285 636Q318 636 352.0 630.0Q386 624 410 613Q419 610 422.0 605.0Q425 600 425 594L427 459Q427 455 422.5 454.0Q418 453 416 456Q411 471 401.0 497.5Q391 524 373.0 551.0Q355 578 328.0 597.0Q301 616 262 616Q232 616 210.0 604.0Q188 592 176.0 570.5Q164 549 164 518Z"/><path transform="translate(475 676) scale(1 -1)" d="M553 542Q553 571 547.0 586.0Q541 601 523.0 607.0Q505 613 468 613Q465 613 465.0 619.0Q465 625 468 625Q493 625 525.5 623.5Q558 622 601 622Q636 622 670.0 623.5Q704 625 729 625Q732 625 732.0 619.0Q732 613 729 613Q694 613 676.5 607.5Q659 602 653.0 587.5Q647 573 647 544V81Q647 52 653.0 37.0Q659 22 676.5 17.0Q694 12 729 12Q732 12 732.0 6.0Q732 0 729 0Q704 0 670.0 1.0Q636 2 601 2Q558 2 525.5 1.0Q493 0 468 0Q465 0 465.0 6.0Q465 12 468 12Q505 12 523.0 17.0Q541 22 547.0 37.0Q553 52 553 81ZM158 312V338H596V312ZM114 81V544Q114 573 108.0 587.5Q102 602 85.0 607.5Q68 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 91.0 623.5Q123 622 158 622Q201 622 234.0 623.5Q267 625 293 625Q295 625 295.0 619.0Q295 613 293 613Q257 613 239.0 607.0Q221 601 215.0 586.0Q209 571 209 542V81Q209 52 215.0 37.0Q221 22 239.5 17.0Q258 12 293 12Q295 12 295.0 6.0Q295 0 293 0Q266 0 233.5 1.0Q201 2 158 2Q123 2 90.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q67 12 84.0 17.0Q101 22 107.5 37.0Q114 52 114 81Z"/><path transform="translate(1237 676) scale(1 -1)" d="M179 245 192 270H472L479 245ZM711 12Q715 12 715.0 6.0Q715 0 711 0Q681 0 649.5 2.0Q618 4 589 4Q556 4 531.5 2.0Q507 0 477 0Q473 0 473.0 6.0Q473 12 477 12Q522 12 531.0 28.0Q540 44 516 91L307 516L348 583L150 137Q124 76 148.5 44.0Q173 12 232 12Q237 12 237.0 6.0Q237 0 232 0Q202 0 177.0 2.0Q152 4 114 4Q76 4 53.5 2.0Q31 0 -2 0Q-6 0 -6.0 6.0Q-6 12 -2 12Q25 12 44.5 23.0Q64 34 83.0 63.5Q102 93 125 146L340 631Q342 634 349.0 634.0Q356 634 357 631L602 137Q625 89 643.0 61.5Q661 34 677.0 23.0Q693 12 711 12Z"/><path transform="translate(1948 676) scale(1 -1)" d="M553 542Q553 571 547.0 586.0Q541 601 523.0 607.0Q505 613 468 613Q465 613 465.0 619.0Q465 625 468 625Q493 625 525.5 623.5Q558 622 601 622Q636 622 670.0 623.5Q704 625 729 625Q732 625 732.0 619.0Q732 613 729 613Q694 613 676.5 607.5Q659 602 653.0 587.5Q647 573 647 544V81Q647 52 653.0 37.0Q659 22 676.5 17.0Q694 12 729 12Q732 12 732.0 6.0Q732 0 729 0Q704 0 670.0 1.0Q636 2 601 2Q558 2 525.5 1.0Q493 0 468 0Q465 0 465.0 6.0Q465 12 468 12Q505 12 523.0 17.0Q541 22 547.0 37.0Q553 52 553 81ZM158 312V338H596V312ZM114 81V544Q114 573 108.0 587.5Q102 602 85.0 607.5Q68 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 91.0 623.5Q123 622 158 622Q201 622 234.0 623.5Q267 625 293 625Q295 625 295.0 619.0Q295 613 293 613Q257 613 239.0 607.0Q221 601 215.0 586.0Q209 571 209 542V81Q209 52 215.0 37.0Q221 22 239.5 17.0Q258 12 293 12Q295 12 295.0 6.0Q295 0 293 0Q266 0 233.5 1.0Q201 2 158 2Q123 2 90.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q67 12 84.0 17.0Q101 22 107.5 37.0Q114 52 114 81Z"/><path transform="translate(2710 676) scale(1 -1)" d="M312 281 444 498Q476 550 468.5 581.5Q461 613 414 613Q412 613 412.0 619.0Q412 625 414 625Q445 625 472.0 623.5Q499 622 543 622Q568 622 583.5 623.5Q599 625 621 625Q623 625 623.0 619.0Q623 613 621 613Q600 613 573.0 597.5Q546 582 520.0 554.5Q494 527 471 490L332 265ZM270 273 109 519Q73 574 49.0 593.5Q25 613 3 613Q0 613 0.0 619.0Q0 625 3 625Q19 625 36.0 623.5Q53 622 68 622Q96 622 125.5 622.5Q155 623 181.5 624.0Q208 625 226 625Q228 625 228.0 619.0Q228 613 226 613Q193 613 186.0 596.0Q179 579 197 553L350 318ZM262 310 357 319V81Q357 52 362.0 37.0Q367 22 383.0 17.0Q399 12 432 12Q435 12 435.0 6.0Q435 0 432 0Q407 0 376.5 1.0Q346 2 309 2Q274 2 241.5 1.0Q209 0 184 0Q182 0 182.0 6.0Q182 12 184 12Q217 12 233.5 17.0Q250 22 256.0 37.0Q262 52 262 81Z"/><path transform="translate(3272 676) scale(1 -1)" d="M179 245 192 270H472L479 245ZM711 12Q715 12 715.0 6.0Q715 0 711 0Q681 0 649.5 2.0Q618 4 589 4Q556 4 531.5 2.0Q507 0 477 0Q473 0 473.0 6.0Q473 12 477 12Q522 12 531.0 28.0Q540 44 516 91L307 516L348 583L150 137Q124 76 148.5 44.0Q173 12 232 12Q237 12 237.0 6.0Q237 0 232 0Q202 0 177.0 2.0Q152 4 114 4Q76 4 53.5 2.0Q31 0 -2 0Q-6 0 -6.0 6.0Q-6 12 -2 12Q25 12 44.5 23.0Q64 34 83.0 63.5Q102 93 125 146L340 631Q342 634 349.0 634.0Q356 634 357 631L602 137Q625 89 643.0 61.5Q661 34 677.0 23.0Q693 12 711 12Z"/><path transform="translate(3983 676) scale(1 -1)" d="M318 -4Q287 -4 241.0 -1.0Q195 2 157 2Q121 2 89.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q64 12 81.0 17.0Q98 22 103.5 37.0Q109 52 109 81V544Q109 573 103.5 587.5Q98 602 82.0 607.5Q66 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 90.0 623.5Q121 622 157 622Q192 622 233.5 624.5Q275 627 304 627Q409 627 487.0 587.0Q565 547 608.0 478.0Q651 409 651 323Q651 248 625.0 187.5Q599 127 552.5 84.5Q506 42 445.5 19.0Q385 -4 318 -4ZM308 16Q377 16 430.0 49.0Q483 82 513.5 145.5Q544 209 544 301Q544 387 516.0 456.5Q488 526 436.5 566.5Q385 607 314 607Q255 607 229.5 596.0Q204 585 204 542V92Q204 53 224.0 34.5Q244 16 308 16Z"/></svg></div>
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <span class="eyebrow en">Est. 2025 · ASR1 × ASR2</span>
       <h1><span data-fa>شهیاد</span><span data-en>SHAHYAD</span><span class="en"><span data-fa>Shahyad · Configuration Panels</span><span data-en>Software Studio · Configuration Panels</span></span></h1>
       <p class="lead" data-fa>استودیو توسعه نرم‌افزار؛ ساخت ابزارها، سیستم‌ها و تجربه‌های دیجیتال مدرن. پروژه منتخب ما، <b>نیکا نت</b>؛ پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان.</p>
@@ -1062,6 +1231,7 @@
       <div class="stamp en" data-px=".06"><b>SHAHYAD</b>est. 2025 · Tehran</div>
     </div>
   </div>
+  <a class="cue" href="#about" aria-label="scroll"><span class="en">scroll</span><i></i></a>
 </header>
 
 <div class="mq" aria-hidden="true"><div class="mq-track"><span>VLESS</span><i>✦</i><span>Trojan</span><i>✦</i><span>WebSocket + TLS</span><i>✦</i><span>Clash / Mihomo</span><i>✦</i><span>Sing-box</span><i>✦</i><span>Base64</span><i>✦</i><span>Cloudflare Workers</span><i>✦</i><span>D1 / SQLite</span><i>✦</i><span>TypeScript</span><i>✦</i><span>VLESS</span><i>✦</i><span>Trojan</span><i>✦</i><span>WebSocket + TLS</span><i>✦</i><span>Clash / Mihomo</span><i>✦</i><span>Sing-box</span><i>✦</i><span>Base64</span><i>✦</i><span>Cloudflare Workers</span><i>✦</i><span>D1 / SQLite</span><i>✦</i><span>TypeScript</span><i>✦</i></div></div>
@@ -1173,7 +1343,7 @@
         <a class="btn line" href="https://t.me/NikaNettbot" target="_blank">✈ @NikaNettbot</a>
       </div>
     </div>
-    <div class="frame fade etch"><picture class="swap-day"><source srcset="assets/mockup.webp" type="image/webp"><img src="assets/mockup.jpg" alt="Nika Net panel — engraving" loading="lazy"></picture><img class="swap-night" src="assets/mockup-night.webp" alt="Nika Net panel — chalk drawing" loading="lazy"><span class="etch-cap en">Nika Net · sketch № 2</span></div>
+    <div class="frame fade etch"><picture class="swap-day"><source srcset="assets/mockup.webp" type="image/webp"><img src="assets/mockup.jpg" alt="Nika Net panel — engraving" loading="lazy"></picture><img class="swap-night" src="assets/mockup-night.webp" alt="Nika Net panel — chalk drawing" loading="lazy"><div class="reveal" aria-hidden="true"><img class="real" src="assets/panel-desktop.webp" alt="" loading="lazy"><i class="seam"></i></div><input class="cut" type="range" min="0" max="100" value="100" aria-label="sketch / reality"><span class="knob" aria-hidden="true">⇔</span><span class="etch-cap en">Nika Net · sketch № 2</span><span class="hint"><span data-fa>بکشید: از طرح تا واقعیت</span><span data-en>drag: sketch → reality</span></span></div>
   </div>
 <svg class="torn bot" viewBox="0 0 1200 22" preserveAspectRatio="none"><path d="M0 22V12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2V22z"/><path class="l" d="M0 12l24-4 30 6 28-8 36 5 30-7 40 8 34-6 30 4 38-8 30 7 36-4 30 6 40-9 32 6 30-4 36 7 30-8 40 5 34 4 30-7 38 8 30-5 36 3 30-8 40 6 32-3 30 7 36-8 30 4 38 5 30-8 40 6 30 2"/></svg></section>
 
@@ -1210,8 +1380,19 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 <section id="tech" style="padding-top:0">
   <div class="wrap">
     <h2 class="fade"><span data-fa>فناوری‌ها</span><span data-en>Stack</span><small class="en">Tools of the trade</small><svg class="ul" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 6c50 4 100-6 196 2"/></svg></h2>
-    <div class="tech fade" style="margin-top:40px">
-      <span>TypeScript</span><span>JavaScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>Python</span><span>Cloudflare Workers</span><span>D1 / SQLite</span><span>esbuild</span><span>Git</span>
+    <div class="tech fade sky" style="margin-top:40px" id="sky">
+      <svg class="links" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <span data-xy="50,52"  data-k="core">TypeScript</span>
+      <span data-xy="27,30"  data-k="core">JavaScript</span>
+      <span data-xy="14,68">React</span>
+      <span data-xy="30,86">Next.js</span>
+      <span data-xy="40,14">Node.js</span>
+      <span data-xy="6,26">Python</span>
+      <span data-xy="72,28" data-k="core">Cloudflare Workers</span>
+      <span data-xy="87,60" data-k="core">D1 / SQLite</span>
+      <span data-xy="64,80">esbuild</span>
+      <span data-xy="92,18">Git</span>
+      <b class="cap en"><span data-fa>نقشهٔ آسمانِ استودیو · ستاره‌های پررنگ‌تر = هستهٔ نیکا نت</span><span data-en>Studio star chart · brighter stars = the Nika Net core</span></b>
     </div>
   </div>
 </section>
@@ -1269,7 +1450,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       <li class="done">VLESS + Trojan روی WebSocket، چندکاربره با سهمیه و انقضا</li>
       <li class="done">اشتراک Base64 / Clash / Sing-box، QR، لاگ فعالیت، استتار</li>
       <li class="done">ربات لانچر تلگرام</li>
-      <li>WARP / WireGuard <small>تماس صوتی و تصویری روی UDP</small></li>
+      <li>WARP / WireGuard <span class="next">next</span><small>تماس صوتی و تصویری روی UDP</small></li>
       <li>DoH خصوصی و Fragment · ECH · اسکنر Clean-IP داخل پنل</li>
       <li>پراکسی زنجیره‌ای و ترنسپورت‌های gRPC / XHTTP</li>
     </ul>
@@ -1278,7 +1459,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       <li class="done">VLESS + Trojan over WebSocket, multi-user with quota & expiry</li>
       <li class="done">Base64 / Clash / Sing-box subs, QR, activity log, decoy</li>
       <li class="done">Telegram launcher bot</li>
-      <li>WARP / WireGuard <small>voice & video over UDP</small></li>
+      <li>WARP / WireGuard <span class="next">next</span><small>voice & video over UDP</small></li>
       <li>Private DoH, Fragment · ECH · in-panel Clean-IP scanner</li>
       <li>Chain proxy & gRPC / XHTTP transports</li>
     </ul>
@@ -1370,7 +1551,9 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     <div class="orn"><svg viewBox="0 0 520 28" preserveAspectRatio="none"><path d="M0 14h200M320 14h200"/><path d="M215 14c8-10 18-10 26 0s18 10 26 0 18-10 26 0"/><circle cx="260" cy="14" r="3"/><path d="M205 14l6-4v8zM315 14l-6-4v8z"/></svg></div>
     <div class="brand"><img src="assets/shahyad-logo.jpg" alt=""> <span data-fa>شهیاد</span><span data-en>SHAHYAD</span></div>
     <p><a href="https://github.com/azadipanell" target="_blank">GitHub</a> · <a href="https://github.com/azadipanell/Nika-Net" target="_blank">Nika Net</a> · <a href="docs/"><span data-fa>مستندات</span><span data-en>Docs</span></a> · <a href="https://github.com/azadipanell/Nika-Net/blob/main/LICENSE" target="_blank">MIT License</a> · <a href="https://t.me/NikaNettbot" target="_blank">@NikaNettbot</a> · <a href="https://t.me/shahyad_asr" target="_blank">@shahyad_asr</a></p>
+    <svg class="sig-line" viewBox="0 0 220 40" aria-hidden="true"><path d="M4 26c18-14 30-16 40-6s18 8 30-4 26-10 38 2 24 6 36-6 22-6 34 2 18 4 30-2" stroke-dasharray="320" stroke-dashoffset="320"><animate attributeName="stroke-dashoffset" from="320" to="0" dur="2.4s" begin="0s" fill="freeze"/></path><circle cx="212" cy="16" r="1.8" fill="currentColor"/></svg>
     <p class="en">© 2025–2026 SHAHYAD · Configuration Panels · Connecting Intelligence</p>
+    <p class="made"><span data-fa>طراحی و ساخت با مداد، کاغذ و Cloudflare · <b>تهران</b></span><span data-en>Drawn with pencil, paper and Cloudflare · <b>Tehran</b></span></p>
   </div>
 </footer>
 
@@ -1414,6 +1597,24 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
   setLang(localStorage.getItem('lang')||'fa');
   lb.onclick=()=>setLang(html.dataset.lang==='en'?'fa':'en');
 
+  // sketch → reality wipe
+  (function(){
+    const fr=document.querySelector('.frame.etch'),cut=fr&&fr.querySelector('.cut');if(!cut)return;
+    const set=v=>{fr.style.setProperty('--cut',v);fr.classList.add('peeked')};
+    cut.addEventListener('input',()=>set(cut.value));
+    cut.addEventListener('pointerdown',()=>fr.classList.add('peeked'));
+  })();
+  // tech constellation: position chips from data-xy and connect each star to its 2 nearest neighbours
+  (function(){
+    const sky=document.getElementById('sky');if(!sky)return;
+    const stars=[...sky.querySelectorAll('span[data-xy]')].map(el=>{const [x,y]=el.dataset.xy.split(',').map(Number);el.style.setProperty('--x',x+'%');el.style.setProperty('--y',y+'%');return {el,x:x*10,y:y*3}});
+    const svg=sky.querySelector('.links'),seen=new Set();let out='';
+    stars.forEach((a,i)=>{const nb=stars.map((b,j)=>({j,d:Math.hypot(a.x-b.x,(a.y-b.y)*1.2)})).filter(o=>o.j!==i).sort((p,q)=>p.d-q.d).slice(0,2);
+      nb.forEach(o=>{const k=[Math.min(i,o.j),Math.max(i,o.j)].join('-');if(seen.has(k))return;seen.add(k);const b=stars[o.j];out+=`<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`})});
+    svg.innerHTML=out;
+  })();
+  // split hero h1 into words for the staggered entrance
+  document.querySelectorAll('.hero h1>span[data-fa],.hero h1>span[data-en]').forEach(sp=>{const t=sp.textContent.trim();sp.innerHTML=t.split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ')});
   // preloader
   addEventListener('load',()=>{setTimeout(()=>{document.getElementById('pre').classList.add('hide');document.body.classList.add('ready')},1400)});
   setTimeout(()=>{document.getElementById('pre').classList.add('hide');document.body.classList.add('ready')},4000);
@@ -1672,6 +1873,24 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     window.__SS={go:y=>{target=clamp(y)}};
   })();
   if(window.__SS)topBtn.onclick=e=>{e.preventDefault();window.__SS.go(0)};
+
+  // ── night sky: sparse drifting stars (dark theme only, pauses when hidden) ──
+  (function(){
+    if(REDUCE)return;
+    const cv=document.createElement('canvas');cv.id='stars';document.body.appendChild(cv);const c=cv.getContext('2d');
+    let st=[],W=0,H=0,on=false;
+    const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;st=Array.from({length:Math.min(90,(W*H)/16000|0)},()=>({x:Math.random()*W,y:Math.random()*H,r:.4+Math.random()*1.1,a:Math.random()*6.28,s:.002+Math.random()*.004,v:.05+Math.random()*.12}))};
+    rs();addEventListener('resize',rs);
+    function tick(t){
+      if(html.dataset.theme!=='dark'||document.hidden){on=false;c.clearRect(0,0,W,H);return}
+      c.clearRect(0,0,W,H);
+      for(const p of st){p.a+=p.s*16;p.y-=p.v;if(p.y<-2){p.y=H+2;p.x=Math.random()*W}
+        const al=.25+.55*(.5+.5*Math.sin(p.a));c.globalAlpha=al;c.fillStyle='#e7b36a';c.beginPath();c.arc(p.x,p.y,p.r,0,6.28);c.fill()}
+      requestAnimationFrame(tick)}
+    const start=()=>{if(!on&&html.dataset.theme==='dark'&&!document.hidden){on=true;requestAnimationFrame(tick)}};
+    new MutationObserver(start).observe(html,{attributes:true,attributeFilter:['data-theme']});
+    addEventListener('visibilitychange',start);start();
+  })();
 
   // ── pencil dust particles ──
   (function(){
