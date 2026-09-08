@@ -22,6 +22,7 @@
 <meta property="og:locale" content="fa_IR"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SHAHYAD">
 <link rel="preload" href="fonts/Vazirmatn-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Vazirmatn-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Vazirmatn-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Markazi-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Katibeh.woff2" as="font" type="font/woff2" crossorigin>
@@ -1736,6 +1737,34 @@
   @keyframes sbattn{0%,100%{box-shadow:0 0 0 0 var(--amber2)}50%{box-shadow:0 0 0 6px transparent}}
   @media(max-width:700px){.sb-top{flex-direction:column;text-align:center}.sb-btn{margin:6px auto 0}.sb-share{margin:0 auto}}
   @media(prefers-reduced-motion:reduce){.sb-star,.gh .first-star{animation:none}.sb-meter i{transition:none}}
+  /* ═══════════ v2.2 · typography pass ═══════════ */
+  /* — balanced display, pretty body, hyphenated English — */
+  h1,h2,h3,.big-say .l{text-wrap:balance}
+  p.lead,p.sub,.card p,.step p,.tg-card p,details p,blockquote,.priv,.rel-item li{text-wrap:pretty}
+  html[data-lang="en"] p{-webkit-hyphens:auto;hyphens:auto}
+  /* — tabular numerals: counters never jitter — */
+  .stat b,.sb-count b,[data-c],[data-gh],.road-prog b,.rel-item .tag-v,.proof b{font-variant-numeric:tabular-nums}
+  /* — code voice: modern mono stack, no ligatures — */
+  pre,.term .tbody,code,.tg-card .handle,.shot .chrome b{font-family:ui-monospace,SFMono-Regular,"Cascadia Code","JetBrains Mono",Menlo,Consolas,"Liberation Mono",monospace;font-variant-ligatures:none}
+  code{font-size:.85em}
+  .term .tbody{font-size:.88rem;line-height:1.8}
+  /* — localized quotes: «» in Persian, “” in English — */
+  html:not([data-lang="en"]) blockquote::before{content:"\00AB"}
+  html:not([data-lang="en"]) blockquote::after{content:"\00BB";transform:none}
+  html[data-lang="en"] blockquote::before{content:"\201C"}
+  html[data-lang="en"] blockquote::after{content:"\201D";transform:none}
+  /* — fluid reading sizes — */
+  .lead{font-size:clamp(1.02rem,.9rem + .6vw,1.15rem)}
+  .sub{font-size:clamp(.98rem,.9rem + .4vw,1.06rem)}
+  .card h3{font-size:1.15rem}
+  /* — small latin labels: weight up for legibility — */
+  .rel-item time,.rel-item .latest{font-weight:600}
+  .cue{font-size:.68rem}
+  .term .tbar .en{font-size:.66rem;color:#8f8a7c}
+  /* — buttons & chips: calmer line box — */
+  .btn,.sh,.gh a{line-height:1.7}
+  /* — drop cap refine — */
+  .lead::first-letter{line-height:1;padding-inline-end:3px}
 </style>
 </head>
 <body>
