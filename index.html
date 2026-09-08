@@ -13,10 +13,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="شهیاد | SHAHYAD Configuration Panels">
 <meta property="og:description" content="پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان — Clash · Sing-box · Base64">
-<meta property="og:image" content="https://shahyad.dpdns.org/assets/og-v2.jpg">
+<meta property="og:image" content="https://shahyad.dpdns.org/assets/og-v3.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://shahyad.dpdns.org/">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://shahyad.dpdns.org/assets/og-v2.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://shahyad.dpdns.org/assets/og-v3.jpg">
 <meta name="theme-color" content="#f3efe6">
 <meta name="color-scheme" content="light dark">
 <meta property="og:locale" content="fa_IR"><meta property="og:locale:alternate" content="en_US"><meta property="og:site_name" content="SHAHYAD">
@@ -1709,6 +1709,33 @@
     .aurora{display:none}
     .orbit,.eyebrow .dot,.cmp thead th.us::after{animation:none}
   }
+  /* ═══════════ v2.1 · star band + share ═══════════ */
+  .starband{padding:0 0 88px}
+  .sb-card{padding:30px 34px}
+  .sb-top{display:flex;gap:18px;align-items:center}
+  .sb-star{font-size:2.6rem;color:var(--amber);line-height:1;flex:none;animation:sbwig 3.2s ease-in-out infinite;transform-origin:50% 20%}
+  @keyframes sbwig{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+  .sb-top h3{font-size:1.25rem;margin-bottom:2px}
+  .sb-top p{color:var(--pencil);font-size:.92rem}
+  .sb-btn{margin-inline-start:auto;flex:none}
+  .sb-bot{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+  .sb-meter{flex:1;min-width:140px;height:10px;border-radius:99px;background:rgba(0,0,0,.08);border:1px solid var(--pencil3);overflow:hidden}
+  html[data-theme="dark"] .sb-meter{background:rgba(255,255,255,.08)}
+  .sb-meter i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--amber),var(--amber-hi));box-shadow:0 0 12px rgba(196,154,74,.7);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+  html[data-theme="dark"] .sb-meter i{box-shadow:0 0 14px rgba(231,179,106,.8)}
+  .sb-count{font-size:.85rem;color:var(--pencil);white-space:nowrap}
+  .sb-count b{font-family:"Cormorant",serif;font-size:1.2rem;color:var(--amber)}
+  .sb-share{display:flex;gap:8px;flex-wrap:wrap;margin-inline-start:auto}
+  .sh{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:.8rem;padding:6px 14px;border:1.5px solid var(--pencil2);border-radius:99px;background:transparent;color:var(--pencil);cursor:pointer;transition:.25s;appearance:none;-webkit-appearance:none}
+  .sh:hover{border-color:var(--amber);color:var(--amber);transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(138,106,52,.6)}
+  html[data-theme="dark"] .sh:hover{box-shadow:0 10px 26px -8px rgba(231,179,106,.45)}
+  .sh-native{display:none}
+  .sh-native.on{display:inline-flex}
+  .share-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px;color:var(--pencil2);font-size:.88rem}
+  .gh .first-star{border-style:dashed;border-color:var(--amber);color:var(--amber);animation:sbattn 2.6s ease-in-out infinite}
+  @keyframes sbattn{0%,100%{box-shadow:0 0 0 0 var(--amber2)}50%{box-shadow:0 0 0 6px transparent}}
+  @media(max-width:700px){.sb-top{flex-direction:column;text-align:center}.sb-btn{margin:6px auto 0}.sb-share{margin:0 auto}}
+  @media(prefers-reduced-motion:reduce){.sb-star,.gh .first-star{animation:none}.sb-meter i{transition:none}}
 </style>
 </head>
 <body>
@@ -1771,6 +1798,7 @@
       <div class="gh" id="gh">
         <a class="zero" href="https://github.com/azadipanell/Nika-Net/stargazers" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><b data-gh="stars"></b><span data-fa>ستاره</span><span data-en>stars</span></a>
         <a class="zero" href="https://github.com/azadipanell/Nika-Net/network/members" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v3a3 3 0 003 3h6a3 3 0 003-3V7M12 13v4"/></svg><b data-gh="forks"></b><span data-fa>فورک</span><span data-en>forks</span></a>
+        <a class="first-star" href="https://github.com/azadipanell/Nika-Net" target="_blank" rel="noopener">★ <span data-fa>اولین استار رو تو بده</span><span data-en>Be the first to star</span></a>
         <a href="https://github.com/azadipanell/Nika-Net/releases" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 12l-8 8-8-8V4h8z"/><circle cx="9" cy="8" r="1.2"/></svg><b data-gh="ver">v0.1.0</b></a>
         <a href="https://github.com/azadipanell/Nika-Net/commits" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6"/></svg><span data-fa>آخرین تغییر:</span><span data-en>updated:</span> <b data-gh="date">–</b></a>
       </div>
@@ -1977,6 +2005,13 @@
         <iframe id="demoIf" title="Nika Net demo panel" loading="lazy" data-src="demo/"></iframe>
       </div>
       <div class="demo-hints"><span data-fa><b>کاربران ←</b> یک کاربر تازه بسازید</span><span data-en><b>Users →</b> create a new user</span><span data-fa><b>اشتراک ←</b> لینک و QR هر کاربر</span><span data-en><b>Share →</b> each user's link &amp; QR</span><span data-fa><b>تنظیمات ←</b> Clean IP و دامنه‌ها</span><span data-en><b>Settings →</b> Clean IPs &amp; hosts</span><span data-fa><b>لاگ‌ها ←</b> هر کاری کردید ثبت شده</span><span data-en><b>Logs →</b> everything you did is there</span></div>
+      <div class="share-row">
+        <span data-fa>به درد کسی می‌خوره؟ بفرست براش:</span><span data-en>Know someone who needs this? Send it:</span>
+        <a class="sh" data-fa href="https://t.me/share/url?url=https%3A%2F%2Fshahyad.dpdns.org%2F%23demo&amp;text=%D9%86%DB%8C%DA%A9%D8%A7%20%D9%86%D8%AA%20%E2%80%94%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D9%85%D8%AA%D9%86%E2%80%8C%D8%A8%D8%A7%D8%B2%20%D9%BE%D8%B1%D8%A7%DA%A9%D8%B3%DB%8C%20%D8%B1%D9%88%DB%8C%20Cloudflare%20Worker" target="_blank" rel="noopener">✈ تلگرام</a><a class="sh" data-en href="https://t.me/share/url?url=https%3A%2F%2Fshahyad.dpdns.org%2F%23demo&amp;text=Nika%20Net%20%E2%80%94%20free%2C%20open-source%20multi-user%20proxy%20panel%20on%20a%20Cloudflare%20Worker" target="_blank" rel="noopener">✈ Telegram</a>
+        <a class="sh" data-fa href="https://x.com/intent/tweet?url=https%3A%2F%2Fshahyad.dpdns.org%2F%23demo&amp;text=%D9%86%DB%8C%DA%A9%D8%A7%20%D9%86%D8%AA%20%E2%80%94%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D9%85%D8%AA%D9%86%E2%80%8C%D8%A8%D8%A7%D8%B2%20%D9%BE%D8%B1%D8%A7%DA%A9%D8%B3%DB%8C%20%D8%B1%D9%88%DB%8C%20Cloudflare%20Worker" target="_blank" rel="noopener">✕ ایکس</a><a class="sh" data-en href="https://x.com/intent/tweet?url=https%3A%2F%2Fshahyad.dpdns.org%2F%23demo&amp;text=Nika%20Net%20%E2%80%94%20free%2C%20open-source%20multi-user%20proxy%20panel%20on%20a%20Cloudflare%20Worker" target="_blank" rel="noopener">✕ Post</a>
+        <button class="sh sh-copy" type="button" data-url="https://shahyad.dpdns.org/#demo"><span data-fa>کپی لینک</span><span data-en>Copy link</span></button>
+        <button class="sh sh-native" type="button" data-url="https://shahyad.dpdns.org/#demo"><span data-fa>↗ اشتراک</span><span data-en>↗ Share</span></button>
+      </div>
     </div>
   </div>
 </section>
@@ -2284,6 +2319,31 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
 
 <blockquote class="fade"><span data-fa>ما فقط کد نمی‌نویسیم؛ آینده را می‌سازیم.</span><span data-en>We don't just write code; we build the future.</span><small><span data-fa>🏛️ شهیاد · تیم ASR</span><span data-en>🏛️ SHAHYAD · Team ASR</span></small></blockquote>
 
+<!-- STAR BAND · help us reach 100 stars -->
+<div class="starband fade">
+  <div class="wrap">
+    <div class="sb-card sketch">
+      <div class="sb-top">
+        <span class="sb-star" aria-hidden="true">★</span>
+        <div>
+          <h3><span data-fa>نیکا نت رایگانه — با یه استار حمایتش کن</span><span data-en>Nika Net is free — support it with a star</span></h3>
+          <p><span data-fa>هر استار یعنی یه نفر دیگه ما رو پیدا می‌کنه. به ۱۰۰ استار اول کمک کن:</span><span data-en>Every star helps someone new find us. Help us reach the first 100:</span></p>
+        </div>
+        <a class="btn dark sb-btn" href="https://github.com/azadipanell/Nika-Net" target="_blank" rel="noopener">★ <span data-fa>استار بده</span><span data-en>Star us</span></a>
+      </div>
+      <div class="sb-bot">
+        <div class="sb-meter" aria-hidden="true"><i id="starFill"></i></div>
+        <span class="sb-count"><b id="starNum">…</b> / 100</span>
+        <span class="sb-share">
+          <a class="sh" data-fa href="https://t.me/share/url?url=https%3A%2F%2Fshahyad.dpdns.org%2F&amp;text=%D9%86%DB%8C%DA%A9%D8%A7%20%D9%86%D8%AA%20%E2%80%94%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D9%85%D8%AA%D9%86%E2%80%8C%D8%A8%D8%A7%D8%B2%20%D9%BE%D8%B1%D8%A7%DA%A9%D8%B3%DB%8C%20%D8%B1%D9%88%DB%8C%20Cloudflare%20Worker" target="_blank" rel="noopener">✈ تلگرام</a><a class="sh" data-en href="https://t.me/share/url?url=https%3A%2F%2Fshahyad.dpdns.org%2F&amp;text=Nika%20Net%20%E2%80%94%20free%2C%20open-source%20multi-user%20proxy%20panel%20on%20a%20Cloudflare%20Worker" target="_blank" rel="noopener">✈ Telegram</a>
+          <a class="sh" data-fa href="https://x.com/intent/tweet?url=https%3A%2F%2Fshahyad.dpdns.org%2F&amp;text=%D9%86%DB%8C%DA%A9%D8%A7%20%D9%86%D8%AA%20%E2%80%94%20%D9%BE%D9%86%D9%84%20%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86%20%D9%88%20%D9%85%D8%AA%D9%86%E2%80%8C%D8%A8%D8%A7%D8%B2%20%D9%BE%D8%B1%D8%A7%DA%A9%D8%B3%DB%8C%20%D8%B1%D9%88%DB%8C%20Cloudflare%20Worker" target="_blank" rel="noopener">✕ ایکس</a><a class="sh" data-en href="https://x.com/intent/tweet?url=https%3A%2F%2Fshahyad.dpdns.org%2F&amp;text=Nika%20Net%20%E2%80%94%20free%2C%20open-source%20multi-user%20proxy%20panel%20on%20a%20Cloudflare%20Worker" target="_blank" rel="noopener">✕ Post</a>
+          <button class="sh sh-copy" type="button"><span data-fa>کپی لینک</span><span data-en>Copy link</span></button>
+          <button class="sh sh-native" type="button"><span data-fa>↗ اشتراک</span><span data-en>↗ Share</span></button>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 <footer>
   <div class="wrap">
     <div class="orn"><svg viewBox="0 0 520 28" preserveAspectRatio="none"><path d="M0 14h200M320 14h200"/><path d="M215 14c8-10 18-10 26 0s18 10 26 0 18-10 26 0"/><circle cx="260" cy="14" r="3"/><path d="M205 14l6-4v8zM315 14l-6-4v8z"/></svg></div>
@@ -2445,7 +2505,7 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
     if(!d){const r=await fetch('https://api.github.com/repos/azadipanell/Nika-Net');if(!r.ok)throw 0;const j=await r.json();
       let ver='';try{const rr=await fetch('https://api.github.com/repos/azadipanell/Nika-Net/releases/latest');if(rr.ok)ver=(await rr.json()).tag_name||''}catch(e){}
       d={s:j.stargazers_count,f:j.forks_count,p:j.pushed_at,v:ver};localStorage.setItem(k,JSON.stringify({t:Date.now(),d}))}
-    const q=n=>document.querySelector(`[data-gh="${n}"]`),show=n=>q(n)?.closest('a')?.classList.add('show');if(d.s>0){q('stars').textContent=d.s;show('stars')}if(d.f>0){q('forks').textContent=d.f;show('forks')}if(d.v)q('ver').textContent=d.v;
+    const q=n=>document.querySelector(`[data-gh="${n}"]`),show=n=>q(n)?.closest('a')?.classList.add('show');if(d.s>0){q('stars').textContent=d.s;show('stars');var fs=document.querySelector('.first-star');if(fs)fs.remove()}if(d.f>0){q('forks').textContent=d.f;show('forks')}if(d.v)q('ver').textContent=d.v;
     const dt=new Date(d.p),l=html.dataset.lang==='en'?'en-GB':'fa-IR';q('date').textContent=dt.toLocaleDateString(l,{month:'short',day:'numeric'})}catch(e){}})();
 
 
@@ -2830,6 +2890,26 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       });
     },{passive:true});
   })();
+
+  // ── v2.1: star meter (reuses gh_nika cache) + share buttons ──
+  (function(){
+    var GOAL=100;
+    function paint(st){var n=document.getElementById('starNum'),f=document.getElementById('starFill');if(!n||st==null)return;
+      n.textContent=st;if(f)requestAnimationFrame(function(){f.style.width=Math.min(100,st/GOAL*100)+'%'})}
+    function read(){try{var c=JSON.parse(localStorage.getItem('gh_nika')||'null');return (c&&Date.now()-c.t<36e5)?c.d.s:null}catch(e){return null}}
+    var s0=read();if(s0!=null)paint(s0);
+    else{var tries=0,timer=setInterval(function(){var v=read();if(v!=null){clearInterval(timer);paint(v)}else if(++tries>14){clearInterval(timer);
+      fetch('https://api.github.com/repos/azadipanell/Nika-Net').then(function(r){return r.ok?r.json():null}).then(function(j){if(j&&j.stargazers_count!=null)paint(j.stargazers_count)}).catch(function(){})}},500)}
+    document.querySelectorAll('.sh-copy').forEach(function(b){b.addEventListener('click',function(){
+      var u=b.dataset.url||location.href;
+      function done(ok){var o=b.innerHTML;b.innerHTML=ok?'✓':'✕';setTimeout(function(){b.innerHTML=o},1300)}
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(u).then(function(){done(1)},function(){done(0)});
+      else{var t=document.createElement('textarea');t.value=u;document.body.appendChild(t);t.select();try{document.execCommand('copy');done(1)}catch(e){done(0)}t.remove()}})});
+    if(navigator.share)document.querySelectorAll('.sh-native').forEach(function(b){b.classList.add('on');
+      b.addEventListener('click',function(){navigator.share({title:document.title,url:b.dataset.url||location.href}).catch(function(){})})});
+  })();
 </script>
+<!-- Cloudflare Web Analytics: privacy-friendly, no cookies. Token: dashboard → Analytics & Logs → Web Analytics → Add site -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"PASTE_YOUR_BEACON_TOKEN_HERE"}'></script>
 </body>
 </html>

@@ -50,3 +50,14 @@ Secretهای لازم در `Settings → Secrets → Actions`:
 - فونت نمایشی فارسی تیترها: `fonts/Katibeh.woff2` (subset، ~38KB، OFL).
 - بخش‌های جدید: `#say` (جملهٔ تایپوگرافیک)، `#journey` (سفر بسته، اسکرول‌محور)، `#demo`.
 - ایستر اگ: تایپ `nika` یا کد کونامی، یا سه‌بار کلیک روی لوگو.
+
+## 📈 آنالیتیکس (Cloudflare Web Analytics)
+
+حریم‌دوستانه، بدون کوکی و بدون اثر انگشت:
+
+1. در داشبورد Cloudflare برو به **Analytics & Logs ← Web Analytics**
+2. **Add site** را بزن و `shahyad.dpdns.org` را اضافه کن
+3. توکن Beacon را کپی کن و در `index.html` جای `PASTE_YOUR_BEACON_TOKEN_HERE` بگذار
+4. پوش کن — تمام!
+
+> هدر CSP در `_headers` از قبل `static.cloudflareinsights.com` را مجاز کرده؛ نیازی به تغییر نیست.
