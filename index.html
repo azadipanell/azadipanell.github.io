@@ -1527,6 +1527,188 @@
     .grid>.card.fade,.fit>.card.fade,.member.fade,.tg-card.fade,.steps>.fade{transform:none}
     .journey .pk{display:none}.steps-j div{opacity:1;transform:none}
   }
+
+  /* ═══════════ SHAHYAD v2 · glow-up layer (append-only — safe to remove) ═══════════ */
+  :root{--amber-hi:#c49a4a}
+  html[data-theme="dark"]{--amber-hi:#f5d9a8}
+
+  /* — base polish: smoothing, scrollbar, focus, rhythm — */
+  body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+  ::-webkit-scrollbar{width:11px;height:11px}
+  ::-webkit-scrollbar-track{background:var(--paper2)}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--amber),var(--amber-hi));border-radius:99px;border:2px solid var(--paper2)}
+  html{scrollbar-color:var(--amber) var(--paper2);scrollbar-width:thin}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+  section{padding:88px 0}
+
+  /* — progress bar: bronze gradient + glow — */
+  #bar{background:linear-gradient(to left,var(--amber),var(--amber-hi));box-shadow:0 0 14px rgba(196,154,74,.8)}
+  html[dir="ltr"] #bar{background:linear-gradient(to right,var(--amber),var(--amber-hi))}
+  html[data-theme="dark"] #bar{background:linear-gradient(to left,var(--amber),var(--amber-hi));box-shadow:0 0 16px rgba(231,179,106,.9)}
+  html[data-theme="dark"][dir="ltr"] #bar{background:linear-gradient(to right,var(--amber),var(--amber-hi))}
+
+  /* — floating glass nav on scroll — */
+  nav{transition:background .4s,box-shadow .4s,border-color .4s,margin .35s ease,border-radius .35s ease}
+  nav.scrolled{margin:12px 18px 0;border:1.5px solid var(--pencil);border-radius:22px;background:rgba(243,239,230,.8);backdrop-filter:blur(16px) saturate(1.25);-webkit-backdrop-filter:blur(16px) saturate(1.25);box-shadow:0 24px 50px -22px rgba(43,42,39,.45)}
+  html[data-theme="dark"] nav.scrolled{border-color:var(--pencil3);background:rgba(24,26,32,.78);box-shadow:0 24px 50px -18px rgba(0,0,0,.7)}
+  nav.scrolled::after{opacity:0}
+  @media(max-width:1024px){
+    nav.scrolled ul{top:calc(100% + 10px);border:1.5px solid var(--pencil);border-radius:18px;box-shadow:0 30px 60px -20px rgba(43,42,39,.4);overflow:hidden}
+    html[data-theme="dark"] nav.scrolled ul{border-color:var(--pencil3)}
+  }
+  .brand img{transition:transform .45s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+  .brand:hover img{transform:rotate(-10deg) scale(1.06);box-shadow:0 8px 20px -6px rgba(138,106,52,.55)}
+  nav ul a.act{color:var(--amber);background:var(--amber2);padding:4px 13px;border-radius:99px}
+  nav ul a.act::after{left:13px;right:13px;bottom:3px}
+
+  /* — hero aurora blobs — */
+  .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+  .aurora i{position:absolute;width:44vmax;height:44vmax;border-radius:50%;filter:blur(80px);opacity:.5;animation:drift 16s ease-in-out infinite alternate}
+  .aurora i:nth-child(1){top:-12%;right:-8%;background:radial-gradient(circle,rgba(196,154,74,.5),transparent 65%)}
+  .aurora i:nth-child(2){bottom:-20%;left:-8%;background:radial-gradient(circle,rgba(138,106,52,.32),transparent 65%);animation-delay:-5s;animation-duration:21s}
+  .aurora i:nth-child(3){top:28%;left:30%;width:30vmax;height:30vmax;background:radial-gradient(circle,rgba(214,186,140,.42),transparent 65%);animation-delay:-9s;animation-duration:18s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-4vmax,3vmax) scale(1.12)}}
+  html[data-theme="dark"] .aurora i{opacity:.6;filter:blur(90px)}
+  html[data-theme="dark"] .aurora i:nth-child(1){background:radial-gradient(circle,rgba(231,179,106,.26),transparent 65%)}
+  html[data-theme="dark"] .aurora i:nth-child(2){background:radial-gradient(circle,rgba(120,110,200,.15),transparent 65%)}
+  html[data-theme="dark"] .aurora i:nth-child(3){background:radial-gradient(circle,rgba(231,179,106,.15),transparent 65%)}
+  .hero .wrap{position:relative;z-index:1}
+
+  /* — eyebrow pulse dot — */
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:6px 18px;box-shadow:0 6px 18px -8px rgba(138,106,52,.5)}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none;animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 var(--amber2)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+  /* — lead marker highlight — */
+  .lead b{color:var(--amber);background:linear-gradient(transparent 60%,var(--amber2) 60%);padding:0 3px;border-radius:3px}
+
+  /* — buttons: bronze depth — */
+  html[data-theme="light"] .btn.dark{box-shadow:4px 5px 0 rgba(43,42,39,.2),0 14px 30px -12px rgba(43,42,39,.5)}
+  html[data-theme="light"] .btn.dark:hover{box-shadow:6px 8px 0 rgba(138,106,52,.35),0 22px 46px -12px rgba(138,106,52,.55)}
+  html[data-theme="dark"] .btn.dark{box-shadow:0 12px 34px -10px rgba(231,179,106,.4)}
+  html[data-theme="dark"] .btn.dark:hover{box-shadow:0 0 30px rgba(231,179,106,.45),0 20px 46px -12px rgba(231,179,106,.5)}
+  html[data-theme="light"] .btn.line:hover{box-shadow:0 14px 30px -12px rgba(138,106,52,.65)}
+  html[data-theme="dark"] .btn.line:hover{box-shadow:0 14px 34px -10px rgba(0,0,0,.65)}
+
+  /* — social chips + proof pill — */
+  .gh a:hover{transform:translateY(-2px)}
+  html[data-theme="light"] .gh a:hover{box-shadow:0 10px 22px -10px rgba(138,106,52,.7)}
+  html[data-theme="dark"] .gh a:hover{box-shadow:0 10px 26px -8px rgba(231,179,106,.45)}
+  .proof span{background:rgba(255,255,255,.42);border:1px solid var(--pencil3);border-radius:99px;padding:4px 14px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  html[data-theme="dark"] .proof span{background:rgba(255,255,255,.04)}
+
+  /* — logo halo + floating badges — */
+  .logo-wrap::before{content:"";position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,var(--amber2) 0%,transparent 68%);pointer-events:none}
+  .orbit{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:500;letter-spacing:.03em;color:var(--pencil);background:rgba(243,239,230,.92);border:1.5px solid var(--pencil);border-radius:99px;padding:5px 13px;box-shadow:3px 4px 0 rgba(43,42,39,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:obfloat 5.5s ease-in-out infinite;white-space:nowrap}
+  html[data-theme="dark"] .orbit{background:rgba(31,34,41,.88);border-color:var(--pencil2);box-shadow:0 10px 26px -8px rgba(0,0,0,.6)}
+  .orbit b{color:var(--amber);font-weight:700}
+  .orbit.o1{top:5%;right:-3%}
+  .orbit.o2{top:44%;left:-8%;animation-delay:-1.8s}
+  .orbit.o3{bottom:5%;right:3%;animation-delay:-3.6s}
+  @keyframes obfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  .cue:hover{color:var(--amber)}
+  .cue:hover i{background:linear-gradient(var(--amber),transparent)}
+
+  /* — marquee fade edges — */
+  .mq{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+
+  /* — headings rhythm — */
+  h2{font-size:clamp(2.1rem,4.4vw,2.7rem)}
+  .sub{font-size:1.04rem}
+
+  /* — cards: pointer spotlight + deeper hover (no transform: tilt owns it) — */
+  .card.sketch,.step,.member,.tg-card{background-image:radial-gradient(140% 100% at var(--mx,50%) var(--my,0%),rgba(255,255,255,.55),transparent 55%)}
+  html[data-theme="dark"] .card.sketch,html[data-theme="dark"] .step,html[data-theme="dark"] .member,html[data-theme="dark"] .tg-card{background-image:radial-gradient(140% 100% at var(--mx,50%) var(--my,0%),rgba(231,179,106,.08),transparent 55%)}
+  html[data-theme="light"] .card.sketch:hover,html[data-theme="light"] .member:hover,html[data-theme="light"] .tg-card:hover{border-color:var(--amber);box-shadow:6px 10px 0 rgba(138,106,52,.2),0 30px 60px -25px rgba(138,106,52,.45)}
+  html[data-theme="light"] .step:hover{transform:translateY(-7px) rotate(-.4deg);border-color:var(--amber);box-shadow:6px 10px 0 rgba(138,106,52,.2),0 30px 60px -25px rgba(138,106,52,.45)}
+  html[data-theme="dark"] .card.sketch:hover,html[data-theme="dark"] .member:hover,html[data-theme="dark"] .tg-card:hover{border-color:rgba(231,179,106,.55);box-shadow:0 24px 55px -12px rgba(0,0,0,.6),0 0 0 1px rgba(231,179,106,.3),0 0 36px -8px rgba(231,179,106,.28)}
+  html[data-theme="dark"] .step:hover{transform:translateY(-7px) rotate(-.4deg);border-color:rgba(231,179,106,.55);box-shadow:0 24px 55px -12px rgba(0,0,0,.6),0 0 0 1px rgba(231,179,106,.3),0 0 36px -8px rgba(231,179,106,.28)}
+  .grid>.fade:nth-child(2),.steps>.fade:nth-child(2),.fit>.fade:nth-child(2){transition-delay:.08s}
+  .grid>.fade:nth-child(3),.steps>.fade:nth-child(3),.fit>.fade:nth-child(3){transition-delay:.16s}
+  .grid>.fade:nth-child(4),.fit>.fade:nth-child(4){transition-delay:.24s}
+  html[data-theme="light"] .card:hover .spot{filter:contrast(1.05) drop-shadow(0 10px 18px rgba(138,106,52,.35))}
+  html[data-theme="dark"] .card:hover .spot{filter:drop-shadow(0 0 16px rgba(231,179,106,.4))}
+
+  /* — stats: bronze numerals — */
+  .stat{transition:transform .3s}
+  .stat:hover{transform:translateY(-4px)}
+  .stat b{background:linear-gradient(120deg,var(--graphite) 30%,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  html[data-theme="dark"] .stat b{background:linear-gradient(120deg,#f1ebdc 30%,var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 12px rgba(231,179,106,.25))}
+
+  /* — manifesto glow word — */
+  .big-say .l em{background:linear-gradient(120deg,var(--amber),var(--amber-hi));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;font-style:normal}
+
+  /* — framed artwork: straighten on hover (etch slider untouched) — */
+  .frame{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+  html[data-theme="light"] .mock .frame:not(.etch):hover{transform:rotate(0deg) translateY(-4px);box-shadow:10px 14px 0 rgba(138,106,52,.18),0 30px 60px -25px rgba(43,42,39,.4)}
+  html[data-theme="dark"] .mock .frame:not(.etch):hover{transform:rotate(0deg) translateY(-4px);box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 0 0 1px rgba(231,179,106,.3)}
+  .frame:not(.etch):hover img{transform:scale(1.015)}
+
+  /* — compare table: depth + crowned winner column — */
+  .cmp{box-shadow:8px 10px 0 rgba(43,42,39,.1),0 30px 60px -30px rgba(43,42,39,.35)}
+  html[data-theme="dark"] .cmp{box-shadow:0 30px 60px -25px rgba(0,0,0,.6)}
+  .cmp tbody tr{transition:background .25s}
+  .cmp tbody tr:hover{background:rgba(138,106,52,.06)}
+  html[data-theme="dark"] .cmp tbody tr:hover{background:rgba(231,179,106,.05)}
+  .cmp thead th.us{position:relative;background:linear-gradient(180deg,rgba(138,106,52,.24),rgba(138,106,52,.1))}
+  html[data-theme="dark"] .cmp thead th.us{background:linear-gradient(180deg,rgba(231,179,106,.24),rgba(231,179,106,.08))}
+  .cmp thead th.us::after{content:"★";position:absolute;top:10px;inset-inline-end:12px;color:var(--amber);font-size:.85rem;animation:twinkle 3s ease-in-out infinite alternate}
+
+  /* — install steps: numbered badges ignite — */
+  .step .n{transition:.3s}
+  .step:hover .n{background:var(--amber);border-color:var(--amber);color:var(--amber-ink);transform:rotate(-8deg) scale(1.06);box-shadow:0 10px 22px -8px rgba(138,106,52,.7)}
+  html[data-theme="dark"] .step:hover .n{color:#1f2229;box-shadow:0 0 22px rgba(231,179,106,.45)}
+
+  /* — team photos: color on hover — */
+  .member img{transition:filter .4s,transform .5s}
+  html[data-theme="light"] .member:hover img{filter:none;transform:scale(1.04)}
+  html[data-theme="dark"] .member:hover img{transform:scale(1.04)}
+
+  /* — roadmap progress glow — */
+  .road-prog i::after{box-shadow:0 0 12px rgba(196,154,74,.7)}
+  html[data-theme="dark"] .road-prog i::after{box-shadow:0 0 14px rgba(231,179,106,.8)}
+
+  /* — releases timeline — */
+  .rel-item{transition:transform .3s}
+  .rel-item:hover{transform:translateX(-4px)}
+  html[dir="ltr"] .rel-item:hover{transform:translateX(4px)}
+  .rel-item .tag-v{transition:.3s;display:inline-block}
+  .rel-item:hover .tag-v{color:var(--amber);text-shadow:0 0 22px var(--amber2)}
+  .rel-item .latest{box-shadow:0 0 0 3px var(--amber2)}
+
+  /* — faq + feedback focus — */
+  summary{transition:color .25s}
+  summary:hover{color:var(--amber)}
+  details[open] summary{color:var(--amber)}
+  .fb-field input:focus,.fb-field textarea:focus{box-shadow:0 12px 18px -13px rgba(138,106,52,.8)}
+  html[data-theme="dark"] .fb-field input:focus,html[data-theme="dark"] .fb-field textarea:focus{box-shadow:0 12px 18px -13px rgba(231,179,106,.55)}
+
+  /* — tech chips shadow — */
+  .tech span:hover{box-shadow:0 12px 26px -12px rgba(43,42,39,.6)}
+  html[data-theme="light"] .tech span:hover{box-shadow:0 12px 26px -12px rgba(138,106,52,.8)}
+
+  /* — footer hairline + back-to-top — */
+  footer::after{content:"";position:absolute;top:-2px;right:50%;transform:translateX(50%);width:190px;max-width:60%;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent);border-radius:2px}
+  footer a{transition:color .25s,border-color .25s}
+  html[data-theme="dark"] footer a:hover{color:var(--amber);border-bottom-color:var(--amber)}
+  #top.show:hover{transform:translateY(-3px);border-color:var(--amber);box-shadow:0 14px 28px -10px rgba(138,106,52,.7)}
+  #top.show:hover svg{stroke:var(--amber)}
+  html[data-theme="dark"] #top.show:hover{box-shadow:0 14px 30px -10px rgba(0,0,0,.7),0 0 22px -4px rgba(231,179,106,.5)}
+
+  /* — responsive + calm motion — */
+  @media(max-width:860px){
+    section{padding:64px 0}
+    .hero{padding:56px 0 46px}
+    .orbit{font-size:.66rem;padding:4px 10px}
+    .orbit.o1{right:-2px}
+    .orbit.o2{left:-2px}
+    nav.scrolled{margin:8px 10px 0;border-radius:18px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .aurora{display:none}
+    .orbit,.eyebrow .dot,.cmp thead th.us::after{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -1572,11 +1754,12 @@
 </nav>
 
 <header class="hero">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="grain" aria-hidden="true"><svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice"><path d="M60 640l120-90M180 80l60 60M1020 90l90-40M980 620l110 40M40 300h80M1100 330h70"/><circle cx="140" cy="560" r="1.6"/><circle cx="260" cy="120" r="1.4"/><circle cx="1090" cy="70" r="1.6"/><circle cx="1040" cy="640" r="1.3"/><circle cx="90" cy="290" r="1.2"/><circle cx="1150" cy="340" r="1.4"/><path d="M600 40c60 0 60 30 0 30s-60-30 0-30" stroke-dasharray="2 4"/><path d="M620 660c-40 0-40-20 0-20s40 20 0 20" stroke-dasharray="2 4"/></svg></div>
   <div class="wm-wrap" aria-hidden="true"><svg class="wm wm-fa" viewBox="0 0 4103 1677" aria-hidden="true" focusable="false"><path transform="translate(-60 1210) scale(1 -1)" d="M455 -14Q336 -14 260.0 21.5Q184 57 145.5 132.0Q107 207 100 326L216 383Q232 283 286.0 253.0Q340 223 463 223Q503 223 551.0 225.5Q599 228 655 232Q678 234 688.0 242.0Q698 250 698 261Q698 273 689.0 293.0Q680 313 666 336Q633 394 583.0 461.0Q533 528 477.5 593.5Q422 659 370 712L510 857Q575 785 637.0 699.0Q699 613 748.5 523.5Q798 434 823 350Q845 278 845 221Q845 147 814 85Q801 57 782.5 38.0Q764 19 744 14Q714 7 664.0 0.5Q614 -6 558.5 -10.0Q503 -14 455 -14Z"/><path transform="translate(835 1210) scale(1 -1)" d="M454 0Q358 0 304.5 28.5Q251 57 214 112Q196 142 185.5 180.0Q175 218 168.0 271.5Q161 325 153 401Q142 507 130.0 607.5Q118 708 103.5 821.0Q89 934 70 1078L242 1088Q254 978 265.0 853.5Q276 729 285.5 619.0Q295 509 300 442Q305 366 314.5 323.0Q324 280 349 260Q378 235 454 235ZM454 0V235Q494 235 511.5 208.5Q529 182 529 115Q529 54 510.0 27.0Q491 0 454 0Z"/><path transform="translate(1289 1210) scale(1 -1)" d="M443 -427 270 -299 377 -163 548 -291ZM162 -427 -11 -299 96 -163 267 -291ZM0 0V235H276Q311 235 316.0 249.0Q321 263 311 314L258 586L409 595Q437 498 463.5 381.5Q490 265 490 161L434 235H576V0H553Q494 0 441.0 13.5Q388 27 361 44H475Q423 17 334.5 8.5Q246 0 101 0ZM576 0V235Q616 235 633.5 208.5Q651 182 651 115Q651 54 632.0 27.0Q613 0 576 0ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235Z"/><path transform="translate(1865 1210) scale(1 -1)" d="M897 0Q808 0 733.5 3.0Q659 6 583 25V207Q660 229 734.0 232.0Q808 235 897 235ZM0 0V235H213L178 0ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235ZM897 0V235Q937 235 954.5 208.5Q972 182 972 115Q972 54 953.0 27.0Q934 0 897 0ZM499 -413Q398 -413 317.0 -367.0Q236 -321 188.5 -233.5Q141 -146 141 -20Q141 79 171.5 207.5Q202 336 257.5 479.0Q313 622 389 763H471Q485 748 522.0 700.5Q559 653 601.0 586.5Q643 520 673.0 446.0Q703 372 703 305Q703 238 674.0 196.0Q645 154 618 128V123Q701 82 745.5 12.5Q790 -57 790 -143Q790 -258 713.5 -335.5Q637 -413 499 -413ZM519 -189Q536 -189 568.0 -186.0Q600 -183 625 -171Q665 -154 665 -122Q665 -96 635 -66Q611 -42 572.5 -25.0Q534 -8 483.0 1.0Q432 10 370 7L171 -1L269 85Q260 49 260 17Q260 -83 336.5 -136.0Q413 -189 519 -189ZM285 161 254 230Q287 228 315.5 226.5Q344 225 373 225Q463 225 516.5 242.0Q570 259 570 299Q570 329 542.0 381.0Q514 433 465.5 491.0Q417 549 357 596L461 586Q415 500 364.0 384.0Q313 268 285 161Z"/><path transform="translate(2762 1210) scale(1 -1)" d="M588 943 752 821 651 692 488 814ZM856 943 1020 821 919 692 755 814ZM679 1170 843 1048 742 919 579 1041ZM577 -11Q485 -11 411.5 -1.5Q338 8 267 30L311 29Q271 12 225.0 6.0Q179 0 80 0H0V235H163Q212 235 233.5 253.5Q255 272 268 339L317 599L465 572L419 296Q415 269 410.0 246.5Q405 224 399 206L383 235Q423 230 470.5 227.0Q518 224 577 224Q654 224 678.0 238.0Q702 252 702 304L704 560H854L857 302Q858 253 890.5 239.0Q923 225 1017 225Q1070 225 1104.0 229.5Q1138 234 1156 242Q1172 249 1172 269Q1172 286 1159 320Q1141 364 1106.5 432.0Q1072 500 1024 573L1167 668Q1222 591 1261.5 479.0Q1301 367 1301 261Q1301 175 1268.0 115.0Q1235 55 1173.0 24.5Q1111 -6 1023 -6Q970 -6 926.0 -0.5Q882 5 844.0 17.5Q806 30 768 52L815 54Q769 19 712.5 4.0Q656 -11 577 -11ZM0 0Q-37 0 -56.0 27.0Q-75 54 -75 115Q-75 182 -57.5 208.5Q-40 235 0 235Z"/></svg><svg class="wm wm-en" viewBox="0 0 4674 728" aria-hidden="true" focusable="false"><path transform="translate(-32 676) scale(1 -1)" d="M164 518Q164 479 184.0 450.5Q204 422 235.5 399.0Q267 376 302 354Q340 331 374.5 305.0Q409 279 431.5 245.5Q454 212 454 164Q454 112 427.0 72.5Q400 33 352.5 10.5Q305 -12 241 -12Q214 -12 184.5 -7.0Q155 -2 129.5 7.0Q104 16 88 26Q84 29 81.5 33.0Q79 37 78 45L72 196Q71 201 76.5 201.5Q82 202 83 198Q95 168 111.5 134.5Q128 101 150.0 73.0Q172 45 200.5 27.5Q229 10 266 10Q292 10 315.0 19.0Q338 28 353.0 50.5Q368 73 368 112Q368 159 346.5 192.5Q325 226 292.0 251.0Q259 276 223 298Q188 321 156.0 345.0Q124 369 103.5 400.5Q83 432 83 477Q83 532 113.0 567.0Q143 602 189.5 619.0Q236 636 285 636Q318 636 352.0 630.0Q386 624 410 613Q419 610 422.0 605.0Q425 600 425 594L427 459Q427 455 422.5 454.0Q418 453 416 456Q411 471 401.0 497.5Q391 524 373.0 551.0Q355 578 328.0 597.0Q301 616 262 616Q232 616 210.0 604.0Q188 592 176.0 570.5Q164 549 164 518Z"/><path transform="translate(475 676) scale(1 -1)" d="M553 542Q553 571 547.0 586.0Q541 601 523.0 607.0Q505 613 468 613Q465 613 465.0 619.0Q465 625 468 625Q493 625 525.5 623.5Q558 622 601 622Q636 622 670.0 623.5Q704 625 729 625Q732 625 732.0 619.0Q732 613 729 613Q694 613 676.5 607.5Q659 602 653.0 587.5Q647 573 647 544V81Q647 52 653.0 37.0Q659 22 676.5 17.0Q694 12 729 12Q732 12 732.0 6.0Q732 0 729 0Q704 0 670.0 1.0Q636 2 601 2Q558 2 525.5 1.0Q493 0 468 0Q465 0 465.0 6.0Q465 12 468 12Q505 12 523.0 17.0Q541 22 547.0 37.0Q553 52 553 81ZM158 312V338H596V312ZM114 81V544Q114 573 108.0 587.5Q102 602 85.0 607.5Q68 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 91.0 623.5Q123 622 158 622Q201 622 234.0 623.5Q267 625 293 625Q295 625 295.0 619.0Q295 613 293 613Q257 613 239.0 607.0Q221 601 215.0 586.0Q209 571 209 542V81Q209 52 215.0 37.0Q221 22 239.5 17.0Q258 12 293 12Q295 12 295.0 6.0Q295 0 293 0Q266 0 233.5 1.0Q201 2 158 2Q123 2 90.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q67 12 84.0 17.0Q101 22 107.5 37.0Q114 52 114 81Z"/><path transform="translate(1237 676) scale(1 -1)" d="M179 245 192 270H472L479 245ZM711 12Q715 12 715.0 6.0Q715 0 711 0Q681 0 649.5 2.0Q618 4 589 4Q556 4 531.5 2.0Q507 0 477 0Q473 0 473.0 6.0Q473 12 477 12Q522 12 531.0 28.0Q540 44 516 91L307 516L348 583L150 137Q124 76 148.5 44.0Q173 12 232 12Q237 12 237.0 6.0Q237 0 232 0Q202 0 177.0 2.0Q152 4 114 4Q76 4 53.5 2.0Q31 0 -2 0Q-6 0 -6.0 6.0Q-6 12 -2 12Q25 12 44.5 23.0Q64 34 83.0 63.5Q102 93 125 146L340 631Q342 634 349.0 634.0Q356 634 357 631L602 137Q625 89 643.0 61.5Q661 34 677.0 23.0Q693 12 711 12Z"/><path transform="translate(1948 676) scale(1 -1)" d="M553 542Q553 571 547.0 586.0Q541 601 523.0 607.0Q505 613 468 613Q465 613 465.0 619.0Q465 625 468 625Q493 625 525.5 623.5Q558 622 601 622Q636 622 670.0 623.5Q704 625 729 625Q732 625 732.0 619.0Q732 613 729 613Q694 613 676.5 607.5Q659 602 653.0 587.5Q647 573 647 544V81Q647 52 653.0 37.0Q659 22 676.5 17.0Q694 12 729 12Q732 12 732.0 6.0Q732 0 729 0Q704 0 670.0 1.0Q636 2 601 2Q558 2 525.5 1.0Q493 0 468 0Q465 0 465.0 6.0Q465 12 468 12Q505 12 523.0 17.0Q541 22 547.0 37.0Q553 52 553 81ZM158 312V338H596V312ZM114 81V544Q114 573 108.0 587.5Q102 602 85.0 607.5Q68 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 91.0 623.5Q123 622 158 622Q201 622 234.0 623.5Q267 625 293 625Q295 625 295.0 619.0Q295 613 293 613Q257 613 239.0 607.0Q221 601 215.0 586.0Q209 571 209 542V81Q209 52 215.0 37.0Q221 22 239.5 17.0Q258 12 293 12Q295 12 295.0 6.0Q295 0 293 0Q266 0 233.5 1.0Q201 2 158 2Q123 2 90.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q67 12 84.0 17.0Q101 22 107.5 37.0Q114 52 114 81Z"/><path transform="translate(2710 676) scale(1 -1)" d="M312 281 444 498Q476 550 468.5 581.5Q461 613 414 613Q412 613 412.0 619.0Q412 625 414 625Q445 625 472.0 623.5Q499 622 543 622Q568 622 583.5 623.5Q599 625 621 625Q623 625 623.0 619.0Q623 613 621 613Q600 613 573.0 597.5Q546 582 520.0 554.5Q494 527 471 490L332 265ZM270 273 109 519Q73 574 49.0 593.5Q25 613 3 613Q0 613 0.0 619.0Q0 625 3 625Q19 625 36.0 623.5Q53 622 68 622Q96 622 125.5 622.5Q155 623 181.5 624.0Q208 625 226 625Q228 625 228.0 619.0Q228 613 226 613Q193 613 186.0 596.0Q179 579 197 553L350 318ZM262 310 357 319V81Q357 52 362.0 37.0Q367 22 383.0 17.0Q399 12 432 12Q435 12 435.0 6.0Q435 0 432 0Q407 0 376.5 1.0Q346 2 309 2Q274 2 241.5 1.0Q209 0 184 0Q182 0 182.0 6.0Q182 12 184 12Q217 12 233.5 17.0Q250 22 256.0 37.0Q262 52 262 81Z"/><path transform="translate(3272 676) scale(1 -1)" d="M179 245 192 270H472L479 245ZM711 12Q715 12 715.0 6.0Q715 0 711 0Q681 0 649.5 2.0Q618 4 589 4Q556 4 531.5 2.0Q507 0 477 0Q473 0 473.0 6.0Q473 12 477 12Q522 12 531.0 28.0Q540 44 516 91L307 516L348 583L150 137Q124 76 148.5 44.0Q173 12 232 12Q237 12 237.0 6.0Q237 0 232 0Q202 0 177.0 2.0Q152 4 114 4Q76 4 53.5 2.0Q31 0 -2 0Q-6 0 -6.0 6.0Q-6 12 -2 12Q25 12 44.5 23.0Q64 34 83.0 63.5Q102 93 125 146L340 631Q342 634 349.0 634.0Q356 634 357 631L602 137Q625 89 643.0 61.5Q661 34 677.0 23.0Q693 12 711 12Z"/><path transform="translate(3983 676) scale(1 -1)" d="M318 -4Q287 -4 241.0 -1.0Q195 2 157 2Q121 2 89.0 1.0Q57 0 32 0Q30 0 30.0 6.0Q30 12 32 12Q64 12 81.0 17.0Q98 22 103.5 37.0Q109 52 109 81V544Q109 573 103.5 587.5Q98 602 82.0 607.5Q66 613 33 613Q31 613 31.0 619.0Q31 625 33 625Q59 625 90.0 623.5Q121 622 157 622Q192 622 233.5 624.5Q275 627 304 627Q409 627 487.0 587.0Q565 547 608.0 478.0Q651 409 651 323Q651 248 625.0 187.5Q599 127 552.5 84.5Q506 42 445.5 19.0Q385 -4 318 -4ZM308 16Q377 16 430.0 49.0Q483 82 513.5 145.5Q544 209 544 301Q544 387 516.0 456.5Q488 526 436.5 566.5Q385 607 314 607Q255 607 229.5 596.0Q204 585 204 542V92Q204 53 224.0 34.5Q244 16 308 16Z"/></svg></div>
   <div class="wrap">
     <div class="hero-copy">
-      <span class="eyebrow en">Est. 2025 · ASR1 × ASR2</span>
+      <span class="eyebrow en"><i class="dot" aria-hidden="true"></i>Est. 2025 · ASR1 × ASR2</span>
       <h1><span data-fa>شهیاد</span><span data-en>SHAHYAD</span><span class="en"><span data-fa>Shahyad · Configuration Panels</span><span data-en>Software Studio · Configuration Panels</span></span></h1>
       <p class="lead" data-fa>استودیو توسعه نرم‌افزار؛ ساخت ابزارها، سیستم‌ها و تجربه‌های دیجیتال مدرن. پروژه منتخب ما، <b>نیکا نت</b>؛ پنل چندکاربره پراکسی روی یک Cloudflare Worker رایگان.</p>
       <p class="lead" data-en>A software studio building tools, systems and modern digital experiences. Our flagship, <b>Nika Net</b>: a multi-user proxy panel on a single free Cloudflare Worker.</p>
@@ -1616,6 +1799,9 @@
 </svg>
       <picture class="swap-day"><source srcset="assets/shahyad-logo.webp" type="image/webp"><img src="assets/shahyad-logo.jpg" alt="SHAHYAD" fetchpriority="high" decoding="async" width="800" height="800"></picture><img class="swap-night" data-src="assets/shahyad-logo-night.webp" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="SHAHYAD">
       <div class="stamp en" data-px=".06"><b>SHAHYAD</b>est. 2025 · Tehran</div>
+      <span class="orbit o1">$0<b>/mo</b></span>
+      <span class="orbit o2">MIT · Open Source</span>
+      <span class="orbit o3">⚡ VLESS + Trojan</span>
     </div>
   </div>
   <a class="cue" href="#about" aria-label="scroll"><span class="en">scroll</span><i></i></a>
@@ -2623,6 +2809,26 @@ src/cores/      <span class="c"># clash / sing-box / base64</span></pre></div>
       setTimeout(()=>em.classList.remove('glow'),1500);
       if(window.__sketch)setTimeout(window.__sketch,400);
     });
+  })();
+
+  // ── SHAHYAD v2: stagger cleanup + card spotlight ──
+  (function(){
+    // entrance stagger only: drop the delay after first reveal so hovers stay snappy
+    document.querySelectorAll('.grid>.fade,.steps>.fade,.fit>.fade').forEach(function(el){
+      el.addEventListener('transitionend',function h(){el.style.transitionDelay='0s';el.removeEventListener('transitionend',h)});
+    });
+    if(!matchMedia('(hover:hover) and (pointer:fine)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    // card spotlight follows the pointer (rAF-throttled)
+    var cards=[...document.querySelectorAll('.card.sketch,.step,.member,.tg-card')],raf=0,mx=0,my=0;
+    addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY;if(raf)return;raf=1;
+      requestAnimationFrame(function(){raf=0;
+        for(var i=0;i<cards.length;i++){var c=cards[i],r=c.getBoundingClientRect();
+          if(mx>r.left-90&&mx<r.right+90&&my>r.top-90&&my<r.bottom+90){
+            c.style.setProperty('--mx',((mx-r.left)/r.width*100).toFixed(1)+'%');
+            c.style.setProperty('--my',((my-r.top)/r.height*100).toFixed(1)+'%');
+          }}
+      });
+    },{passive:true});
   })();
 </script>
 </body>
